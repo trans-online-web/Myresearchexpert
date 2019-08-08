@@ -99,6 +99,31 @@
                             <div class="row">
                                 <div class="col">
                                 <div class="form-group">
+                                <label for="pages">No. of Pages</label>
+                                <input v-model="form.pages" type="number" min="1" class="form-control" name="pages" id="pages"
+                                       placeholder="Pages" :class="{ 'is-invalid': form.errors.has('pages') }">
+                                <has-error :form="form" field="pages"></has-error>
+                            </div>
+                                </div>
+                                <div class="col">
+                                <label for="spacing">Spacing</label><br>
+                                <div class="form-check form-check-inline">
+                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single" 
+                                        :class="{ 'is-invalid': form.errors.has('spacing') }">
+                                <label class="form-check-label" for="inlineRadio1">Single</label>
+                                <has-error :form="form" field="spacing"></has-error>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double" 
+                                          :class="{ 'is-invalid': form.errors.has('spacing') }">
+                                <label class="form-check-label" for="inlineRadio1">Double</label>
+                                <has-error :form="form" field="spacing"></has-error>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                <div class="form-group">
                                 <label for="date">Deadline Date</label>
                                 <input v-model="form.date" type="date" class="form-control" name="date" id="date"
                                        placeholder="Date" :class="{ 'is-invalid': form.errors.has('date') }">
@@ -120,13 +145,18 @@
                                           :class="{ 'is-invalid': form.errors.has('task') }"></textarea>
                                 <has-error :form="form" field="task"></has-error>
                             </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="files">Upload Files</label>
+                                <input type="file" multiple class="form-control-file" id="files">
+                            </div>
                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success">
                                 <i class="fa fa-send"></i>
-                                Post
+                                Submit
                             </button>
                         </div>
                     </form>
@@ -154,12 +184,7 @@
             checkUser(){
                 this.form.post('api/checkuser')
                     .then(() => {
-                        
                         $('#TaskModal').modal('show');
-                        toast.fire({
-                            type: 'success',
-                            title: 'Posted Successfully'
-                        });
                     })
                     .catch(error => {
                        this.errors = error.response.data.errors;

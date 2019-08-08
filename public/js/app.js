@@ -1868,6 +1868,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1887,10 +1917,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.form.post('api/checkuser').then(function () {
         $('#TaskModal').modal('show');
-        toast.fire({
-          type: 'success',
-          title: 'Posted Successfully'
-        });
       })["catch"](function (error) {
         _this.errors = error.response.data.errors;
         set(email, error.response.data.msg);
@@ -38724,6 +38750,165 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
+                            _c("label", { attrs: { for: "pages" } }, [
+                              _vm._v("No. of Pages")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.pages,
+                                  expression: "form.pages"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("pages")
+                              },
+                              attrs: {
+                                type: "number",
+                                min: "1",
+                                name: "pages",
+                                id: "pages",
+                                placeholder: "Pages"
+                              },
+                              domProps: { value: _vm.form.pages },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "pages",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "pages" }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col" }, [
+                        _c("label", { attrs: { for: "spacing" } }, [
+                          _vm._v("Spacing")
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.spacing,
+                                  expression: "form.spacing"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("spacing")
+                              },
+                              attrs: {
+                                type: "radio",
+                                name: "spacing",
+                                id: "spacing",
+                                value: "single"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.form.spacing, "single")
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.$set(_vm.form, "spacing", "single")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineRadio1" }
+                              },
+                              [_vm._v("Single")]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "spacing" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.spacing,
+                                  expression: "form.spacing"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("spacing")
+                              },
+                              attrs: {
+                                type: "radio",
+                                name: "spacing",
+                                id: "spacing",
+                                value: "double"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.form.spacing, "double")
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.$set(_vm.form, "spacing", "double")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineRadio1" }
+                              },
+                              [_vm._v("Double")]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "spacing" }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
                             _c("label", { attrs: { for: "date" } }, [
                               _vm._v("Deadline Date")
                             ]),
@@ -38858,10 +39043,14 @@ var render = function() {
                         })
                       ],
                       1
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _vm._m(1)
                   ]),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(2)
                 ]
               )
             ])
@@ -38897,6 +39086,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "files" } }, [_vm._v("Upload Files")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control-file",
+        attrs: { type: "file", multiple: "", id: "files" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
       _c(
         "button",
@@ -38912,7 +39114,9 @@ var staticRenderFns = [
         { staticClass: "btn btn-success", attrs: { type: "submit" } },
         [
           _c("i", { staticClass: "fa fa-send" }),
-          _vm._v("\n                            Post\n                        ")
+          _vm._v(
+            "\n                            Submit\n                        "
+          )
         ]
       )
     ])
