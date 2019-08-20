@@ -12,22 +12,51 @@ window.Vue = require('vue');
 // VueRouter
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-
+//moment js
+import moment from 'moment';
 // VForm
 import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
-
-
-
+// progress bar
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '3px'
+})
+//Loadash
+import uniq from 'lodash/uniq'
+window.uniq = uniq;
+// sweatalert
+import swal from 'sweetalert2';
+window.swal = swal;
+const toast = swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+window.toast = toast;
+//Routes
 let routes = [
-  { path: '/signup', component: require('./components/SignUp.vue').default },
+    { path: '/signup', component: require('./components/SignUp.vue').default },
+    { path: '/dashboard', component: require('./components/dashboard.vue').default },
+    { path: '/subject', component: require('./components/Subjects.vue').default },
 ]
 const router = new VueRouter({
   mode:'history',
   routes // short for `routes: routes`
 })
+
+Vue.filter('upText', function(text){
+    return text.charAt(0).toUpperCase() + text.slice(1)
+});
+
+Vue.filter('myDate',function(created){
+    return moment(created).format('MMMM Do YYYY');
+});
 
 /**
  * The following block of code may be used to automatically register your
