@@ -47,6 +47,7 @@ window.Fire =  new Vue();
 Vue.component('pagination', require('laravel-vue-pagination'));
 //Routes
 let routes = [
+    { path: '/user', component: require('./components/Users.vue').default },
     { path: '/signup', component: require('./components/SignUp.vue').default },
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
