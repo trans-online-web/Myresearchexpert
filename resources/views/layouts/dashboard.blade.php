@@ -219,6 +219,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
                     </li>
+
+                     <li class="nav-item">
+                        <router-link to="/documents" class="nav-link">
+                            <i class="nav-icon fas fa-book green"></i>
+                            <p>
+                                Documents
+                            </p>
+                        </router-link>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

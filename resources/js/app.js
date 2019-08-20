@@ -51,6 +51,8 @@ let routes = [
     { path: '/signup', component: require('./components/SignUp.vue').default },
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
+    { path: '/documents', component: require('./components/Documents.vue').default },
+    
 ]
 const router = new VueRouter({
   mode:'history',
