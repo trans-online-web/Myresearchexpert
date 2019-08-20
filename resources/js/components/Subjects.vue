@@ -1,13 +1,13 @@
 <template>
     <div class="container">
-        <div class="row pt-3" v-if="$gate.isAdmin()">
+        <div class="row pt-3" >
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">List of the Counties</h3>
+                        <h3 class="card-title">List of the subjects</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-sm btn-primary" @click="newModal">Add County</button>
+                            <button class="btn btn-sm btn-primary" @click="newModal">Add subject</button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -15,18 +15,20 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>County Name</th>
+                                <th>N.o</th>
+                                <th>Subject Name</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="counties in county.data" :key="county.id">
-                                <td>{{counties.name}}</td>
+                            <tr v-for="subjects in subject.data" :key="subject.id">
+                                <td>{{subjects.id}}</td>
+                                <td>{{subjects.name}}</td>
                                 <td>
-                                    <a href="#" @click="editModal(counties)">
+                                    <a href="#" @click="editModal(subjects)">
                                         <i class="fa fa-edit p-1 text-primary"></i>
                                     </a>
-                                    <a href="#" @click="deleteCounty(counties.id)">
+                                    <a href="#" @click="deleteSubject(subjects.id)">
                                         <i class="fa fa-trash p-1 text-danger"></i>
                                     </a>
                                 </td>
@@ -36,7 +38,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <pagination :data="county" @pagination-change-page="getResults"></pagination>
+                        <pagination :data="subject" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
                 <!-- /.card -->
@@ -47,18 +49,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 v-show="!editMode" class="modal-title" id="addnewLabel">Add County</h5>
-                        <h5 v-show="editMode" class="modal-title" id="addnewLabel">Edit County</h5>
+                        <h5 v-show="!editMode" class="modal-title" id="addnewLabel">Add Subject</h5>
+                        <h5 v-show="editMode" class="modal-title" id="addnewLabel">Edit Subject</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="editMode ? updateCounty() : addCounty()">
+                    <form @submit.prevent="editMode ? updateSubject() : addSubject()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>County Name</label>
+                                <label>Subject Name</label>
                                 <input v-model="form.name" type="text" name="name"
-                                       placeholder="Enter County"
+                                       placeholder="Enter Subject"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                                 <has-error :form="form" field="name"></has-error>
                             </div>
@@ -79,30 +81,30 @@
         data(){
             return{
                 editMode:false,
-                county:{},
+                subject:{},
                 form: new Form({
                     id:'',
-                    /*name: '',*/
+                    name: '',
                 })
             }
         },
 
         methods: {
             getResults(page = 1) {
-                axios.get('api/county?page=' + page)
+                axios.get('api/subject?page=' + page)
                     .then(response => {
-                        this.county = response.data;
+                        this.subject = response.data;
                     });
             },
-            addCounty(){
+            addSubject(){
                 this.$Progress.start();
-                this.form.post('api/county')
+                this.form.post('api/subject')
                     .then(()=>{
                         Fire.$emit('entry');
                         $('#addnew').modal('hide');
                         toast.fire({
                             type: 'success',
-                            title: 'County created successfully'
+                            title: 'Subject created successfully'
                         });
                         this.$Progress.finish();
                     })
@@ -110,12 +112,10 @@
                         this.$Progress.fail();
                     });
             },
-            loadCounty(){
-                if (this.$gate.isAdmin()) {
-                    axios.get("api/county").then(({data}) => (this.county = data));
-                }
+            loadSubject(){
+                    axios.get("api/subject").then(({data}) => (this.subject = data));
             },
-            deleteCounty(id){
+            deleteSubject(id){
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -126,7 +126,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if(result.value){
-                        this.form.delete("api/county/"+id).then(()=>{
+                        this.form.delete("api/subject/"+id).then(()=>{
                             swal(
                                 'Delete!',
                                 'Your file has been deleted.',
@@ -150,7 +150,7 @@
                 $('#addnew').modal('show');
                 this.form.fill(counties);
             },
-            updateCounty(){
+            updateSubject(){
                 this.$Progress.start();
                 this.form.put('api/county/'+this.form.id)
                     .then(()=>{
@@ -172,17 +172,17 @@
         created() {
             Fire.$on('searching', ()=>{
                 let query = this.$parent.search;
-                axios.get('api/findCounty?q=' + query)
+                axios.get('api/findSubject?q=' + query)
                     .then((data)=>{
-                        this.county = data.data;
+                        this.subject = data.data;
                     })
                     .catch(()=>{
 
                     })
             })
-            this.loadCounty();
+            this.loadSubject();
             Fire.$on('entry', () =>{
-                this.loadCounty();
+                this.loadSubject();
             })
             //setInterval(() => this.loadUsers(), 3000);
         }

@@ -14,6 +14,9 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 //moment js
 import moment from 'moment';
+//Gate
+import  Gate from "./Gate";
+Vue.prototype.$gate =  new Gate(window.user);
 // VForm
 import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
@@ -39,6 +42,9 @@ const toast = swal.mixin({
     timer: 3000
 });
 window.toast = toast;
+window.Fire =  new Vue();
+//pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
 //Routes
 let routes = [
     { path: '/signup', component: require('./components/SignUp.vue').default },
@@ -79,5 +85,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    data:{
+        search:''
+    },
+    methods:{
+        searchit:_.debounce(()=>{
+            Fire.$emit('searching');
+        },1000),
+
+    }
 });

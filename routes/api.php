@@ -16,5 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::apiResources(['subject' => 'API\SubjectController']);
 Route::post('/checkuser','API\UserController@checkUser');
+Route::get('findSubject','API\SubjectController@search');

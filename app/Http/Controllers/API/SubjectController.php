@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
+
+use App\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class UserController extends Controller
+class SubjectController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,28 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    public function checkUser(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-
-        $user = User::where('email', $request['email'])->get();
-
-        if(count($user) > 0){
-            return response()->json([
-                'status' => 'error',
-                'msg'    => 'The Email already exists',
-            ], 422);
-        }else{
-            return 'success';
-        }
-
-
+        return Subject::latest()->paginate(10);
     }
 
     /**
@@ -51,7 +28,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:25|unique:subjects',
+        ]);
+        return Subject::Create([
+            'name' => $request['name'],
+        ]);
     }
 
     /**
@@ -74,7 +56,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:25,'
+        ]);
+        $county = Subject::findOrFail($id);
+        $county->update([
+            'name' => $request['name'],
+        ]);
+        return ['message' => 'subject is updated'];
     }
 
     /**
@@ -85,6 +74,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $county = Subject::findOrFail($id);
+
+        $county->delete();
+    }
+    public function search(){
+        if ($search = \Request::get('q')) {
+            $subject = Subject::where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%");
+            })->paginate(20);
+        }else{
+            $subject = Subject::latest()->paginate(10);
+        }
+        return $subject;
     }
 }
