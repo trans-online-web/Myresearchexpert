@@ -44,7 +44,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="">
+                    <form @submit.prevent="" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col">
@@ -60,7 +60,7 @@
                                 <label for="level">Level</label>
                                 <select v-model="form.level" class="form-control" name="level" id="level"
                                         :class="{ 'is-invalid': form.errors.has('level') }">
-                                    <option selected value="">--Select Status--</option>
+                                    <option selected value="">--Select Level--</option>
                                     <option value="Complete">Complete</option>
                                     <option value="Draft">Draft</option>
                                 </select>
@@ -88,7 +88,7 @@
                                 <label for="type">Document Type</label>
                                 <select v-model="form.type" class="form-control" name="type" id="type"
                                         :class="{ 'is-invalid': form.errors.has('type') }">
-                                    <option selected value="">--Select Status--</option>
+                                    <option selected value="">--Select Document Type--</option>
                                     <option value="Complete">Complete</option>
                                     <option value="Draft">Draft</option>
                                 </select>
@@ -148,15 +148,15 @@
                             <hr>
                             <div class="form-group">
                                 <label for="files">Upload Files</label>
-                                <input type="file" multiple class="form-control-file" id="files">
+                                <input type="file" multiple class="form-control-file" @change="fieldChange" id="files">
                             </div>
                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-success" @click="submit()">
                                 <i class="fa fa-send"></i>
-                                Submit
+                                Sign Up and Submit
                             </button>
                         </div>
                     </form>
@@ -170,17 +170,65 @@
     export default {
         data(){
             return {
+                attachments:[],
+                formf: new FormData(),
                 form: new Form({
                     name: '',
                     email: '',
-                    password: ''
+                    password: '',
+                    title: '',
+                    level: '',
+                    subject: '',
+                    type: '',
+                    pages: '',
+                    spacing: '',
+                    date: '',
+                    time: '',
+                    task: '',
                 })
             }
         },
         methods: {
-            // launchModal(){
-            //     $('#TaskModal').modal('show');
-            // },
+            submit(){
+              for(let i=0; i<this.attachments.length;i++){
+                    this.formf.append('pics[]',this.attachments[i]);
+                }
+              this.formf.append('name',this.form.name);
+              this.formf.append('email',this.form.email);
+              this.formf.append('password',this.form.password);
+              this.formf.append('title',this.form.title);
+              this.formf.append('level',this.form.level);
+              this.formf.append('subject',this.form.subject);
+              this.formf.append('type',this.form.type);
+              this.formf.append('pages',this.form.pages);
+              this.formf.append('spacing',this.form.spacing);
+              this.formf.append('date',this.form.date);
+              this.formf.append('time',this.form.time);
+              this.formf.append('task',this.form.task);
+
+              const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+              // document.getElementById('upload-file').value=[];
+
+              axios.post('/api/saveall',this.formf,config).then(response=>{
+                    //success
+                    console.log(response);
+                })
+                    .catch(response=>{
+                        //error
+                    });
+
+                  
+            },
+            fieldChange(e){
+                let selectedFiles=e.target.files;
+                if(!selectedFiles.length){
+                    return false;
+                }
+                for(let i=0;i<selectedFiles.length;i++){
+                    this.attachments.push(selectedFiles[i]);
+                }
+                console.log(this.attachments);
+            },
             checkUser(){
                 this.form.post('api/checkuser')
                     .then(() => {
@@ -188,7 +236,11 @@
                     })
                     .catch(error => {
                        this.errors = error.response.data.errors;
-                       set (email, error.response.data.msg);
+                       // set (email, error.response.data.msg);
+                       this.form.errors.set({
+                          email: error.response.data.msg
+                        })
+                        return false;
                     })
             }
         },

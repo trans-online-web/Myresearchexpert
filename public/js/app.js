@@ -1918,25 +1918,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      attachments: [],
+      formf: new FormData(),
       form: new Form({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        title: '',
+        level: '',
+        subject: '',
+        type: '',
+        pages: '',
+        spacing: '',
+        date: '',
+        time: '',
+        task: ''
       })
     };
   },
   methods: {
-    // launchModal(){
-    //     $('#TaskModal').modal('show');
-    // },
+    submit: function submit() {
+      for (var i = 0; i < this.attachments.length; i++) {
+        this.formf.append('pics[]', this.attachments[i]);
+      }
+
+      this.formf.append('name', this.form.name);
+      this.formf.append('email', this.form.email);
+      this.formf.append('password', this.form.password);
+      this.formf.append('title', this.form.title);
+      this.formf.append('level', this.form.level);
+      this.formf.append('subject', this.form.subject);
+      this.formf.append('type', this.form.type);
+      this.formf.append('pages', this.form.pages);
+      this.formf.append('spacing', this.form.spacing);
+      this.formf.append('date', this.form.date);
+      this.formf.append('time', this.form.time);
+      this.formf.append('task', this.form.task);
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }; // document.getElementById('upload-file').value=[];
+
+      axios.post('/api/saveall', this.formf, config).then(function (response) {
+        //success
+        console.log(response);
+      })["catch"](function (response) {//error
+      });
+    },
+    fieldChange: function fieldChange(e) {
+      var selectedFiles = e.target.files;
+
+      if (!selectedFiles.length) {
+        return false;
+      }
+
+      for (var i = 0; i < selectedFiles.length; i++) {
+        this.attachments.push(selectedFiles[i]);
+      }
+
+      console.log(this.attachments);
+    },
     checkUser: function checkUser() {
       var _this = this;
 
       this.form.post('api/checkuser').then(function () {
         $('#TaskModal').modal('show');
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
-        set(email, error.response.data.msg);
+        _this.errors = error.response.data.errors; // set (email, error.response.data.msg);
+
+        _this.form.errors.set({
+          email: error.response.data.msg
+        });
+
+        return false;
       });
     }
   },
@@ -38485,6 +38540,7 @@ var render = function() {
               _c(
                 "form",
                 {
+                  attrs: { enctype: "multipart/form-data" },
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
@@ -38595,7 +38651,7 @@ var render = function() {
                                 _c(
                                   "option",
                                   { attrs: { selected: "", value: "" } },
-                                  [_vm._v("--Select Status--")]
+                                  [_vm._v("--Select Level--")]
                                 ),
                                 _vm._v(" "),
                                 _c("option", { attrs: { value: "Complete" } }, [
@@ -38739,7 +38795,7 @@ var render = function() {
                                 _c(
                                   "option",
                                   { attrs: { selected: "", value: "" } },
-                                  [_vm._v("--Select Status--")]
+                                  [_vm._v("--Select Document Type--")]
                                 ),
                                 _vm._v(" "),
                                 _c("option", { attrs: { value: "Complete" } }, [
@@ -39064,10 +39120,48 @@ var render = function() {
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "files" } }, [
+                        _vm._v("Upload Files")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control-file",
+                        attrs: { type: "file", multiple: "", id: "files" },
+                        on: { change: _vm.fieldChange }
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.submit()
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-send" }),
+                        _vm._v(
+                          "\n                            Sign Up and Submit\n                        "
+                        )
+                      ]
+                    )
+                  ])
                 ]
               )
             ])
@@ -39096,45 +39190,6 @@ var staticRenderFns = [
           }
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "files" } }, [_vm._v("Upload Files")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control-file",
-        attrs: { type: "file", multiple: "", id: "files" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [
-          _c("i", { staticClass: "fa fa-send" }),
-          _vm._v(
-            "\n                            Submit\n                        "
-          )
-        ]
       )
     ])
   }
@@ -54149,6 +54204,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./objectToFormData */ "./resources/js/objectToFormData.js");
+/* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_objectToFormData__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -54165,6 +54222,8 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // VForm
 window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["Form"];
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"]);
+
+window.objectToFormData = _objectToFormData__WEBPACK_IMPORTED_MODULE_2___default.a;
 var routes = [{
   path: '/signup',
   component: __webpack_require__(/*! ./components/SignUp.vue */ "./resources/js/components/SignUp.vue")["default"]
@@ -54393,6 +54452,79 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignUp_vue_vue_type_template_id_2573bf63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/objectToFormData.js":
+/*!******************************************!*\
+  !*** ./resources/js/objectToFormData.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+(function (global, factory) {
+  ( false ? undefined : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
+})(this, function () {
+  'use strict';
+
+  function isUndefined(value) {
+    return value === undefined;
+  }
+
+  function isObject(value) {
+    return value === Object(value);
+  }
+
+  function isArray(value) {
+    return Array.isArray(value);
+  }
+
+  function isFile(value) {
+    return value instanceof File;
+  }
+
+  function isDate(value) {
+    return value instanceof Date;
+  }
+
+  function objectToFormData(obj, fd, pre) {
+    fd = fd || new FormData();
+
+    if (isUndefined(obj)) {
+      return fd;
+    } else if (isArray(obj)) {
+      obj.forEach(function (value) {
+        var key = pre + '[]';
+        objectToFormData(value, fd, key);
+      });
+    } else if (isObject(obj) && !isFile(obj) && !isDate(obj)) {
+      Object.keys(obj).forEach(function (prop) {
+        var value = obj[prop];
+
+        if (isArray(value)) {
+          while (prop.length > 2 && prop.lastIndexOf('[]') === prop.length - 2) {
+            prop = prop.substring(0, prop.length - 2);
+          }
+        }
+
+        var key = pre ? pre + '[' + prop + ']' : prop;
+        objectToFormData(value, fd, key);
+      });
+    } else {
+      fd.append(pre, obj);
+    }
+
+    return fd;
+  }
+
+  return objectToFormData;
+});
 
 /***/ }),
 

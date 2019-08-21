@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 
@@ -47,7 +48,38 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'level' => 'required',
+            'pages' => 'required',
+            'spacing' => 'required',
+            'subject' => 'required',
+            'task' => 'required',
+            'time' => 'required',
+            'title' => 'required',
+            'type' => 'required',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        Auth::login($user);
+
+
+       
+        // $uploadedFiles=$request->pics;
+        // foreach ($uploadedFiles as $file){
+        //     $file->store('dummy');
+        // }
+        // return response(['status'=>'success'],200);
+
+        // echo $request->name;
+
     }
 
     /**

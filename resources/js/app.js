@@ -19,6 +19,9 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
+import objectToFormData from "./objectToFormData"; 
+window.objectToFormData = objectToFormData;
+
 
 
 let routes = [
