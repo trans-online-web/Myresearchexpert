@@ -5,13 +5,15 @@
 @import 'variables';
 $fa-font-path:        "../webfonts";
 // Bootstrap
-//@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
-//@import "~@fortawesome/fontawesome-free/scss/solid.scss";
-//@import "~@fortawesome/fontawesome-free/scss/brands.scss";
-
 @import '~bootstrap/scss/bootstrap';
+//adminlte
 @import "~admin-lte/dist/css/adminlte.css";
+//fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
 .router-link-exact-active {
-  background-color: #4dc0b5;
+  background-color: #9561e2;
   color: #fff;
 }

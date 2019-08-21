@@ -12,25 +12,69 @@ window.Vue = require('vue');
 // VueRouter
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-
+//moment js
+import moment from 'moment';
+//Gate
+import  Gate from "./Gate";
+Vue.prototype.$gate =  new Gate(window.user);
 // VForm
 import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+<<<<<<< HEAD
 
 import objectToFormData from "./objectToFormData"; 
 window.objectToFormData = objectToFormData;
 
 
 
+=======
+// progress bar
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '3px'
+})
+//Loadash
+import uniq from 'lodash/uniq'
+window.uniq = uniq;
+// sweatalert
+import swal from 'sweetalert2';
+window.swal = swal;
+const toast = swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+window.toast = toast;
+window.Fire =  new Vue();
+//pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
+//Routes
+>>>>>>> c0066119d7220a4021ad181ffa95178a8ce73e96
 let routes = [
-  { path: '/signup', component: require('./components/SignUp.vue').default },
+    { path: '/user', component: require('./components/Users.vue').default },
+    { path: '/signup', component: require('./components/SignUp.vue').default },
+    { path: '/dashboard', component: require('./components/dashboard.vue').default },
+    { path: '/subject', component: require('./components/Subjects.vue').default },
+    { path: '/documents', component: require('./components/Documents.vue').default },
+    
 ]
 const router = new VueRouter({
   mode:'history',
   routes // short for `routes: routes`
 })
+
+Vue.filter('upText', function(text){
+    return text.charAt(0).toUpperCase() + text.slice(1)
+});
+
+Vue.filter('myDate',function(created){
+    return moment(created).format('MMMM Do YYYY');
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -53,5 +97,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    data:{
+        search:''
+    },
+    methods:{
+        searchit:_.debounce(()=>{
+            Fire.$emit('searching');
+        },1000),
+
+    }
 });

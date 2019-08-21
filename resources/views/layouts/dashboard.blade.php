@@ -45,9 +45,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- SEARCH FORM -->
 
         <div class="input-group input-group-sm col-md-4">
-            <input class="form-control form-control-navbar"  type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-navbar" @keyup="searchit" v-model="search" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
-                <button class="btn btn-navbar">
+                <button class="btn btn-navbar" @click="searchit">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
@@ -203,7 +203,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/subject" class="nav-link">
+                            <i class="nav-icon fas fa-book green"></i>
+                            <p>
+                                Subject
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/user" class="nav-link">
+                            <i class=" nav-icon fas fa-users-cog indigo"></i>
+                            <p>
+                                Subject
+                            </p>
+                        </router-link>
+                    </li>
 
+                     <li class="nav-item">
+                        <router-link to="/documents" class="nav-link">
+                            <i class="nav-icon fas fa-book green"></i>
+                            <p>
+                                Documents
+                            </p>
+                        </router-link>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
