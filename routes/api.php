@@ -19,12 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources(['user'=>'API\UserController']);
 Route::apiResources(['subject' => 'API\SubjectController']);
 Route::post('/checkuser','API\UserController@checkUser');
-<<<<<<< HEAD
 Route::post('/saveall','API\UserController@store');
-=======
 Route::get('findSubject','API\SubjectController@search');
 Route::get('findUser','API\UserController@search');
 Route::get('findDocument','API\DocumentController@search');
 Route::apiResources(['document' => 'API\DocumentController']);
-
->>>>>>> c0066119d7220a4021ad181ffa95178a8ce73e96

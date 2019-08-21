@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Task;
+use App\Files;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -88,16 +89,20 @@ class UserController extends Controller
         $task->spacing = $request->spacing;
         $task->save();
 
-        echo $task->id;
+        $task_id = $task->id;
 
 
        
         $uploadedFiles=$request->pics;
         foreach ($uploadedFiles as $file){
-            // $ext = pathinfo($file, PATHINFO_EXTENSION);
-            // $uniquesavename=time().uniqid(rand()). '.' . $ext;
-            // echo $uniquesavename;
-            $file->store('dummy');
+            $filename = $file->store('dummy');
+            // echo $filename;
+            $file = new Files();
+            $file->task_id = $task_id;
+            $file->path = $filename;
+            $file->user_id = auth()->user()->id;
+            $file->save();
+
         }
         return response(['status'=>'success'],200);
 

@@ -210,8 +210,15 @@
               // document.getElementById('upload-file').value=[];
 
               axios.post('/api/saveall',this.formf,config).then(response=>{
-                    //success
-                    console.log(response);
+                $('#TaskModal').modal('hide');
+                this.form.reset();
+                swal.fire({
+                      type: 'success',
+                      title: 'Submited!!',
+                      text: 'Application Submitted Successfully',
+
+                    })
+
                 })
                     .catch(response=>{
                         //error

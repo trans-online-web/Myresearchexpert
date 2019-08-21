@@ -22,14 +22,6 @@ import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
-<<<<<<< HEAD
-
-import objectToFormData from "./objectToFormData"; 
-window.objectToFormData = objectToFormData;
-
-
-
-=======
 // progress bar
 import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
@@ -54,7 +46,6 @@ window.Fire =  new Vue();
 //pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
 //Routes
->>>>>>> c0066119d7220a4021ad181ffa95178a8ce73e96
 let routes = [
     { path: '/user', component: require('./components/Users.vue').default },
     { path: '/signup', component: require('./components/SignUp.vue').default },
