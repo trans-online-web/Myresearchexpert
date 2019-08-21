@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Task;
 
 class UserController extends Controller
 {
@@ -70,15 +71,31 @@ class UserController extends Controller
 
         Auth::login($user);
 
+        $task = new Task();
+        $task->user_id = auth()->user()->id;
+        $task->subject_id = $request->subject;
+        $task->documentType_id = $request->type;
+        $task->deadline_date = $request->date;
+        $task->deadline_time = $request->time;
+        $task->level = $request->level;
+        $task->title = $request->title;
+        $task->task = $request->task;
+        $task->pages = $request->pages;
+        $task->spacing = $request->spacing;
+        $task->save();
+
+        echo $task->id;
+
 
        
-        // $uploadedFiles=$request->pics;
-        // foreach ($uploadedFiles as $file){
-        //     $file->store('dummy');
-        // }
-        // return response(['status'=>'success'],200);
-
-        // echo $request->name;
+        $uploadedFiles=$request->pics;
+        foreach ($uploadedFiles as $file){
+            // $ext = pathinfo($file, PATHINFO_EXTENSION);
+            // $uniquesavename=time().uniqid(rand()). '.' . $ext;
+            // echo $uniquesavename;
+            $file->store('dummy');
+        }
+        return response(['status'=>'success'],200);
 
     }
 

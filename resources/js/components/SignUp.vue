@@ -61,8 +61,8 @@
                                 <select v-model="form.level" class="form-control" name="level" id="level"
                                         :class="{ 'is-invalid': form.errors.has('level') }">
                                     <option selected value="">--Select Level--</option>
-                                    <option value="Complete">Complete</option>
-                                    <option value="Draft">Draft</option>
+                                    <option value="1">Complete</option>
+                                    <option value="2">Draft</option>
                                 </select>
                                 <has-error :form="form" field="level"></has-error>
                             </div>
@@ -77,8 +77,8 @@
                                 <select v-model="form.subject" class="form-control" name="subject" id="subject"
                                         :class="{ 'is-invalid': form.errors.has('subject') }">
                                     <option selected value="">--Select Status--</option>
-                                    <option value="Complete">Complete</option>
-                                    <option value="Draft">Draft</option>
+                                    <option value="1">Complete</option>
+                                    <option value="2">Draft</option>
                                 </select>
                                 <has-error :form="form" field="subject"></has-error>
                             </div>
@@ -89,8 +89,8 @@
                                 <select v-model="form.type" class="form-control" name="type" id="type"
                                         :class="{ 'is-invalid': form.errors.has('type') }">
                                     <option selected value="">--Select Document Type--</option>
-                                    <option value="Complete">Complete</option>
-                                    <option value="Draft">Draft</option>
+                                    <option value="1">Complete</option>
+                                    <option value="2">Draft</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
                             </div>

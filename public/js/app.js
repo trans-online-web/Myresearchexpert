@@ -38654,11 +38654,11 @@ var render = function() {
                                   [_vm._v("--Select Level--")]
                                 ),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Complete" } }, [
+                                _c("option", { attrs: { value: "1" } }, [
                                   _vm._v("Complete")
                                 ]),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Draft" } }, [
+                                _c("option", { attrs: { value: "2" } }, [
                                   _vm._v("Draft")
                                 ])
                               ]
@@ -38727,11 +38727,11 @@ var render = function() {
                                   [_vm._v("--Select Status--")]
                                 ),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Complete" } }, [
+                                _c("option", { attrs: { value: "1" } }, [
                                   _vm._v("Complete")
                                 ]),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Draft" } }, [
+                                _c("option", { attrs: { value: "2" } }, [
                                   _vm._v("Draft")
                                 ])
                               ]
@@ -38798,11 +38798,11 @@ var render = function() {
                                   [_vm._v("--Select Document Type--")]
                                 ),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Complete" } }, [
+                                _c("option", { attrs: { value: "1" } }, [
                                   _vm._v("Complete")
                                 ]),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Draft" } }, [
+                                _c("option", { attrs: { value: "2" } }, [
                                   _vm._v("Draft")
                                 ])
                               ]
