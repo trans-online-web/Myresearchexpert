@@ -49,6 +49,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 let routes = [
     { path: '/user', component: require('./components/Users.vue').default },
     { path: '/signup', component: require('./components/SignUp.vue').default },
+    { path: '/signin', component: require('./components/LogIn.vue').default },
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
     { path: '/documents', component: require('./components/Documents.vue').default },

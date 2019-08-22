@@ -119,6 +119,15 @@ class UserController extends Controller
         //
     }
 
+    public function login()
+    {
+        if (Auth::attempt(['email'=> request->email, 'password'=>request->password, true])) {
+            return response()->json(Auth::user(), 200);
+        }else {
+            return response()->json(['error'=> 'Wrong email or password'], 401);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
