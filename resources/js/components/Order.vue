@@ -3,48 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Post Task</div>
 
                     <div class="card-body">
-                        <form @submit.prevent="login" @keydown="form.onKeydown($event)">
-                            <div class="form-group">
-                            <label>Name</label>
-                            <input v-model="form.name" type="text" name="name"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-                            <has-error :form="form" field="name"></has-error>
-                            </div>
-
-                            <div class="form-group">
-                            <label>Email</label>
-                            <input v-model="form.email" type="email" name="email"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
-                            <has-error :form="form" field="email"></has-error>
-                            </div>
-
-                            <div class="form-group">
-                            <label>Password</label>
-                            <input v-model="form.password" type="password" name="password"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-                            <has-error :form="form" field="password"></has-error>
-                            </div>
-
-                            <button type="button" class="btn btn-primary" @click="checkUser()">Continue</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade bd-example-modal-lg" id="TaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Task Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form @submit.prevent="" enctype="multipart/form-data">
+                        <form @submit.prevent="" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col">
@@ -133,8 +95,8 @@
                                 <div class="col">
                                 <div class="form-group">
                                 <label for="time">Time</label>
-                                <input v-model="form.time" type="time" class="form-control" name="time" id="time"
-                                       placeholder="Time" :class="{ 'is-invalid': form.errors.has('time') }">
+                                <br>
+                                <vue-timepicker v-model="yourTimeValue" @change='getTime'></vue-timepicker>
                                 <has-error :form="form" field="time"></has-error>
                             </div>
                                 </div>
@@ -150,16 +112,24 @@
                                 <label for="files">Upload Files</label>
                                 <input type="file" multiple class="form-control-file" @change="fieldChange" id="files">
                             </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="budget">Your Budget</label>
+                                <input v-model="form.budget" type="number" class="form-control" name="budget" id="budget"
+                                       placeholder="budget" :class="{ 'is-invalid': form.errors.has('budget') }">
+                                <has-error :form="form" field="budget"></has-error>
+                            </div>
                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success" @click="submit()">
                                 <i class="fa fa-send"></i>
-                                Sign Up and Submit
+                                Submit
                             </button>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,15 +137,19 @@
 </template>
 
 <script>
+import VueTimepicker from 'vue2-timepicker';
+import 'vue2-timepicker/dist/VueTimepicker.css';
     export default {
+        components: { VueTimepicker },
         data(){
             return {
                 attachments:[],
+                yourTimeValue: {
+                    HH: "",
+                    mm: "",
+                  },
                 formf: new FormData(),
                 form: new Form({
-                    name: '',
-                    email: '',
-                    password: '',
                     title: '',
                     level: '',
                     subject: '',
@@ -189,13 +163,13 @@
             }
         },
         methods: {
+            getTime(){
+               this.form.time = this.yourTimeValue['HH'] + ':' + this.yourTimeValue['mm'];
+            },
             submit(){
               for(let i=0; i<this.attachments.length;i++){
                     this.formf.append('pics[]',this.attachments[i]);
                 }
-              this.formf.append('name',this.form.name);
-              this.formf.append('email',this.form.email);
-              this.formf.append('password',this.form.password);
               this.formf.append('title',this.form.title);
               this.formf.append('level',this.form.level);
               this.formf.append('subject',this.form.subject);
@@ -207,15 +181,14 @@
               this.formf.append('task',this.form.task);
 
               const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-              // document.getElementById('upload-file').value=[];
 
-              axios.post('/api/saveall',this.formf,config).then(response=>{
+              axios.post('/api/post-task',this.formf,config).then(response=>{
                 $('#TaskModal').modal('hide');
                 this.form.reset();
                 swal.fire({
                       type: 'success',
                       title: 'Submited!!',
-                      text: 'Application Submitted Successfully',
+                      text: 'Successfully',
 
                     })
 

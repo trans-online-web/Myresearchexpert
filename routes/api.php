@@ -19,9 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources(['user'=>'API\UserController']);
 Route::apiResources(['subject' => 'API\SubjectController']);
 Route::post('/checkuser','API\UserController@checkUser');
-Route::post('/saveall','API\UserController@store');
-Route::post('/login','API\UserController@login');
 Route::get('findSubject','API\SubjectController@search');
 Route::get('findUser','API\UserController@search');
 Route::get('findDocument','API\DocumentController@search');
 Route::apiResources(['document' => 'API\DocumentController']);
+Route::apiResources(['task' => 'API\TaskController']);
+Route::post('/post-task','API\TaskController@store');

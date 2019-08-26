@@ -40,13 +40,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <router-link to="/signin" class="nav-item">
-                                <a class="nav-link">{{ __('Login') }}</a>
-                            </router-link>
+                            <li class="nav-item">
+                                <a href="/login" class="nav-link">{{ __('Login') }}</a>
+                            </li>
                             @if (Route::has('register'))
-                                <router-link to="/signup" class="nav-item">
-                                <a class="nav-link">Sign Up</a>
-                                </router-link>
+                                <li class="nav-item">
+                                <a class="nav-link" href="/register">Sign Up</a>
+                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -73,8 +73,7 @@
         </nav>
 
         <main class="py-4">
-            <router-view></router-view>
-            <!-- @yield('content'); -->
+            @yield('content');
         </main>
     </div>
 </body>

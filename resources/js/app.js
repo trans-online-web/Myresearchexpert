@@ -23,7 +23,7 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 // progress bar
-import VueProgressBar from 'vue-progressbar'
+import VueProgressBar from 'vue-progressbar';
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
@@ -43,13 +43,12 @@ const toast = swal.mixin({
 });
 window.toast = toast;
 window.Fire =  new Vue();
+
 //pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
 //Routes
 let routes = [
     { path: '/user', component: require('./components/Users.vue').default },
-    { path: '/signup', component: require('./components/SignUp.vue').default },
-    { path: '/signin', component: require('./components/LogIn.vue').default },
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
     { path: '/documents', component: require('./components/Documents.vue').default },
@@ -80,6 +79,7 @@ Vue.filter('myDate',function(created){
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('Order', require('./components/Order.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

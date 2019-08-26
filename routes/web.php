@@ -15,8 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/task', function () {
+//     return view('order');
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/task', 'HomeController@task');
 
 Route::get('{path}','HomeController@index')->where( 'path', '([A-z\d\-/_.]+)?' );
