@@ -29,6 +29,11 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '3px'
 })
+
+import { Datetime } from 'vue-datetime';
+
+Vue.component('datetime', Datetime);
+
 //Loadash
 import uniq from 'lodash/uniq'
 window.uniq = uniq;
@@ -52,6 +57,7 @@ let routes = [
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
     { path: '/documents', component: require('./components/Documents.vue').default },
+    { path: '/levels', component: require('./components/Levels.vue').default },
     
 ]
 const router = new VueRouter({

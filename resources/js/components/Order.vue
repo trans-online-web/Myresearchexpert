@@ -23,8 +23,7 @@
                                 <select v-model="form.level" class="form-control" name="level" id="level"
                                         :class="{ 'is-invalid': form.errors.has('level') }">
                                     <option selected value="">--Select Level--</option>
-                                    <option value="1">Complete</option>
-                                    <option value="2">Draft</option>
+                                    <option v-for="level in levels.data" :key="level['name']" :value="level['name']">{{ level.name}}</option>
                                 </select>
                                 <has-error :form="form" field="level"></has-error>
                             </div>
@@ -39,8 +38,7 @@
                                 <select v-model="form.subject" class="form-control" name="subject" id="subject"
                                         :class="{ 'is-invalid': form.errors.has('subject') }">
                                     <option selected value="">--Select Status--</option>
-                                    <option value="1">Complete</option>
-                                    <option value="2">Draft</option>
+                                    <option v-for="subject in subjects.data" :key="subject['name']" :value="subject['name']">{{ subject.name}}</option>
                                 </select>
                                 <has-error :form="form" field="subject"></has-error>
                             </div>
@@ -51,8 +49,7 @@
                                 <select v-model="form.type" class="form-control" name="type" id="type"
                                         :class="{ 'is-invalid': form.errors.has('type') }">
                                     <option selected value="">--Select Document Type--</option>
-                                    <option value="1">Complete</option>
-                                    <option value="2">Draft</option>
+                                    <option v-for="document in documents.data" :key="document['name']" :value="document['name']">{{ document.name}}</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
                             </div>
@@ -68,39 +65,35 @@
                             </div>
                                 </div>
                                 <div class="col">
+                                <div class="form-group">
+                                <label for="date">Deadline Date & Time</label>
+                                <datetime auto="true" type="datetime" zone="local" value-zone="UTC+3" v-model="form.date" class="{ 'is-invalid': form.errors.has('date') }"></datetime>
+                                <has-error :form="form" field="date"></has-error>
+                            </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col">
                                 <label for="spacing">Spacing</label><br>
                                 <div class="form-check form-check-inline">
-                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single" 
+                                <input @click="getDiff()" v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single" 
                                         :class="{ 'is-invalid': form.errors.has('spacing') }">
                                 <label class="form-check-label" for="inlineRadio1">Single</label>
                                 <has-error :form="form" field="spacing"></has-error>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double" 
+                                <input @click="getDiff()" v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double" 
                                           :class="{ 'is-invalid': form.errors.has('spacing') }">
                                 <label class="form-check-label" for="inlineRadio1">Double</label>
                                 <has-error :form="form" field="spacing"></has-error>
                                 </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col">
-                                <div class="form-group">
-                                <label for="date">Deadline Date</label>
-                                <input v-model="form.date" type="date" class="form-control" name="date" id="date"
-                                       placeholder="Date" :class="{ 'is-invalid': form.errors.has('date') }">
-                                <has-error :form="form" field="date"></has-error>
-                            </div>
-                                </div>
-                                <div class="col">
-                                <div class="form-group">
-                                <label for="time">Time</label>
-                                <br>
-                                <vue-timepicker v-model="yourTimeValue" @change='getTime'></vue-timepicker>
-                                <has-error :form="form" field="time"></has-error>
-                            </div>
+                                
                                 </div>
                             </div>
+                            <hr>
                             <div class="form-group">
                                 <label for="task">Task</label>
                                 <textarea v-model="form.task" class="form-control" id="task" rows="3"
@@ -137,17 +130,17 @@
 </template>
 
 <script>
-import VueTimepicker from 'vue2-timepicker';
-import 'vue2-timepicker/dist/VueTimepicker.css';
+import 'vue-datetime/dist/vue-datetime.css';
     export default {
-        components: { VueTimepicker },
         data(){
             return {
                 attachments:[],
-                yourTimeValue: {
-                    HH: "",
-                    mm: "",
-                  },
+                now: moment().format(),
+                levels: {},
+                documents: {},
+                subjects: {},
+                suggestion: {},
+                diff: '',
                 formf: new FormData(),
                 form: new Form({
                     title: '',
@@ -163,8 +156,26 @@ import 'vue2-timepicker/dist/VueTimepicker.css';
             }
         },
         methods: {
-            getTime(){
-               this.form.time = this.yourTimeValue['HH'] + ':' + this.yourTimeValue['mm'];
+            loadSubjects(){
+                    axios.get("api/subject").then(({data}) => (this.subjects = data));
+            },
+            loadDocuments(){
+                    axios.get("api/document").then(({data}) => (this.documents = data));
+            },
+            getLevels(){
+              axios.get("/api/level").then(({ data }) => ([this.levels = data]));
+            },
+            getDiff(){
+                // console.log(moment(this.form.date).format('MMMM Do YYYY, h:mm'));
+                let dd = this.form.date;
+               let diff = moment(dd).diff(this.now, 'minutes');
+               
+               if(this.form.spacing == 'double'){
+
+               }else if(this.form.spacing == 'single'){
+
+               }
+
             },
             submit(){
               for(let i=0; i<this.attachments.length;i++){
@@ -208,24 +219,12 @@ import 'vue2-timepicker/dist/VueTimepicker.css';
                     this.attachments.push(selectedFiles[i]);
                 }
                 console.log(this.attachments);
-            },
-            checkUser(){
-                this.form.post('api/checkuser')
-                    .then(() => {
-                        $('#TaskModal').modal('show');
-                    })
-                    .catch(error => {
-                       this.errors = error.response.data.errors;
-                       // set (email, error.response.data.msg);
-                       this.form.errors.set({
-                          email: error.response.data.msg
-                        })
-                        return false;
-                    })
             }
         },
         created() {
-            
+            this.getLevels();
+            this.loadDocuments();
+            this.loadSubjects();
         }
     }
 </script>

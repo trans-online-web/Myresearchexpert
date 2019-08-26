@@ -25,3 +25,5 @@ Route::get('findDocument','API\DocumentController@search');
 Route::apiResources(['document' => 'API\DocumentController']);
 Route::apiResources(['task' => 'API\TaskController']);
 Route::post('/post-task','API\TaskController@store');
+
+Route::apiResources(['level' => 'API\LevelController']);

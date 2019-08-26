@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-
-use App\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Level;
 
-class DocumentController extends Controller
+class LevelController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +15,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        return Document::latest()->paginate(10);
+        return Level::latest()->paginate(20);
     }
 
     /**
@@ -32,11 +27,12 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|string|max:205|unique:document_types',
+            'name' => 'required|string|max:125|unique:levels',
         ]);
-        return Document::Create([
-            'name' => $request['name'],
-        ]);
+
+        $level = new Level();
+        $level->name = $request->name;
+        $level->save();
     }
 
     /**
@@ -59,14 +55,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => 'required|string|max:25,'
-        ]);
-        $county = Document::findOrFail($id);
-        $county->update([
-            'name' => $request['name'],
-        ]);
-        return ['message' => 'Document is updated'];
+        //
     }
 
     /**
@@ -77,18 +66,7 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        $county = Document::findOrFail($id);
-
-        $county->delete();
-    }
-    public function search(){
-        if ($search = \Request::get('q')) {
-            $subject = Document::where(function($query) use ($search){
-                $query->where('name','LIKE',"%$search%");
-            })->paginate(20);
-        }else{
-            $subject = Document::latest()->paginate(10);
-        }
-        return $subject;
+        $level = Level::findOrFail($id);
+        $level->delete();
     }
 }

@@ -215,7 +215,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <router-link to="/user" class="nav-link">
                             <i class=" nav-icon fas fa-users-cog indigo"></i>
                             <p>
-                                Subject
+                                Users
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/levels" class="nav-link">
+                            <i class=" nav-icon fas fa-graduation-cap green"></i>
+                            <p>
+                                Levels
                             </p>
                         </router-link>
                     </li>
