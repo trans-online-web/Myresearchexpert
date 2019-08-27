@@ -2399,6 +2399,32 @@ __webpack_require__.r(__webpack_exports__);
               this.suggestion = 14 * this.form.pages;
               this.isOk = 1;
             }
+          } else if (this.form.level == 'Master') {
+            if (diff <= 180) {
+              this.suggestion = 38 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 36 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 34 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 32 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 26 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 21 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 16 * this.form.pages;
+              this.isOk = 1;
+            }
           }
         } else if (this.form.spacing == 'single') {
           if (this.form.level == 'High School') {
@@ -2477,6 +2503,32 @@ __webpack_require__.r(__webpack_exports__);
               this.isOk = 1;
             } else if (diff > 28000) {
               this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'Master') {
+            if (diff <= 180) {
+              this.suggestion = 76 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 72 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 68 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 64 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 56 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 52 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 42 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 32 * this.form.pages;
               this.isOk = 1;
             }
           }
