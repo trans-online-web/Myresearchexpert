@@ -2251,6 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
       documents: {},
       subjects: {},
       suggestion: "",
+      isOk: '',
       diff: '',
       formf: new FormData(),
       form: new Form({
@@ -2292,24 +2293,299 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getDiff: function getDiff() {
-      // console.log(moment(this.form.date).format('MMMM Do YYYY, h:mm'));
-      var dd = this.form.date;
-      var diff = moment(dd).diff(this.now, 'minutes');
-      this.diff = diff;
-      this.getDiff();
+      if (!this.form.level) {
+        // set(type, 'required');
+        this.form.errors.set({
+          level: 'This field is required'
+        });
+        return false;
+      } else if (!this.form.date) {
+        this.form.errors.set({
+          date: 'This field is required'
+        });
+        return false;
+      } else if (!this.form.spacing) {
+        this.form.errors.set({
+          spacing: 'This field is required'
+        });
+        return false;
+      } else if (!this.form.pages) {
+        this.form.errors.set({
+          pages: 'This field is required'
+        });
+        return false;
+      } else {
+        // console.log(moment(this.form.date).format('MMMM Do YYYY, h:mm'));
+        var dd = this.form.date;
+        var diff = moment(dd).diff(this.now, 'minutes');
+        this.diff = diff;
 
-      if (this.form.spacing == 'double') {
-        console.log('double');
-
-        if (this.form.level == 'High School') {
-          console.log('High');
-
-          if (diff < 180) {
-            console.log('180');
-            this.suggestion = 32;
+        if (this.form.spacing == 'double') {
+          if (this.form.level == 'High School') {
+            if (diff <= 180) {
+              this.suggestion = 32 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 30 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 26 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 22 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 20 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 15 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 10 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'College') {
+            if (diff <= 180) {
+              this.suggestion = 34 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 32 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 30 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 24 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 22 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 17 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 12 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'Undergraduate') {
+            if (diff <= 180) {
+              this.suggestion = 36 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 34 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 32 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 30 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 26 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 24 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 19 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 14 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'Master') {
+            if (diff <= 180) {
+              this.suggestion = 38 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 36 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 34 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 32 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 26 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 21 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 16 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'PhD') {
+            if (diff <= 180) {
+              this.suggestion = 40 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 38 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 36 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 34 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 30 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 23 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 18 * this.form.pages;
+              this.isOk = 1;
+            }
+          }
+        } else if (this.form.spacing == 'single') {
+          if (this.form.level == 'High School') {
+            if (diff <= 180) {
+              this.suggestion = 64 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 60 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 56 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 52 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 44 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 40 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 30 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 20 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'College') {
+            if (diff <= 180) {
+              this.suggestion = 68 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 64 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 60 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 56 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 48 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 44 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 34 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 24 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'Undergraduate') {
+            if (diff <= 180) {
+              this.suggestion = 72 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 68 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 64 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 60 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 52 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 48 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 38 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 28 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'Master') {
+            if (diff <= 180) {
+              this.suggestion = 76 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 72 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 68 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 64 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 56 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 52 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 42 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 32 * this.form.pages;
+              this.isOk = 1;
+            }
+          } else if (this.form.level == 'PhD') {
+            if (diff <= 180) {
+              this.suggestion = 80 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 180 && diff <= 360) {
+              this.suggestion = 76 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 360 && diff <= 720) {
+              this.suggestion = 72 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 720 && diff <= 1440) {
+              this.suggestion = 68 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 1440 && diff <= 2880) {
+              this.suggestion = 60 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 2880 && diff <= 5760) {
+              this.suggestion = 56 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 5760 && diff <= 14400) {
+              this.suggestion = 46 * this.form.pages;
+              this.isOk = 1;
+            } else if (diff > 28000) {
+              this.suggestion = 36 * this.form.pages;
+              this.isOk = 1;
+            }
           }
         }
-      } else if (this.form.spacing == 'single') {}
+      }
     },
     submit: function submit() {
       var _this4 = this;
@@ -73366,6 +73642,8 @@ var render = function() {
                               "{ 'is-invalid': form.errors.has('date') }",
                             attrs: {
                               type: "datetime",
+                              auto: true,
+                              "min-datetime": this.now,
                               zone: "local",
                               "value-zone": "UTC+3"
                             },
@@ -73421,9 +73699,6 @@ var render = function() {
                               checked: _vm._q(_vm.form.spacing, "single")
                             },
                             on: {
-                              click: function($event) {
-                                return _vm.getDiff()
-                              },
                               change: function($event) {
                                 return _vm.$set(_vm.form, "spacing", "single")
                               }
@@ -73473,9 +73748,6 @@ var render = function() {
                               checked: _vm._q(_vm.form.spacing, "double")
                             },
                             on: {
-                              click: function($event) {
-                                return _vm.getDiff()
-                              },
                               change: function($event) {
                                 return _vm.$set(_vm.form, "spacing", "double")
                               }
@@ -73561,82 +73833,97 @@ var render = function() {
                       _vm._v("Suggested")
                     ]),
                     _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.getDiff()
+                          }
+                        }
+                      },
+                      [_vm._v("Compute")]
+                    ),
+                    _vm._v(" "),
                     _c("p", [_vm._v("$" + _vm._s(this.suggestion))])
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "form-group" },
-                    [
-                      _c("label", { attrs: { for: "budget" } }, [
-                        _vm._v("Your Budget")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.budget,
-                            expression: "form.budget"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        class: { "is-invalid": _vm.form.errors.has("budget") },
-                        attrs: {
-                          type: "number",
-                          name: "budget",
-                          id: "budget",
-                          placeholder: "budget"
-                        },
-                        domProps: { value: _vm.form.budget },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  this.isOk == 1
+                    ? _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "budget" } }, [
+                            _vm._v("Your Budget")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.budget,
+                                expression: "form.budget"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("budget")
+                            },
+                            attrs: {
+                              type: "number",
+                              name: "budget",
+                              id: "budget",
+                              placeholder: "budget"
+                            },
+                            domProps: { value: _vm.form.budget },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "budget",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(_vm.form, "budget", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("has-error", {
-                        attrs: { form: _vm.form, field: "budget" }
-                      })
-                    ],
-                    1
-                  )
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "budget" }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary",
-                      attrs: { type: "button", "data-dismiss": "modal" }
-                    },
-                    [_vm._v("Close")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.submit()
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "fa fa-send" }),
-                      _vm._v(
-                        "\n                            Submit\n                        "
+                this.isOk == 1
+                  ? _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              return _vm.submit()
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-send" }),
+                          _vm._v(
+                            "\n                            Submit\n                        "
+                          )
+                        ]
                       )
-                    ]
-                  )
-                ])
+                    ])
+                  : _vm._e()
               ]
             )
           ])
