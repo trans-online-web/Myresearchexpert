@@ -67,7 +67,7 @@
                                 <div class="col">
                                 <div class="form-group">
                                 <label for="date">Deadline Date & Time</label>
-                                <datetime type="datetime" zone="local" value-zone="UTC+3" v-model="form.date" class="{ 'is-invalid': form.errors.has('date') }"></datetime>
+                                <datetime type="datetime" :auto="true" :min-datetime="this.now" zone="local" value-zone="UTC+3" v-model="form.date" class="{ 'is-invalid': form.errors.has('date') }"></datetime>
                                 <has-error :form="form" field="date"></has-error>
                             </div>
                                 </div>
@@ -77,13 +77,13 @@
                                 <div class="col">
                                 <label for="spacing">Spacing</label><br>
                                 <div class="form-check form-check-inline">
-                                <input @click="getDiff()" v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single" 
+                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single" 
                                         :class="{ 'is-invalid': form.errors.has('spacing') }">
                                 <label class="form-check-label" for="inlineRadio1">Single</label>
                                 <has-error :form="form" field="spacing"></has-error>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                <input @click="getDiff()" v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double" 
+                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double" 
                                           :class="{ 'is-invalid': form.errors.has('spacing') }">
                                 <label class="form-check-label" for="inlineRadio1">Double</label>
                                 <has-error :form="form" field="spacing"></has-error>
@@ -108,9 +108,10 @@
                             <hr>
                             <div class="form-group">
                                 <label for="suggested">Suggested</label>
+                                <button @click="getDiff()" type="button" class="btn btn-success btn-sm">Compute</button>
                                 <p>${{this.suggestion}}</p>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" v-if="this.isOk == 1">
                                 <label for="budget">Your Budget</label>
                                 <input v-model="form.budget" type="number" class="form-control" name="budget" id="budget"
                                        placeholder="budget" :class="{ 'is-invalid': form.errors.has('budget') }">
@@ -118,8 +119,7 @@
                             </div>
                             
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal-footer" v-if="this.isOk == 1">
                             <button type="submit" class="btn btn-success" @click="submit()">
                                 <i class="fa fa-send"></i>
                                 Submit
@@ -144,6 +144,7 @@ import 'vue-datetime/dist/vue-datetime.css';
                 documents: {},
                 subjects: {},
                 suggestion: "",
+                isOk: '',
                 diff: '',
                 formf: new FormData(),
                 form: new Form({
@@ -170,25 +171,145 @@ import 'vue-datetime/dist/vue-datetime.css';
               axios.get("/api/level").then(({ data }) => ([this.levels = data]));
             },
             getDiff(){
+                if (!this.form.level) {
+                    // set(type, 'required');
+                    this.form.errors.set({
+                      level: 'This field is required'
+                    })
+                    return false;
+                }else if (!this.form.date) {
+                    this.form.errors.set({
+                      date: 'This field is required'
+                    })
+                    return false;
+                }else if (!this.form.spacing) {
+                    this.form.errors.set({
+                      spacing: 'This field is required'
+                    })
+                    return false;
+                }else if (!this.form.pages) {
+                    this.form.errors.set({
+                      pages: 'This field is required'
+                    })
+                    return false;
+                }else{
                 // console.log(moment(this.form.date).format('MMMM Do YYYY, h:mm'));
                 let dd = this.form.date;
                let diff = moment(dd).diff(this.now, 'minutes');
                this.diff = diff;
                
                if(this.form.spacing == 'double'){
-                console.log('double');
 
                 if(this.form.level == 'High School'){
-                    console.log('High');
-                    if(diff < 180){
-                        console.log('180');
-                        this.suggestion = 32;
+                    if(diff <= 180){
+                        this.suggestion = (32 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 180 && diff <= 360){
+                        this.suggestion = (30 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 360 && diff <= 720){
+                        this.suggestion = (28 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 720 && diff <= 1440){
+                        this.suggestion = (26 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 1440 && diff <= 2880){
+                        this.suggestion = (22 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 2880 && diff <= 5760){
+                        this.suggestion = (20 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 5760 && diff <= 14400){
+                        this.suggestion = (15 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 28000){
+                        this.suggestion = (10 * this.form.pages);
+                        this.isOk = 1;
+                    }
+                } else if(this.form.level == 'College'){
+                    if(diff <= 180){
+                        this.suggestion = (34 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 180 && diff <= 360){
+                        this.suggestion = (32 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 360 && diff <= 720){
+                        this.suggestion = (30 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 720 && diff <= 1440){
+                        this.suggestion = (28 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 1440 && diff <= 2880){
+                        this.suggestion = (24 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 2880 && diff <= 5760){
+                        this.suggestion = (22 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 5760 && diff <= 14400){
+                        this.suggestion = (17 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 28000){
+                        this.suggestion = (12 * this.form.pages);
+                        this.isOk = 1;
                     }
                 }
 
                }else if(this.form.spacing == 'single'){
-
+                   if(this.form.level == 'High School'){
+                    if(diff <= 180){
+                        this.suggestion = (64 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 180 && diff <= 360){
+                        this.suggestion = (60 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 360 && diff <= 720){
+                        this.suggestion = (56 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 720 && diff <= 1440){
+                        this.suggestion = (52 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 1440 && diff <= 2880){
+                        this.suggestion = (44 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 2880 && diff <= 5760){
+                        this.suggestion = (40 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 5760 && diff <= 14400){
+                        this.suggestion = (30 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 28000){
+                        this.suggestion = (20 * this.form.pages);
+                        this.isOk = 1;
+                    }
+                }else if(this.form.level == 'College'){
+                    if(diff <= 180){
+                        this.suggestion = (68 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 180 && diff <= 360){
+                        this.suggestion = (64 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 360 && diff <= 720){
+                        this.suggestion = (60 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 720 && diff <= 1440){
+                        this.suggestion = (56 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 1440 && diff <= 2880){
+                        this.suggestion = (48 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 2880 && diff <= 5760){
+                        this.suggestion = (44 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 5760 && diff <= 14400){
+                        this.suggestion = (34 * this.form.pages);
+                        this.isOk = 1;
+                    }else if(diff > 28000){
+                        this.suggestion = (24 * this.form.pages);
+                        this.isOk = 1;
+                    }
+                }
                }
+           }
 
             },
             submit(){
