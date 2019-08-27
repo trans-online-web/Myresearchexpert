@@ -2603,6 +2603,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formf.append('date', this.form.date);
       this.formf.append('time', this.form.time);
       this.formf.append('task', this.form.task);
+      this.formf.append('suggested', this.suggestion);
       var config = {
         headers: {
           'Content-Type': 'multipart/form-data'

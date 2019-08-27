@@ -18,9 +18,9 @@ class CreateTasksTable extends Migration
             $table->integer('user_id')->references('id')->on('users');
             $table->integer('subject_id')->references('id')->on('subjects');
             $table->integer('documentType_id')->references('id')->on('documentTypes');
-            $table->date('deadline_date');
-            $table->time('deadline_time');
+            $table->dateTimeTz('deadline_datetime');
             $table->string('level');
+            $table->decimal('suggested_price', 8, 2);
             $table->string('title');
             $table->longText('task');
             $table->integer('pages');
