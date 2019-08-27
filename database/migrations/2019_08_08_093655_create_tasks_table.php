@@ -21,6 +21,7 @@ class CreateTasksTable extends Migration
             $table->dateTimeTz('deadline_datetime');
             $table->string('level');
             $table->decimal('suggested_price', 8, 2);
+            $table->decimal('budget', 8, 2);
             $table->string('title');
             $table->longText('task');
             $table->integer('pages');
