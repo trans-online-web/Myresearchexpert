@@ -2250,7 +2250,7 @@ __webpack_require__.r(__webpack_exports__);
       levels: {},
       documents: {},
       subjects: {},
-      suggestion: "",
+      suggestion: 0,
       isOk: '',
       diff: '',
       formf: new FormData(),
@@ -2591,6 +2591,8 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this4 = this;
 
+      this.getDiff();
+
       for (var i = 0; i < this.attachments.length; i++) {
         this.formf.append('pics[]', this.attachments[i]);
       }
@@ -2601,7 +2603,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formf.append('type', this.form.type);
       this.formf.append('pages', this.form.pages);
       this.formf.append('spacing', this.form.spacing);
-      this.formf.append('date', this.form.date);
+      this.formf.append('date', moment(this.form.date).format('YYYY-MM-DD HH:mm:ss'));
       this.formf.append('time', this.form.time);
       this.formf.append('task', this.form.task);
       this.formf.append('budget', this.form.budget);
@@ -2613,6 +2615,8 @@ __webpack_require__.r(__webpack_exports__);
       };
       axios.post('/api/post-task', this.formf, config).then(function (response) {
         $('#TaskModal').modal('hide');
+        _this4.isOk = 0;
+        _this4.suggestion = 0;
 
         _this4.form.reset();
 

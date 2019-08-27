@@ -143,7 +143,7 @@ import 'vue-datetime/dist/vue-datetime.css';
                 levels: {},
                 documents: {},
                 subjects: {},
-                suggestion: "",
+                suggestion: 0,
                 isOk: '',
                 diff: '',
                 formf: new FormData(),
@@ -470,6 +470,7 @@ import 'vue-datetime/dist/vue-datetime.css';
 
             },
             submit(){
+                this.getDiff();
               for(let i=0; i<this.attachments.length;i++){
                     this.formf.append('pics[]',this.attachments[i]);
                 }
@@ -479,7 +480,7 @@ import 'vue-datetime/dist/vue-datetime.css';
               this.formf.append('type',this.form.type);
               this.formf.append('pages',this.form.pages);
               this.formf.append('spacing',this.form.spacing);
-              this.formf.append('date',this.form.date);
+              this.formf.append('date',moment(this.form.date).format('YYYY-MM-DD HH:mm:ss'));
               this.formf.append('time',this.form.time);
               this.formf.append('task',this.form.task);
               this.formf.append('budget',this.form.budget);
@@ -489,6 +490,8 @@ import 'vue-datetime/dist/vue-datetime.css';
 
               axios.post('/api/post-task',this.formf,config).then(response=>{
                 $('#TaskModal').modal('hide');
+                this.isOk = 0;
+                this.suggestion = 0;
                 this.form.reset();
                 swal.fire({
                       type: 'success',

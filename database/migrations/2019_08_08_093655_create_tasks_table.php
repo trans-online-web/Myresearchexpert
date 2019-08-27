@@ -15,17 +15,19 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->references('id')->on('users');
-            $table->integer('subject_id')->references('id')->on('subjects');
-            $table->integer('documentType_id')->references('id')->on('documentTypes');
-            $table->dateTimeTz('deadline_datetime');
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('subject_name');
+            $table->string('documentType_name');
+            $table->dateTime('deadline_datetime');
             $table->string('level');
             $table->decimal('suggested_price', 8, 2);
             $table->decimal('budget', 8, 2);
             $table->string('title');
             $table->longText('task');
             $table->integer('pages');
-            $table->integer('spacing');
+            $table->string('spacing');
             $table->timestamps();
         });
     }

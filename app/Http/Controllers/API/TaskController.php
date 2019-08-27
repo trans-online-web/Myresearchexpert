@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Task;
 use App\Files;
+use App\Subject;
+use App\Document;
 
 class TaskController extends Controller
 {
@@ -33,10 +35,19 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'subject' => 'required',
+            'type' => 'required',
+            'budget' => 'required',
+            'title' => 'required',
+        ]);
+
         $task = new Task();
         $task->user_id = auth()->user()->id;
-        $task->subject_id = $request->subject;
-        $task->documentType_id = $request->type;
+        $task->name = auth()->user()->name;
+        $task->email = auth()->user()->email;
+        $task->subject_name = $request->subject;
+        $task->documentType_name = $request->type;
         $task->deadline_datetime = $request->date;
         $task->suggested_price = $request->suggested;
         $task->budget = $request->budget;
