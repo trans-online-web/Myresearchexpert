@@ -2237,6 +2237,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2246,7 +2250,7 @@ __webpack_require__.r(__webpack_exports__);
       levels: {},
       documents: {},
       subjects: {},
-      suggestion: {},
+      suggestion: "",
       diff: '',
       formf: new FormData(),
       form: new Form({
@@ -2291,8 +2295,21 @@ __webpack_require__.r(__webpack_exports__);
       // console.log(moment(this.form.date).format('MMMM Do YYYY, h:mm'));
       var dd = this.form.date;
       var diff = moment(dd).diff(this.now, 'minutes');
+      this.diff = diff;
+      this.getDiff();
 
-      if (this.form.spacing == 'double') {} else if (this.form.spacing == 'single') {}
+      if (this.form.spacing == 'double') {
+        console.log('double');
+
+        if (this.form.level == 'High School') {
+          console.log('High');
+
+          if (diff < 180) {
+            console.log('180');
+            this.suggestion = 32;
+          }
+        }
+      } else if (this.form.spacing == 'single') {}
     },
     submit: function submit() {
       var _this4 = this;
@@ -73348,7 +73365,6 @@ var render = function() {
                             staticClass:
                               "{ 'is-invalid': form.errors.has('date') }",
                             attrs: {
-                              auto: "true",
                               type: "datetime",
                               zone: "local",
                               "value-zone": "UTC+3"
@@ -73539,6 +73555,14 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("hr"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "suggested" } }, [
+                      _vm._v("Suggested")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("$" + _vm._s(this.suggestion))])
+                  ]),
                   _vm._v(" "),
                   _c(
                     "div",

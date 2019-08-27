@@ -67,7 +67,7 @@
                                 <div class="col">
                                 <div class="form-group">
                                 <label for="date">Deadline Date & Time</label>
-                                <datetime auto="true" type="datetime" zone="local" value-zone="UTC+3" v-model="form.date" class="{ 'is-invalid': form.errors.has('date') }"></datetime>
+                                <datetime type="datetime" zone="local" value-zone="UTC+3" v-model="form.date" class="{ 'is-invalid': form.errors.has('date') }"></datetime>
                                 <has-error :form="form" field="date"></has-error>
                             </div>
                                 </div>
@@ -107,6 +107,10 @@
                             </div>
                             <hr>
                             <div class="form-group">
+                                <label for="suggested">Suggested</label>
+                                <p>${{this.suggestion}}</p>
+                            </div>
+                            <div class="form-group">
                                 <label for="budget">Your Budget</label>
                                 <input v-model="form.budget" type="number" class="form-control" name="budget" id="budget"
                                        placeholder="budget" :class="{ 'is-invalid': form.errors.has('budget') }">
@@ -139,7 +143,7 @@ import 'vue-datetime/dist/vue-datetime.css';
                 levels: {},
                 documents: {},
                 subjects: {},
-                suggestion: {},
+                suggestion: "",
                 diff: '',
                 formf: new FormData(),
                 form: new Form({
@@ -169,8 +173,18 @@ import 'vue-datetime/dist/vue-datetime.css';
                 // console.log(moment(this.form.date).format('MMMM Do YYYY, h:mm'));
                 let dd = this.form.date;
                let diff = moment(dd).diff(this.now, 'minutes');
+               this.diff = diff;
                
                if(this.form.spacing == 'double'){
+                console.log('double');
+
+                if(this.form.level == 'High School'){
+                    console.log('High');
+                    if(diff < 180){
+                        console.log('180');
+                        this.suggestion = 32;
+                    }
+                }
 
                }else if(this.form.spacing == 'single'){
 
