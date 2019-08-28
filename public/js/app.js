@@ -3189,25 +3189,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       orderId: this.$route.params.orderId,
       details: {},
-      filesCount: {}
+      filesCount: {},
+      files: {}
     };
   },
   methods: {
+    download: function download(path) {
+      alert(path);
+    },
     getDetails: function getDetails() {
       var _this = this;
 
@@ -3223,11 +3217,20 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref2.data;
         return [_this2.filesCount = data];
       });
+    },
+    getFiles: function getFiles() {
+      var _this3 = this;
+
+      axios.get("/api/getFiles/" + this.orderId).then(function (_ref3) {
+        var data = _ref3.data;
+        return [_this3.files = data];
+      });
     }
   },
   created: function created() {
     this.getDetails();
     this.getFilesCount();
+    this.getFiles();
   }
 });
 
@@ -85483,49 +85486,55 @@ var render = function() {
                 _c("div", { staticClass: "box" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c("div", { staticClass: "box-body no-padding" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _c("tbody", [
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Client's Name")]),
+                  _c(
+                    "div",
+                    { staticClass: "box-body no-padding table-responsive p-0" },
+                    [
+                      _c("table", { staticClass: "table" }, [
+                        _c("tbody", [
+                          _vm._m(2),
                           _vm._v(" "),
-                          _c("td", [
-                            _c("span", [_vm._v(_vm._s(_vm.details.name))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Email")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("span", [_vm._v(_vm._s(_vm.details.email))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Estimated Cost")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("span", [
-                              _vm._v("$" + _vm._s(_vm.details.suggested_price))
+                          _c("tr", [
+                            _c("td", [_vm._v("Client's Name")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [_vm._v(_vm._s(_vm.details.name))])
                             ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Client's Budget")]),
+                          ]),
                           _vm._v(" "),
-                          _c("td", [
-                            _c("span", [
-                              _vm._v("$" + _vm._s(_vm.details.budget))
+                          _c("tr", [
+                            _c("td", [_vm._v("Email")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [_vm._v(_vm._s(_vm.details.email))])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Estimated Cost")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [
+                                _vm._v(
+                                  "$" + _vm._s(_vm.details.suggested_price)
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Client's Budget")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [
+                                _vm._v("$" + _vm._s(_vm.details.budget))
+                              ])
                             ])
                           ])
                         ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("hr"),
@@ -85533,75 +85542,79 @@ var render = function() {
                 _c("div", { staticClass: "box" }, [
                   _vm._m(3),
                   _vm._v(" "),
-                  _c("div", { staticClass: "box-body no-padding" }, [
-                    _c("table", { staticClass: "table table-striped" }, [
-                      _c("tbody", [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Document's Title")]),
+                  _c(
+                    "div",
+                    { staticClass: "box-body no-padding table-responsive p-0" },
+                    [
+                      _c("table", { staticClass: "table table-striped" }, [
+                        _c("tbody", [
+                          _vm._m(4),
                           _vm._v(" "),
-                          _c("td", [
-                            _c("span", [_vm._v(_vm._s(_vm.details.title))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Level")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("span", [_vm._v(_vm._s(_vm.details.level))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Subject")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("span", [
-                              _vm._v(_vm._s(_vm.details.subject_name))
+                          _c("tr", [
+                            _c("td", [_vm._v("Document's Title")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [_vm._v(_vm._s(_vm.details.title))])
                             ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Document Type")]),
+                          ]),
                           _vm._v(" "),
-                          _c("td", [
-                            _c("span", [
-                              _vm._v(_vm._s(_vm.details.documentType_name))
+                          _c("tr", [
+                            _c("td", [_vm._v("Level")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [_vm._v(_vm._s(_vm.details.level))])
                             ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("No. of Pages")]),
+                          ]),
                           _vm._v(" "),
-                          _c("td", [
-                            _c("span", [_vm._v(_vm._s(_vm.details.pages))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Deadline")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("span", [
-                              _vm._v(_vm._s(_vm.details.deadline_datetime))
+                          _c("tr", [
+                            _c("td", [_vm._v("Subject")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.details.subject_name))
+                              ])
                             ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Spacing")]),
+                          ]),
                           _vm._v(" "),
-                          _c("td", [
-                            _c("span", [_vm._v(_vm._s(_vm.details.spacing))])
+                          _c("tr", [
+                            _c("td", [_vm._v("Document Type")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.details.documentType_name))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("No. of Pages")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [_vm._v(_vm._s(_vm.details.pages))])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Deadline")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.details.deadline_datetime))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Spacing")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", [_vm._v(_vm._s(_vm.details.spacing))])
+                            ])
                           ])
                         ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -85610,7 +85623,36 @@ var render = function() {
                   _vm._m(5),
                   _vm._v(" "),
                   this.filesCount > 0
-                    ? _c("div", { staticClass: "box-body" }, [_vm._m(6)])
+                    ? _c("div", { staticClass: "box-body" }, [
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.files, function(file) {
+                            return _c(
+                              "div",
+                              {
+                                key: file.id,
+                                staticClass: "col-md-6 col-sm-6 col-xs-12"
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.download(file.path)
+                                      }
+                                    }
+                                  },
+                                  [_vm._m(6, true)]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
                     : _vm._e(),
                   _vm._v(" "),
                   this.filesCount == 0
@@ -85731,41 +85773,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 col-sm-6 col-xs-12" }, [
-        _c("div", { staticClass: "info-box" }, [
-          _c(
-            "span",
-            {
-              staticClass: "info-box-icon",
-              staticStyle: { "background-color": "green" }
-            },
-            [
-              _c("i", {
-                staticClass: "fas fa-download",
-                staticStyle: { color: "white" }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Download")])
-          ])
-        ])
-      ]),
+    return _c("div", { staticClass: "info-box" }, [
+      _c(
+        "span",
+        {
+          staticClass: "info-box-icon",
+          staticStyle: { "background-color": "green" }
+        },
+        [
+          _c("i", {
+            staticClass: "fas fa-download",
+            staticStyle: { color: "white" }
+          })
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 col-sm-6 col-xs-12" }, [
-        _c("div", { staticClass: "info-box" }, [
-          _c("span", { staticClass: "info-box-icon bg-aqua" }, [
-            _c("i", { staticClass: "fa fa-envelope-o" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-box-content" }, [
-            _c("span", { staticClass: "info-box-text" }, [_vm._v("Messages")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "info-box-number" }, [_vm._v("1,410")])
-          ])
-        ])
+      _c("div", { staticClass: "info-box-content" }, [
+        _c("span", { staticClass: "info-box-text" }, [_vm._v("Download")])
       ])
     ])
   },
