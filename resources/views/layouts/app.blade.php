@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.13.0/moment.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -41,14 +42,12 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a href="/login" class="nav-link">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                            <router-link to="/signup">
                                 <li class="nav-item">
-                                Sign Up
+                                <a class="nav-link" href="/register">Sign Up</a>
                                 </li>
-                                </router-link>
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -75,7 +74,6 @@
         </nav>
 
         <main class="py-4">
-            <router-view></router-view>
             @yield('content');
         </main>
     </div>

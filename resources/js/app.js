@@ -23,12 +23,17 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 // progress bar
-import VueProgressBar from 'vue-progressbar'
+import VueProgressBar from 'vue-progressbar';
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
     height: '3px'
 })
+
+import { Datetime } from 'vue-datetime';
+
+Vue.component('datetime', Datetime);
+
 //Loadash
 import uniq from 'lodash/uniq'
 window.uniq = uniq;
@@ -48,9 +53,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 //Routes
 let routes = [
     { path: '/user', component: require('./components/Users.vue').default },
-    { path: '/signup', component: require('./components/SignUp.vue').default },
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
+    { path: '/documents', component: require('./components/Documents.vue').default },
+    { path: '/levels', component: require('./components/Levels.vue').default },
+    { path: '/orders', component: require('./components/TaskOrders.vue').default },
+    { path: '/orderdetails/:orderId', component: require('./components/OrderDetails.vue').default },
+
     { path: '/chat', component: require('./components/Chat.vue').default },
 ]
 const router = new VueRouter({
@@ -80,6 +89,8 @@ Vue.filter('myDate',function(created){
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('notification', require('./components/Notification.vue').default);
+Vue.component('Order', require('./components/Order.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

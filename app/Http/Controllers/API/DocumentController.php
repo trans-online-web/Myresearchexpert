@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
+
+use App\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class UserController extends Controller
+class DocumentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
+        return Document::latest()->paginate(10);
     }
 
     /**
@@ -26,7 +31,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:205|unique:document_types',
+        ]);
+        return Document::Create([
+            'name' => $request['name'],
+        ]);
     }
 
     /**
@@ -49,7 +59,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:25,'
+        ]);
+        $county = Document::findOrFail($id);
+        $county->update([
+            'name' => $request['name'],
+        ]);
+        return ['message' => 'Document is updated'];
     }
 
     /**
@@ -60,20 +77,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return ['message'=> 'user deleted'];
-    }
+        $county = Document::findOrFail($id);
 
+        $county->delete();
+    }
     public function search(){
         if ($search = \Request::get('q')) {
-            $users = User::where(function($query) use ($search){
-                $query->where('name','LIKE',"%$search%")
-                    ->orWhere('email','LIKE',"%$search%");
+            $subject = Document::where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%");
             })->paginate(20);
         }else{
-            $users = User::latest()->paginate(10);
+            $subject = Document::latest()->paginate(10);
         }
-        return $users;
+        return $subject;
     }
 }

@@ -32,7 +32,7 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|string|max:25|unique:subjects',
+            'name' => 'required|string|max:125|unique:subjects',
         ]);
         return Subject::Create([
             'name' => $request['name'],

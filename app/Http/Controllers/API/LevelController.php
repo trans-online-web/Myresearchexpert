@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Level;
 
-class UserController extends Controller
+class LevelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
+        return Level::latest()->paginate(20);
     }
 
     /**
@@ -26,7 +26,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:125|unique:levels',
+        ]);
+
+        $level = new Level();
+        $level->name = $request->name;
+        $level->save();
     }
 
     /**
@@ -60,20 +66,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return ['message'=> 'user deleted'];
-    }
-
-    public function search(){
-        if ($search = \Request::get('q')) {
-            $users = User::where(function($query) use ($search){
-                $query->where('name','LIKE',"%$search%")
-                    ->orWhere('email','LIKE',"%$search%");
-            })->paginate(20);
-        }else{
-            $users = User::latest()->paginate(10);
-        }
-        return $users;
+        $level = Level::findOrFail($id);
+        $level->delete();
     }
 }
