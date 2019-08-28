@@ -19,12 +19,11 @@ Route::get('/', function () {
 //     return view('order');
 // });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/markasread', function (){
     auth()->user()->unreadNotifications->markAsRead();
-});
-Route::get('/task', 'HomeController@task');
+})->middleware('verified');
+Route::get('/task', 'HomeController@task')->middleware('verified');
 
 Route::get('{path}','HomeController@index')->where( 'path', '([A-z\d\-/_.]+)?' );

@@ -2,51 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d67399ab-a3c2-4ce6-9490-5edcda03281d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Document.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Files.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/DocumentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/LevelController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/TaskController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Level.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Proposals.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_26_120153_create_levels_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/bargains.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/chat.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/coin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/contract.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/file.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/notification.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/write.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Documents.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Levels.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/LogIn.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Order.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/OrderDetails.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/TaskOrders.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/objectToFormData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/writers.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/SubjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/SubjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_08_093655_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_08_093655_create_tasks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SignUp.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -181,7 +139,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Baza" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -233,7 +191,7 @@
       <workItem from="1566814770416" duration="8493000" />
       <workItem from="1566840133708" duration="576000" />
       <workItem from="1566880974602" duration="31537000" />
-      <workItem from="1566973003291" duration="11702000" />
+      <workItem from="1566973003291" duration="14845000" />
     </task>
     <servers />
   </component>
