@@ -25,9 +25,6 @@
                                 <td>{{subjects.id}}</td>
                                 <td>{{subjects.name}}</td>
                                 <td>
-                                    <a href="#" @click="editModal(subjects)">
-                                        <i class="fa fa-edit p-1 text-primary"></i>
-                                    </a>
                                     <a href="#" @click="deleteSubject(subjects.id)">
                                         <i class="fa fa-trash p-1 text-danger"></i>
                                     </a>
@@ -149,24 +146,6 @@
                 this.form.reset();
                 $('#addnew').modal('show');
                 this.form.fill(counties);
-            },
-            updateSubject(){
-                this.$Progress.start();
-                this.form.put('api/county/'+this.form.id)
-                    .then(()=>{
-                        $('#addnew').modal('hide');
-                        swal(
-                            'Updated!',
-                            'Your County has been updated.',
-                            'success'
-                        )
-                        this.$Progress.finish();
-                        Fire.$emit('entry');
-                    })
-                    .catch(()=>{
-                        this.$Progress.fail();
-                    })
-                console.log('I can edit');
             }
         },
         created() {

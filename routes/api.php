@@ -21,3 +21,6 @@ Route::apiResources(['subject' => 'API\SubjectController']);
 Route::post('/checkuser','API\UserController@checkUser');
 Route::get('findSubject','API\SubjectController@search');
 Route::get('findUser','API\UserController@search');
+Route::get('contacts','API\ContactsController@index');
+Route::get('conversation/{id}','API\ContactsController@getMessagesFor');
+Route::post('conversation/send','API\ContactsController@send');

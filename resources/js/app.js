@@ -51,6 +51,7 @@ let routes = [
     { path: '/signup', component: require('./components/SignUp.vue').default },
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/subject', component: require('./components/Subjects.vue').default },
+    { path: '/chat', component: require('./components/Chat.vue').default },
 ]
 const router = new VueRouter({
   mode:'history',
@@ -62,7 +63,7 @@ Vue.filter('upText', function(text){
 });
 
 Vue.filter('myDate',function(created){
-    return moment(created).format('MMMM Do YYYY');
+    return moment(created).format('hh:mm MMMM Do YYYY');
 });
 
 /**
@@ -77,7 +78,8 @@ Vue.filter('myDate',function(created){
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('chat', require('./components/Chat.vue'));
+Vue.component('notification', require('./components/Notification.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

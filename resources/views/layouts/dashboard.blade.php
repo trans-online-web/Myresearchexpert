@@ -114,30 +114,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
+            {{--<notification :userid="{{auth()->user()->id}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>--}}
+            <li class="nav-item dropdown"  id="markasread" onclick="markasread('{{count(auth()->user()->unreadNotifications)}}')">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <i class="fas fa-bell fa-lg orange"></i> Notification <span class="badge badge-warning navbar-badge">{{count(auth()->user()->unreadNotifications)}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">15 Notifications</span>
+                    <span class="dropdown-header"><i class="fa fa-envelope mr-2"></i>New Messages</span>
                     <div class="dropdown-divider"></div>
+                    @forelse(auth()->user()->unreadNotifications as $notifications)
                     <a href="#" class="dropdown-item">
-                        <i class="fa fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
+                       @include('layouts.notification.'.snake_case(class_basename($notifications->type)))
+                        @empty
+                            <a href="#">No New message</a>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    @endforelse
+
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -204,6 +196,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link to="/chat" class="nav-link">
+                            <i class="fas fa-comment-alt yellow"></i>
+                            <p>
+                                Chat
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link to="/subject" class="nav-link">
                             <i class="nav-icon fas fa-book green"></i>
                             <p>
@@ -215,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <router-link to="/user" class="nav-link">
                             <i class=" nav-icon fas fa-users-cog indigo"></i>
                             <p>
-                                Subject
+                               User Management
                             </p>
                         </router-link>
                     </li>
@@ -248,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <router-view></router-view>
+                <router-view :user="{{auth()->user()}}"></router-view>
                 <main class="py-4">
                     {{-- @yield('content') --}}
                 </main>
@@ -295,5 +295,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
 @endauth
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
 </body>
 </html>
+
