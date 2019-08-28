@@ -15,7 +15,7 @@
               <h4 class="box-title">Client Details</h4>
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
+            <div class="box-body no-padding table-responsive p-0">
               <table class="table">
                 <tbody><tr>
                   <th>Title</th>
@@ -48,7 +48,7 @@
               <h4 class="box-title">Order Details</h4>
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
+            <div class="box-body no-padding table-responsive p-0">
               <table class="table table-striped">
                 <tbody><tr>
                   <th>Title</th>
@@ -95,7 +95,8 @@
             </div>
             <div class="box-body" v-if="this.filesCount > 0">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12" v-for="file in files" :key="file.id">
+                        <a href="#" @click="download(file.path)">
                       <div class="info-box">
                         <span class="info-box-icon" style="background-color: green;"><i class="fas fa-download" style="color: white;"></i></span>
 
@@ -104,18 +105,7 @@
                         </div>
                         <!-- /.info-box-content -->
                       </div>
-                      <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <div class="info-box">
-                        <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
-
-                        <div class="info-box-content">
-                          <span class="info-box-text">Messages</span>
-                          <span class="info-box-number">1,410</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                      </div>
+                  </a>
                       <!-- /.info-box -->
                     </div>
                 </div>
@@ -159,10 +149,14 @@
             return{
                 orderId: this.$route.params.orderId,
                 details: {},
-                filesCount: {}
+                filesCount: {},
+                files: {}
             }
         },
         methods:{
+            download(path){
+              alert(path);
+            },
             getDetails(){
               axios.get("/api/task/" + this.orderId).then(({ data }) => ([this.details = data]));
             },
@@ -170,10 +164,15 @@
             getFilesCount(){
               axios.get("/api/ifFiles/" + this.orderId).then(({ data }) => ([this.filesCount = data]));
             },
+
+            getFiles(){
+              axios.get("/api/getFiles/" + this.orderId).then(({ data }) => ([this.files = data]));
+            },
         },
         created() {
             this.getDetails();
             this.getFilesCount();
+            this.getFiles();
         }
     }
 </script>

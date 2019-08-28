@@ -28,3 +28,6 @@ Route::post('/post-task','API\TaskController@store');
 
 Route::apiResources(['level' => 'API\LevelController']);
 Route::get('ifFiles/{orderId}','API\TaskController@ifFiles');
+Route::get('getFiles/{orderId}','API\TaskController@getFiles');
+
+Route::get('download/{path}','API\TaskController@downloadFile');

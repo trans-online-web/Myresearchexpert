@@ -90,6 +90,16 @@ class TaskController extends Controller
         return Files::where('task_id', $orderId)->count();
     }
 
+    public function getFiles($orderId)
+    {
+        return Files::where('task_id', $orderId)->get();
+    }
+
+    public function downloadFile($path)
+    {
+        return response()->download(public_path('storage/' . $path));
+    }
+
     /**
      * Update the specified resource in storage.
      *
