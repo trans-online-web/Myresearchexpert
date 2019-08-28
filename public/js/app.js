@@ -2676,9 +2676,174 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      orderId: this.$route.params.orderId,
+      details: {},
+      filesCount: {}
+    };
+  },
+  methods: {
+    getDetails: function getDetails() {
+      var _this = this;
+
+      axios.get("/api/task/" + this.orderId).then(function (_ref) {
+        var data = _ref.data;
+        return [_this.details = data];
+      });
+    },
+    getFilesCount: function getFilesCount() {
+      var _this2 = this;
+
+      axios.get("/api/ifFiles/" + this.orderId).then(function (_ref2) {
+        var data = _ref2.data;
+        return [_this2.filesCount = data];
+      });
+    }
+  },
+  created: function created() {
+    this.getDetails();
+    this.getFilesCount();
   }
 });
 
@@ -74075,29 +74240,343 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "box" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "box-body no-padding" }, [
+                    _c("table", { staticClass: "table" }, [
+                      _c("tbody", [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Client's Name")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [_vm._v(_vm._s(_vm.details.name))])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Email")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [_vm._v(_vm._s(_vm.details.email))])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Estimated Cost")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [
+                              _vm._v("$" + _vm._s(_vm.details.suggested_price))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Client's Budget")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [
+                              _vm._v("$" + _vm._s(_vm.details.budget))
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "box" }, [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "box-body no-padding" }, [
+                    _c("table", { staticClass: "table table-striped" }, [
+                      _c("tbody", [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Document's Title")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [_vm._v(_vm._s(_vm.details.title))])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Level")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [_vm._v(_vm._s(_vm.details.level))])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Subject")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [
+                              _vm._v(_vm._s(_vm.details.subject_name))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Document Type")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [
+                              _vm._v(_vm._s(_vm.details.documentType_name))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("No. of Pages")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [_vm._v(_vm._s(_vm.details.pages))])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Deadline")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [
+                              _vm._v(_vm._s(_vm.details.deadline_datetime))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Spacing")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("span", [_vm._v(_vm._s(_vm.details.spacing))])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "box" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  this.filesCount > 0
+                    ? _c("div", { staticClass: "box-body" }, [_vm._m(6)])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.filesCount == 0
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "alert alert-warning alert-dismissible"
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              attrs: {
+                                type: "button",
+                                "data-dismiss": "alert",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [_vm._v("×")]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(7),
+                          _vm._v(
+                            "\n            No files attached!!\n          "
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "box" }, [
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "box-body" }, [
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "collapse",
+                        attrs: { id: "collapseExample" }
+                      },
+                      [
+                        _c("div", { staticClass: "card card-body" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.details.task) +
+                              "\n              "
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Order Details")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h4", { staticClass: "box-title" }, [_vm._v("Client Details")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Title")]),
+      _vm._v(" "),
+      _c("th", { staticStyle: { width: "40px" } }, [_vm._v("Details")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h4", { staticClass: "box-title" }, [_vm._v("Order Details")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Title")]),
+      _vm._v(" "),
+      _c("th", { staticStyle: { width: "40px" } }, [_vm._v("Details")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h4", { staticClass: "box-title" }, [_vm._v("Files")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 col-sm-6 col-xs-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _c(
+            "span",
+            {
+              staticClass: "info-box-icon",
+              staticStyle: { "background-color": "green" }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-download",
+                staticStyle: { color: "white" }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [_vm._v("Download")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 col-sm-6 col-xs-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _c("span", { staticClass: "info-box-icon bg-aqua" }, [
+            _c("i", { staticClass: "fa fa-envelope-o" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [_vm._v("Messages")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+            _c("span", { staticClass: "info-box-number" }, [_vm._v("1,410")])
           ])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [
+      _c("i", { staticClass: "icon fa fa-ban" }),
+      _vm._v(" Alert!")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h4", { staticClass: "box-title" }, [_vm._v("Task Description")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary",
+          attrs: {
+            "data-toggle": "collapse",
+            href: "#collapseExample",
+            role: "button",
+            "aria-expanded": "false",
+            "aria-controls": "collapseExample"
+          }
+        },
+        [
+          _c("i", { staticClass: "fas fa-eye" }),
+          _vm._v("\n               View\n              ")
+        ]
+      )
     ])
   }
 ]

@@ -82,7 +82,12 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        return Task::where('id', $id)->first();
+    }
+
+    public function ifFiles($orderId)
+    {
+        return Files::where('task_id', $orderId)->count();
     }
 
     /**
