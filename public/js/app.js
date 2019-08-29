@@ -2816,7 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     download: function download(path) {
-      alert(path);
+      axios.get("/api/download/" + path).then();
     },
     getDetails: function getDetails() {
       var _this = this;
