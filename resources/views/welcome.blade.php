@@ -11,59 +11,6 @@
 
         <!-- Styles -->
          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-         <style>
-             nav.font{
-                font-size: 18px;
-                font-weight: 700;
-             }
-             .font{
-                font-size: 18px;
-                font-weight: 700;
-                cursor: #fff;
-             }
-             nav{
-                background-color: #254E58;
-                /*opacity: 0.5;*/
-             }
-             .color{
-                background-color: #254E58;
-                /*opacity: 0.5;*/
-             }
-             .lead{
-                font-weight: 700;
-                font-size: 20px;
-             }
-             .lead2{
-                font-size: 17px;
-             }
-             .featurette{
-                font-weight: 700;
-                color: #254E58;
-             }
-             .home{
-                  background-image: linear-gradient(to right, rgba(136,189,188, 0.2), rgba(136,189,188, 0.5), rgba(136,189,188, 1)), url(./img/write.jpg);
-                  height: 50%;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  background-size: cover;
-                  position: relative;
-             }
-              .center{
-                align-content: center;
-                text-align: center;
-              }
-             .hero-text{
-                padding-top: 15%;
-                padding-bottom: 15.2%;
-                align-content: center;
-                text-align: center;
-                color: #fff;
-
-             }
-             .bg-custom{
-                background-color: #ededed;
-             }
-         </style>
     </head>
     <body>
         <div>
@@ -76,7 +23,7 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                       <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                          <a class="nav-link text-light" href="#">How it Works <span class="sr-only">(current)</span></a>
+                          <a class="nav-link text-light" href="/howitworks">How it Works <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link text-light" href="#">Services</a>
@@ -85,7 +32,45 @@
                           <a class="nav-link text-light" href="#">About Us</a>
                         </li>
                       </ul>
+
                       <div class="mt-2 mt-md-0">
+                          @if (Route::has('login'))
+                              <div class="mr-sm-2">
+                                <ul class="navbar-nav ml-auto">
+                                    <!-- Authentication Links -->
+                                    @guest
+                                        <li class="nav-item">
+                                            <a href="/login" class="nav-link">{{ __('Login') }}</a>
+                                        </li>
+                                        @if (Route::has('register'))
+                                            <li class="nav-item">
+                                            <a class="nav-link" href="/register">Sign Up</a>
+                                            </li>
+                                        @endif
+                                    @else
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }} <span class="caret"></span>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                                    @endguest
+                                </ul>
+                              </div>
+                          @endif
+                      </div>
+                      {{-- <div class="mt-2 mt-md-0">
                           @if (Route::has('login'))
                               <div class="mr-sm-2">
                                 <ul class="navbar-nav ml-auto">
@@ -104,7 +89,7 @@
                                 </ul>  
                               </div>
                           @endif
-                      </div>
+                      </div> --}}
                     </div>
                   </nav>
             </header>
@@ -124,7 +109,7 @@
                 <p class="lead pt-3">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
               </div>
               <div class="col-md-4 p-3">
-                <img src="./img/small.jpg" alt="">
+                <img class="img-fluid" src="./img/small.jpg" alt="">
               </div>
             </div>
             <div class="justify-content-center py-3 px-5 bg-custom">
@@ -226,44 +211,7 @@
                      </div>
                  </div>
              </div> --}}
-             <footer class="color py-5">
-               <div class="row container-fluid font">
-                 <div class="col-12 col-md">
-                   <h4 class="text-light">My Assignments Experts</h4>
-                   <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
-                 </div>
-                 <div class="col-6 col-md">
-                   <h5 class="text-light">Features</h5>
-                   <ul class="list-unstyled text-small">
-                     <li><a class="text-muted" href="#">Any Deadline - Any Subject</a></li>
-                     <li><a class="text-muted" href="#">Email Notifications</a></li>
-                     <li><a class="text-muted" href="#">Online Writer Chat</a></li>
-                     <li><a class="text-muted" href="#">Have the Bargaing Power</a></li>
-                     <li><a class="text-muted" href="#">Plagiarism Free Papers</a></li>
-                     <li><a class="text-muted" href="#">Affordable Prices</a></li>
-                   </ul>
-                 </div>
-                 <div class="col-6 col-md">
-                   <h5 class="text-light">Pages</h5>
-                   <ul class="list-unstyled text-small">
-                     <li><a class="text-muted" href="#">How it works</a></li>
-                     <li><a class="text-muted" href="#">Services</a></li>
-                     <li><a class="text-muted" href="#">About Us</a></li>
-                     <li><a class="text-muted" href="#">Login</a></li>
-                     <li><a class="text-muted" href="#">Register</a></li>
-                   </ul>
-                 </div>
-                 <div class="col-6 col-md">
-                   <h5 class="text-light">About</h5>
-                   <ul class="list-unstyled text-small">
-                     <li><a class="text-muted" href="#">Team</a></li>
-                     <li><a class="text-muted" href="#">Locations</a></li>
-                     <li><a class="text-muted" href="#">Privacy</a></li>
-                     <li><a class="text-muted" href="#">Terms</a></li>
-                   </ul>
-                 </div>
-               </div>
-             </footer>
+             @include('includes.footer')
         </div>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
