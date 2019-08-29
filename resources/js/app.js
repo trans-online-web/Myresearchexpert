@@ -48,7 +48,6 @@ const toast = swal.mixin({
 });
 window.toast = toast;
 window.Fire =  new Vue();
-
 //pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
 //Routes
@@ -60,7 +59,8 @@ let routes = [
     { path: '/levels', component: require('./components/Levels.vue').default },
     { path: '/orders', component: require('./components/TaskOrders.vue').default },
     { path: '/orderdetails/:orderId', component: require('./components/OrderDetails.vue').default },
-    
+
+    { path: '/chat', component: require('./components/Chat.vue').default },
 ]
 const router = new VueRouter({
   mode:'history',
@@ -72,7 +72,7 @@ Vue.filter('upText', function(text){
 });
 
 Vue.filter('myDate',function(created){
-    return moment(created).format('MMMM Do YYYY');
+    return moment(created).format('hh:mm MMMM Do YYYY');
 });
 
 /**
@@ -87,6 +87,8 @@ Vue.filter('myDate',function(created){
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('chat', require('./components/Chat.vue'));
+Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('Order', require('./components/Order.vue').default);
 
 /**

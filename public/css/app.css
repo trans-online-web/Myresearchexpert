@@ -37237,3 +37237,73 @@ readers do not read off random characters that represent icons */
   color: #fff;
 }
 
+nav.font {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.font {
+  font-size: 18px;
+  font-weight: 700;
+  cursor: #fff;
+}
+
+nav {
+  background-color: #254E58;
+  /*opacity: 0.5;*/
+}
+
+.color {
+  background-color: #254E58;
+  /*opacity: 0.5;*/
+}
+
+.lead {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.lead2 {
+  font-size: 17px;
+}
+
+.featurette {
+  font-weight: 700;
+  color: #254E58;
+}
+
+.home {
+  background-image: linear-gradient(to right, rgba(136, 189, 188, 0.2), rgba(136, 189, 188, 0.5), #88bdbc), url(/images/write.jpg?ccf2d5644217101f4bbd3fc08ac00938);
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.center {
+  align-content: center;
+  text-align: center;
+}
+
+.hero-text {
+  padding-top: 15%;
+  padding-bottom: 15.2%;
+  align-content: center;
+  text-align: center;
+  color: #254E58;
+}
+
+.bg-custom {
+  background-color: #ededed;
+}
+
+.masthead {
+  height: 70vh;
+  min-height: 500px;
+  background-image: linear-gradient(to right, rgba(136, 189, 188, 0.8), rgba(136, 189, 188, 0.8), rgba(136, 189, 188, 0.8)), url(/images/order.jpg?526e87e8ad1b61a9c761c3261b26a2b7);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
