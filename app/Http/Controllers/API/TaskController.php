@@ -82,7 +82,22 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        return Task::where('id', $id)->first();
+    }
+
+    public function ifFiles($orderId)
+    {
+        return Files::where('task_id', $orderId)->count();
+    }
+
+    public function getFiles($orderId)
+    {
+        return Files::where('task_id', $orderId)->get();
+    }
+
+    public function downloadFile($path)
+    {
+        return response()->download(public_path('storage/' . $path));
     }
 
     /**

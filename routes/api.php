@@ -27,3 +27,10 @@ Route::apiResources(['task' => 'API\TaskController']);
 Route::post('/post-task','API\TaskController@store');
 
 Route::apiResources(['level' => 'API\LevelController']);
+Route::get('ifFiles/{orderId}','API\TaskController@ifFiles');
+Route::get('getFiles/{orderId}','API\TaskController@getFiles');
+
+Route::get('download/{path}','API\TaskController@downloadFile');
+Route::get('contacts','API\ContactsController@index');
+Route::get('conversation/{id}','API\ContactsController@getMessagesFor');
+Route::post('conversation/send','API\ContactsController@send');
