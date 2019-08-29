@@ -155,7 +155,7 @@
         },
         methods:{
             download(path){
-              alert(path);
+              axios.get("/api/download/" + path).then();
             },
             getDetails(){
               axios.get("/api/task/" + this.orderId).then(({ data }) => ([this.details = data]));
