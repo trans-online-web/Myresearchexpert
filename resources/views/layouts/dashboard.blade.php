@@ -212,10 +212,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link to="/documents" class="nav-link">
+                            <i class="fas fa-file-word green"></i>
+                            <p>
+                                Documents
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/levels" class="nav-link">
+                            <i class="nav-icon fas fa-book green"></i>
+                            <p>
+                                Levels
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link to="/orders" class="nav-link">
                             <i class="nav-icon fas fa-book green"></i>
                             <p>
-                                Orders
+                               Orders
                             </p>
                         </router-link>
                     </li>
