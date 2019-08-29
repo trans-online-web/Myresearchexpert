@@ -98,7 +98,7 @@ class TaskController extends Controller
     public function downloadFile($path)
     {
         echo 'here';
-        return response()->download(public_path('storage/' . $path));
+        return response()->download(storage_path('app/' . $path));
     }
 
     /**
