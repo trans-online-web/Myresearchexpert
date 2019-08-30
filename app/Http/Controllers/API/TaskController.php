@@ -26,7 +26,11 @@ class TaskController extends Controller
     {
         return Task::latest()->paginate(20);
     }
-
+    public function student()
+    {
+        $user = auth()->user()->id;
+        return Task::where('user_id',$user)->get();
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -58,7 +62,7 @@ class TaskController extends Controller
         $task->spacing = $request->spacing;
         $task->save();
         $task_id = $task->id;
-       
+
         if ($request->pics) {
             $uploadedFiles=$request->pics;
             foreach ($uploadedFiles as $file){
