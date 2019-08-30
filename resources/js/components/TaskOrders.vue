@@ -32,7 +32,7 @@
                                       <router-link :to="{path:'/orderdetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
                                   </td>
                                   <td>
-                                      <a href="#" @click="deleteorder(order.id)">
+                                      <a href="#" @click="editModal(order)">
                                         <i class="fa fa-pen p-1 text-danger"></i>
                                       </a>
                                   </td>
@@ -44,6 +44,38 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="addnewLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addnewLabel">Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="updateRole()">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                          <label>Select Role</label>
+                          <select name="status" v-model="form.status" class="form-control" :class="{'is-invalid': form.errors.has('status')}">
+                            <option value="">--Select Status--</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Working">Working</option>
+                            <option value="Completed">Completed</option>
+                          </select>
+                          <has-error :form="form" field="status"></has-error>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -51,10 +83,17 @@
     export default {
         data(){
             return{
-                orders: {}
+                orders: {},
+                form: new Form({
+                   status: ''
+                })
             }
         },
         methods:{
+          editModal(order){
+              $('#addnew').modal('show');
+              this.form.fill(order);
+            },
             getOrders(){
               axios.get("/api/task").then(({ data }) => ([this.orders = data]));
             },

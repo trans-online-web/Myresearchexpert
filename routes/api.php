@@ -31,7 +31,8 @@ Route::apiResources(['level' => 'API\LevelController']);
 Route::get('ifFiles/{orderId}','API\TaskController@ifFiles');
 Route::get('getFiles/{orderId}','API\TaskController@getFiles');
 
-Route::get('download/{path}','API\TaskController@downloadFile');
+Route::get('download/{id}','API\TaskController@downloadFile');
+
 Route::get('contacts','API\ContactsController@index');
 Route::get('student','API\ContactsController@student');
 Route::get('conversation/{id}','API\ContactsController@getMessagesFor');

@@ -99,10 +99,11 @@ class TaskController extends Controller
         return Files::where('task_id', $orderId)->get();
     }
 
-    public function downloadFile($path)
+    public function downloadFile($id)
     {
-        echo 'here';
-        return response()->download(public_path('storage/' . $path));
+        // echo $path;
+        $path = Files::where('id', $id)->value('path');
+        return response()->download(storage_path('app/' . $path));
     }
 
     /**

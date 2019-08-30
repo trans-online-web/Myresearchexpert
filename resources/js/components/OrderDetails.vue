@@ -96,7 +96,7 @@
             <div class="box-body" v-if="this.filesCount > 0">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12" v-for="file in files" :key="file.id">
-                        <a href="#" @click="download(file.path)">
+                        <a href="#" @click="download(file.id)">
                       <div class="info-box">
                         <span class="info-box-icon" style="background-color: green;"><i class="fas fa-download" style="color: white;"></i></span>
 
@@ -154,8 +154,8 @@
             }
         },
         methods:{
-            download(path){
-              axios.get("/api/download/" + path).then();
+            download(id){
+              axios.get("/api/download/" + id).then();
             },
             getDetails(){
               axios.get("/api/task/" + this.orderId).then(({ data }) => ([this.details = data]));
