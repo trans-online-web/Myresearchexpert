@@ -35,10 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="/" class="nav-link">Home</a>
             </li>
         </ul>
 
@@ -149,11 +146,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </form>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-                            class="fa fa-th-large"></i></a>
-            </li>
-
         </ul>
 
     </nav>
@@ -212,10 +204,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link to="/documents" class="nav-link">
+                            <i class="fas fa-file-word green"></i>
+                            <p>
+                                Documents
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/levels" class="nav-link">
+                            <i class="nav-icon fas fa-book green"></i>
+                            <p>
+                                Levels
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link to="/orders" class="nav-link">
                             <i class="nav-icon fas fa-book green"></i>
                             <p>
-                                Orders
+                               Orders
                             </p>
                         </router-link>
                     </li>

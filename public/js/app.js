@@ -1745,9 +1745,18 @@ __webpack_require__.r(__webpack_exports__);
     Echo["private"]("messages.".concat(this.user.id)).listen('NewMessage', function (e) {
       _this.handleIncoming(e.message);
     });
-    axios.get("api/contacts").then(function (response) {
-      return _this.contacts = response.data;
-    });
+
+    if (this.$gate.isAdmin()) {
+      axios.get("api/contacts").then(function (response) {
+        return _this.contacts = response.data;
+      });
+    }
+
+    if (this.$gate.isStudent()) {
+      axios.get("api/student").then(function (response) {
+        return _this.contacts = response.data;
+      });
+    }
   },
   methods: {
     startConversationWith: function startConversationWith(contact) {

@@ -27,7 +27,12 @@
                 .listen('NewMessage',(e)=>{
                     this.handleIncoming(e.message);
                 })
-            axios.get("api/contacts").then((response) => (this.contacts = response.data));
+            if (this.$gate.isAdmin()) {
+                axios.get("api/contacts").then((response) => (this.contacts = response.data));
+            }
+            if (this.$gate.isStudent()) {
+                axios.get("api/student").then((response) => (this.contacts = response.data));
+            }
         },
         methods: {
             startConversationWith(contact){
