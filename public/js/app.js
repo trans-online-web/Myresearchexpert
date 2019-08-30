@@ -3199,8 +3199,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    download: function download(path) {
-      axios.get("/api/download/" + path).then();
+    download: function download(id) {
+      axios.get("/api/download/" + id).then();
     },
     getDetails: function getDetails() {
       var _this = this;
@@ -85641,7 +85641,7 @@ var render = function() {
                                     attrs: { href: "#" },
                                     on: {
                                       click: function($event) {
-                                        return _vm.download(file.path)
+                                        return _vm.download(file.id)
                                       }
                                     }
                                   },
@@ -103383,13 +103383,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! /opt/lampp/htdocs/Transonline/writting-website/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/writting-website/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /home/kryme/Documents/writting-website/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/kryme/Documents/writting-website/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> 059496435d9b0ef894c370fcdd94e80849d08196
 
 
 /***/ })
