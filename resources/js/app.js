@@ -59,6 +59,7 @@ let routes = [
     { path: '/levels', component: require('./components/Levels.vue').default },
     { path: '/orders', component: require('./components/TaskOrders.vue').default },
     { path: '/orderdetails/:orderId', component: require('./components/OrderDetails.vue').default },
+    { path: '/MyOrder', component: require('./components/Myoders.vue').default },
 
     { path: '/chat', component: require('./components/Chat.vue').default },
 ]
