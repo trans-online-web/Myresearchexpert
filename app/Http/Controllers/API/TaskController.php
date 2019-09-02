@@ -115,7 +115,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'status' => 'required',
+        ]);
+
+        $task = Task::findOrFail($id);
+        $task->status = $request->status;
+        $task->update();
     }
 
     /**

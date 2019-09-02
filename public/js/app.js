@@ -3597,19 +3597,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       orders: {},
       form: new Form({
-        status: ''
+        status: '',
+        id: ''
       })
     };
   },
   methods: {
-    editModal: function editModal(order) {
+    updateStatus: function updateStatus() {
+      this.form.put('api/task/' + this.form.id).then(function () {
+        $('#addnew').modal('hide');
+        swal.fire('Updated!', 'Status has been updated.', 'success');
+        Fire.$emit('entry');
+      })["catch"](function () {});
+    },
+    editModal: function editModal(order, id) {
       $('#addnew').modal('show');
       this.form.fill(order);
+      this.form.id = id;
     },
     getOrders: function getOrders() {
       var _this = this;
@@ -3621,7 +3635,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.getOrders();
+    Fire.$on('entry', function () {
+      _this2.getOrders();
+    });
   }
 });
 
@@ -86422,7 +86441,39 @@ var render = function() {
                     return _c("tr", { key: order.id }, [
                       _c("td", [_vm._v(_vm._s(order.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(order.email))]),
+                      _c("td", [
+                        order.status == "Pending"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-warning" },
+                              [_vm._v("Pending..")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Paid"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-info" },
+                              [_vm._v("Paid")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Working"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-dark" },
+                              [_vm._v("Working")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Completed"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-success" },
+                              [_vm._v("Completed")]
+                            )
+                          : _vm._e()
+                      ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(order.level))]),
                       _vm._v(" "),
@@ -86455,7 +86506,7 @@ var render = function() {
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                return _vm.editModal(order)
+                                return _vm.editModal(order, order.id)
                               }
                             }
                           },
@@ -86503,7 +86554,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.updateRole()
+                      return _vm.updateStatus()
                     }
                   }
                 },
@@ -86609,7 +86660,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
+        _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Level")]),
         _vm._v(" "),
@@ -102585,8 +102636,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "b86f7b545fc3935bcafb",
-  cluster: "ap2",
+  key: "",
+  cluster: "mt1",
   encrypted: true
 });
 
@@ -103873,8 +103924,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\writting-website\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\writting-website\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /opt/lampp/htdocs/Transonline/writting-website/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/writting-website/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
