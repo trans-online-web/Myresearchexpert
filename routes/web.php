@@ -17,6 +17,12 @@ Route::get('/', function () {
 Route::get('/howitworks', function () {
     return view('howitworks');
 });
+Route::get('/services', function () {
+    return view('services');
+});
+Route::get('/about', function () {
+    return view('about');
+});
 
 // Route::get('/task', function () {
 //     return view('order');

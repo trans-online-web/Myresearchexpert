@@ -34,10 +34,10 @@
                       <a class="nav-link text-light" href="/howitworks">How it Works <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-light" href="#">Services</a>
+                      <a class="nav-link text-light" href="/services">Services</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-light" href="#">About Us</a>
+                      <a class="nav-link text-light" href="/about">About Us</a>
                     </li>
                   </ul>
                   <div class="mt-2 mt-md-0">
