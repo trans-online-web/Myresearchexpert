@@ -26,7 +26,11 @@ class TaskController extends Controller
     {
         return Task::latest()->paginate(20);
     }
-
+    public function student()
+    {
+        $user = auth()->user()->id;
+        return Task::where('user_id',$user)->get();
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -58,7 +62,7 @@ class TaskController extends Controller
         $task->spacing = $request->spacing;
         $task->save();
         $task_id = $task->id;
-       
+
         if ($request->pics) {
             $uploadedFiles=$request->pics;
             foreach ($uploadedFiles as $file){
@@ -95,10 +99,11 @@ class TaskController extends Controller
         return Files::where('task_id', $orderId)->get();
     }
 
-    public function downloadFile($path)
+    public function downloadFile($id)
     {
-        echo 'here';
-        return response()->download(public_path('storage/' . $path));
+        // echo $path;
+        $path = Files::where('id', $id)->value('path');
+        return response()->download(storage_path('app/' . $path));
     }
 
     /**
@@ -110,7 +115,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'status' => 'required',
+        ]);
+
+        $task = Task::findOrFail($id);
+        $task->status = $request->status;
+        $task->update();
     }
 
     /**

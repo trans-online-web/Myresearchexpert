@@ -29,10 +29,10 @@ Route::get('/about', function () {
 // });
 
 Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/markasread', function (){
     auth()->user()->unreadNotifications->markAsRead();
-})->middleware('verified');
-Route::get('/task', 'HomeController@task')->middleware('verified');
+});
+Route::get('/task', 'HomeController@task');
 
 Route::get('{path}','HomeController@index')->where( 'path', '([A-z\d\-/_.]+)?' );
