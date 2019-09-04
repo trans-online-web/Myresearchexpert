@@ -1,7 +1,12 @@
 <template>
-        <div class=" container card-body chat-app">
-            <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
-            <ContactList :contacts="contacts" @selected="startConversationWith"/>
+        <div class="card mt-4">
+            <div class="card-header">
+            <h3 class="card-title">Start a Converstion</h3>
+        </div>
+            <div class=" container card-body chat-app">
+                <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+                <ContactList :contacts="contacts" @selected="startConversationWith"/>
+            </div>
         </div>
 </template>
 
