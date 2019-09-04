@@ -3286,6 +3286,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -86010,7 +86018,9 @@ var render = function() {
                       ]
                     )
                   ])
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(10)
               ])
             ])
           ])
@@ -86121,7 +86131,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "btn btn-primary",
+          staticClass: "btn btn-primary btn-sm",
           attrs: {
             "data-toggle": "collapse",
             href: "#collapseExample",
@@ -86135,6 +86145,24 @@ var staticRenderFns = [
           _vm._v("\n               View\n              ")
         ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box" }, [
+      _c("div", { staticClass: "box-header" }, [
+        _c("h5", { staticClass: "box-title" }, [_vm._v("Upload")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-body" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-success", attrs: { type: "button" } },
+          [_vm._v("Upload Completed Task")]
+        )
+      ])
     ])
   }
 ]
@@ -103948,8 +103976,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/kryme/Documents/writting-website/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/kryme/Documents/writting-website/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /opt/lampp/htdocs/Transonline/writting-website/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/writting-website/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

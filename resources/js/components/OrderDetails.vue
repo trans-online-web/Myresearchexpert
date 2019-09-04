@@ -122,7 +122,7 @@
             </div>
             <div class="box-body">
                 <p>
-                  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <i class="fas fa-eye"></i>
                    View
                   </a>
@@ -132,6 +132,14 @@
                     {{details.task}}
                   </div>
                 </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-header">
+              <h5 class="box-title">Upload</h5>
+            </div>
+            <div class="box-body">
+                <button type="button" class="btn btn-success">Upload Completed Task</button>
             </div>
         </div>
     </div>
