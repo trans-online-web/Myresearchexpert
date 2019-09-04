@@ -1,9 +1,11 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Post Task</div>
+            <div class="col-md-8 mt-5">
+                <div class="card mt-5">
+                    <div class="card-header">
+                    <h3 class="card-title">Post Task</h3>
+                </div>
 
                     <div class="card-body">
                         <form @submit.prevent="" enctype="multipart/form-data">

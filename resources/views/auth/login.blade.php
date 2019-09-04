@@ -106,7 +106,7 @@
                         </div>
                     </div>       
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-8">
