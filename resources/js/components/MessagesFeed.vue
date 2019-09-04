@@ -3,7 +3,7 @@
         <ul v-if="contact">
             <li v-for="message in messages" :class="`message${message.to == contact.id ? ' sent' : ' received'}`" :key="message.id">
                 <div class="text">
-                    {{ message.text }}<br/><small><b>{{message.created_at | myDate}}</b></small>
+                    <span class="messo">{{ message.text }}</span><br/><small class="date">{{message.created_at | myDate}}</small>
                 </div>
             </li>
         </ul>
@@ -39,6 +39,14 @@
     }
 </script>
 <style lang="scss" scoped>
+    .messo{
+    font-size: 15px;
+    font-weight:700;
+    }
+    .date{
+        color:#9e9e9e;
+        font-weight:700;
+    }
     .feed {
         background: #f0f0f0;
         height: 100%;
@@ -60,7 +68,7 @@
                     &.received {
                         text-align: right;
                         .text {
-                            background: #b2b2b2;
+                            background: #00e676;
                         }
                     }
                     &.sent {
