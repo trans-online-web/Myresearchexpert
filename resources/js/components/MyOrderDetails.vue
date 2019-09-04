@@ -12,39 +12,6 @@
                             <div class="col-md-6">
                                 <div class="box">
                                     <div class="box-header">
-                                        <h4 class="box-title">Client Details</h4>
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <div class="box-body no-padding table-responsive p-0">
-                                        <table class="table">
-                                            <tbody><tr>
-                                                <th>Title</th>
-                                                <th style="width: 40px">Details</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Client's Name</td>
-                                                <td><span>{{details.name}}</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Email</td>
-                                                <td><span>{{details.email}}</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estimated Cost</td>
-                                                <td><span>${{details.suggested_price}}</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Client's Budget</td>
-                                                <td><span>${{details.budget}}</span></td>
-                                            </tr>
-                                            </tbody></table>
-                                    </div>
-                                    <!-- /.box-body -->
-                                </div>
-                                <!-- /.box -->
-                                <hr>
-                                <div class="box">
-                                    <div class="box-header">
                                         <h4 class="box-title">Order Details</h4>
                                     </div>
                                     <!-- /.box-header -->
@@ -114,24 +81,6 @@
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                         <h5><i class="icon fa fa-ban"></i> Alert!</h5>
                                         No files attached!!
-                                    </div>
-                                </div>
-                                <div class="box">
-                                    <div class="box-header">
-                                        <h4 class="box-title">Task Description</h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <p>
-                                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-eye"></i>
-                                                View
-                                            </a>
-                                        </p>
-                                        <div class="collapse" id="collapseExample">
-                                            <div class="card card-body">
-                                                {{details.task}}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
