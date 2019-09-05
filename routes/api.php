@@ -30,6 +30,7 @@ Route::get('/student-task','API\TaskController@student');
 Route::apiResources(['level' => 'API\LevelController']);
 Route::get('ifFiles/{orderId}','API\TaskController@ifFiles');
 Route::get('getFiles/{orderId}','API\TaskController@getFiles');
+Route::post('addFiles/{orderId}','API\TaskController@addFiles');
 
 Route::get('download/{id}','API\TaskController@downloadFile');
 

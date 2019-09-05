@@ -2502,48 +2502,130 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       orderId: this.$route.params.orderId,
       details: {},
       filesCount: {},
-      files: {}
+      files: {},
+      attachments: [],
+      formf: new FormData(),
+      form: new Form({})
     };
   },
   methods: {
+    submit: function submit() {
+      var _this = this;
+
+      for (var i = 0; i < this.attachments.length; i++) {
+        this.formf.append('pics[]', this.attachments[i]);
+      }
+
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
+      axios.post('/api/addFiles/' + this.orderId, this.formf, config).then(function (response) {
+        Fire.$emit('entry');
+        $('#addnew').modal('hide');
+
+        _this.form.reset();
+
+        swal.fire({
+          type: 'success',
+          title: 'Submited!!',
+          text: 'Files added successfully'
+        });
+      })["catch"](function (response) {//error
+      });
+    },
+    fieldChange: function fieldChange(e) {
+      var selectedFiles = e.target.files;
+
+      if (!selectedFiles.length) {
+        return false;
+      }
+
+      for (var i = 0; i < selectedFiles.length; i++) {
+        this.attachments.push(selectedFiles[i]);
+      }
+
+      console.log(this.attachments);
+    },
+    newModal: function newModal() {
+      this.form.reset();
+      $('#addnew').modal('show');
+    },
     download: function download(id) {
       axios.get("/api/download/" + id).then();
     },
     getDetails: function getDetails() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/task/" + this.orderId).then(function (_ref) {
         var data = _ref.data;
-        return [_this.details = data];
+        return [_this2.details = data];
       });
     },
     getFilesCount: function getFilesCount() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/ifFiles/" + this.orderId).then(function (_ref2) {
         var data = _ref2.data;
-        return [_this2.filesCount = data];
+        return [_this3.filesCount = data];
       });
     },
     getFiles: function getFiles() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/getFiles/" + this.orderId).then(function (_ref3) {
         var data = _ref3.data;
-        return [_this3.files = data];
+        return [_this4.files = data];
       });
     }
   },
   created: function created() {
+    var _this5 = this;
+
     this.getDetails();
     this.getFilesCount();
     this.getFiles();
+    Fire.$on('entry', function () {
+      _this5.getDetails();
+
+      _this5.getFilesCount();
+
+      _this5.getFiles();
+    });
   }
 });
 
@@ -2558,6 +2640,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -85108,39 +85192,61 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6" }, [
                 _c("div", { staticClass: "box" }, [
-                  _vm._m(3),
+                  _c("div", { staticClass: "box-header" }, [
+                    _c("h5", { staticClass: "box-title" }, [
+                      _vm._v("Files Sent")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "box-tools" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-sm",
+                          on: { click: _vm.newModal }
+                        },
+                        [_vm._v("Add Files")]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
                   this.filesCount > 0
-                    ? _c("div", { staticClass: "box-body" }, [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.files, function(file) {
-                            return _c(
-                              "div",
-                              {
-                                key: file.id,
-                                staticClass: "col-md-6 col-sm-6 col-xs-12"
-                              },
-                              [
-                                _c(
-                                  "a",
-                                  {
-                                    attrs: { href: "#" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.download(file.id)
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "box-body",
+                          staticStyle: { "padding-top": "10px" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            _vm._l(_vm.files, function(file) {
+                              return _c(
+                                "div",
+                                {
+                                  key: file.id,
+                                  staticClass: "col-md-6 col-sm-6 col-xs-12"
+                                },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: { href: "#" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.download(file.id)
+                                        }
                                       }
-                                    }
-                                  },
-                                  [_vm._m(4, true)]
-                                )
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ])
+                                    },
+                                    [_vm._m(3, true)]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
                     : _vm._e(),
                   _vm._v(" "),
                   this.filesCount == 0
@@ -85163,7 +85269,7 @@ var render = function() {
                             [_vm._v("×")]
                           ),
                           _vm._v(" "),
-                          _vm._m(5),
+                          _vm._m(4),
                           _vm._v(
                             "\n                                    No files attached!!\n                                "
                           )
@@ -85176,7 +85282,61 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addnew",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addnewLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.submit()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "files" } }, [
+                        _vm._v("Upload Files")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control-file",
+                        attrs: { type: "file", multiple: "", id: "files" },
+                        on: { change: _vm.fieldChange }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(6)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -85210,14 +85370,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header" }, [
-      _c("h4", { staticClass: "box-title" }, [_vm._v("Files")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "info-box" }, [
       _c(
         "span",
@@ -85245,6 +85397,50 @@ var staticRenderFns = [
     return _c("h5", [
       _c("i", { staticClass: "icon fa fa-ban" }),
       _vm._v(" Alert!")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addnewLabel" } }, [
+        _vm._v("Add Files")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Add")]
+      )
     ])
   }
 ]
@@ -85286,7 +85482,7 @@ var render = function() {
                     return _c("tr", { key: order.id }, [
                       _c("td", [_vm._v("#" + _vm._s(order.id))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(order.task))]),
+                      _c("td", [_vm._v(_vm._s(order.title))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(order.subject_name))]),
                       _vm._v(" "),
@@ -85355,9 +85551,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("h3", { staticClass: "card-title" }, [_vm._v("My Orders")]),
       _vm._v(" "),
-      _c("button", { staticClass: "btn btn-success pull-left" }, [
-        _vm._v("Add"),
-        _c("i", { staticClass: "fa fa-user-plus fa-fw" })
+      _c("div", { staticClass: "card-tools" }, [
+        _c("button", { staticClass: "btn btn-success pull-left" }, [
+          _vm._v("Add"),
+          _c("i", { staticClass: "fa fa-user-plus fa-fw" })
+        ])
       ])
     ])
   },

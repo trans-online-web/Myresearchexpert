@@ -5,7 +5,9 @@
                 <div class="card mt-4">
                     <div class="card-header">
                         <h3 class="card-title">My Orders</h3>
-                        <button class="btn btn-success pull-left">Add<i class="fa fa-user-plus fa-fw"></i></button>
+                        <div class="card-tools">
+                            <button class="btn btn-success pull-left">Add<i class="fa fa-user-plus fa-fw"></i></button>
+                        </div>
                     </div>
 
                     <div class="card-body">
@@ -25,7 +27,7 @@
                                 <tbody>
                                 <tr v-for="order in orders" :key="order.id">
                                     <td>#{{order.id}}</td>
-                                    <td>{{order.task}}</td>
+                                    <td>{{order.title}}</td>
                                     <td>{{order.subject_name}}</td>
                                     <td>{{order.subject_name}}</td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
