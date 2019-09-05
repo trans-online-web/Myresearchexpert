@@ -2,9 +2,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card mt-4">
                     <div class="card-header">
                         <h3 class="card-title">My Orders</h3>
+                        <button class="btn btn-success pull-left">Add<i class="fa fa-user-plus fa-fw"></i></button>
                     </div>
 
                     <div class="card-body">
@@ -27,9 +28,9 @@
                                     <td>{{order.task}}</td>
                                     <td>{{order.subject_name}}</td>
                                     <td>{{order.subject_name}}</td>
-                                    <td>{{order.deadline_datetime}}</td>
+                                    <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
                                     <td>
-                                        <router-link :to="{path:'/orderdetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
+                                        <router-link :to="{path:'/MyOrderDetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
                                     </td>
                                     <td>
                                         <a href="#" @click="deleteorder(order.id)">

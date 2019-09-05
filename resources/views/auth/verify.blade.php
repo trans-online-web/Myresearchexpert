@@ -3,9 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+        <div class="col-md-8 pt-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                <h3 class="card-title">{{ __('Verify Your Email Address') }}</h3>
+            </div>
 
                 <div class="card-body">
                     @if (session('resent'))
