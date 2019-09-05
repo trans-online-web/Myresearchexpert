@@ -3566,16 +3566,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       orderId: this.$route.params.orderId,
       details: {},
       filesCount: {},
-      files: {}
+      files: {},
+      attachments: [],
+      formf: new FormData(),
+      form: new Form({})
     };
   },
   methods: {
+    fieldChange: function fieldChange(e) {
+      var selectedFiles = e.target.files;
+
+      if (!selectedFiles.length) {
+        return false;
+      }
+
+      for (var i = 0; i < selectedFiles.length; i++) {
+        this.attachments.push(selectedFiles[i]);
+      }
+
+      console.log(this.attachments);
+    },
+    newModal: function newModal() {
+      this.form.reset();
+      $('#addnew').modal('show');
+    },
     download: function download(id) {
       axios.get("/api/download/" + id).then();
     },
@@ -86828,13 +86875,86 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(10)
+                _c("div", { staticClass: "box" }, [
+                  _vm._m(10),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "box-body" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: { click: _vm.newModal }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
+                        _vm._v(
+                          "\n            Upload Completed Task\n          "
+                        )
+                      ]
+                    )
+                  ])
+                ])
               ])
             ])
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addnew",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addnewLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(11),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.submit()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "files" } }, [
+                        _vm._v("Select File")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control-file",
+                        attrs: { type: "file", multiple: "", id: "files" },
+                        on: { change: _vm.fieldChange }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(12)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -86959,21 +87079,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box" }, [
-      _c("div", { staticClass: "box-header" }, [
-        _c("h5", { staticClass: "box-title" }, [_vm._v("Upload")])
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h5", { staticClass: "box-title" }, [_vm._v("Upload")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addnewLabel" } }, [
+        _vm._v("Upload File")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "box-body" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-success", attrs: { type: "button" } },
-          [
-            _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
-            _vm._v("\n            Upload Completed Task\n          ")
-          ]
-        )
-      ])
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [
+          _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
+          _vm._v("\n                          Upload\n                        ")
+        ]
+      )
     ])
   }
 ]
