@@ -61,7 +61,6 @@ let routes = [
     { path: '/orderdetails/:orderId', component: require('./components/OrderDetails.vue').default },
     { path: '/MyOrderDetails/:orderId', component: require('./components/MyOrderDetails.vue').default },
     { path: '/MyOrder', component: require('./components/Myoders.vue').default },
-
     { path: '/chat', component: require('./components/Chat.vue').default },
 ]
 const router = new VueRouter({

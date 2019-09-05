@@ -7,7 +7,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>15</h3>
+                                <h3>{{dash['total_pending']}}</h3>
 
                                 <p>Pending approval</p>
                             </div>
@@ -22,7 +22,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>25</h3>
+                                <h3>{{dash['total_approved']}}</h3>
 
                                 <p>Active orders</p>
                             </div>
@@ -37,7 +37,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3>{{dash['total_completed']}}</h3>
 
                                 <p>Completed orders</p>
                             </div>
@@ -52,9 +52,9 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>165</h3>
+                                <h3>{{dash['total_revision']}}</h3>
 
-                                <p>Latest proposal</p>
+                                <p>Revisions</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-comment-alt white"></i>
@@ -71,8 +71,18 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+            data(){
+                return{
+                    dash: {}
+            }
+        },
+        methods :{
+            loadDash(){
+                axios.get("api/dashboard").then(({data})=>([this.dash = data ['data']]));
+            }
+        },
+        created() {
+            this.loadDash();
         }
     }
 </script>

@@ -17,13 +17,13 @@ class DashboardController extends Controller
     {
         $total_pending_orders = Task::where('status','pending')->count();
         $total_approved_orders = Task::where('status','paid')->count();
-        $total_completed_orders = Task::all()->count();
-        $total_latest_proposal = Task::where('status','1')->count();
+        $total_completed_orders = Task::where('status','completed')->count();;
+        $total_orders_revision = Task::where('status','revision')->count();
         $data = array(
             'total_pending'=>$total_pending_orders,
-            'total_appproved'=>$total_approved_orders,
+            'total_approved'=>$total_approved_orders,
             'total_completed'=> $total_completed_orders,
-            'total_latest'=> $total_latest_proposal,
+            'total_revision'=>  $total_orders_revision,
         );
         return['data'=>$data];
 
