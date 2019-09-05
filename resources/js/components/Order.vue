@@ -60,9 +60,10 @@
                             <div class="row">
                                 <div class="col">
                                 <div class="form-group">
-                                <label for="pages">No. of Pages</label>
-                                <input v-model="form.pages" type="number" min="1" class="form-control" name="pages" id="pages"
-                                       placeholder="Pages" :class="{ 'is-invalid': form.errors.has('pages') }">
+                                <label for="pages">No. of Pages</label><br>
+                                <vue-numeric-input  v-model="form.pages" :min="1" :step="1" :class="{ 'is-invalid': form.errors.has('pages') }"></vue-numeric-input>
+                                <!-- <input v-model="form.pages" type="number" min="1" class="form-control" name="pages" id="pages"
+                                       placeholder="Pages" :class="{ 'is-invalid': form.errors.has('pages') }"> -->
                                 <has-error :form="form" field="pages"></has-error>
                             </div>
                                 </div>
@@ -154,7 +155,7 @@ import 'vue-datetime/dist/vue-datetime.css';
                     level: '',
                     subject: '',
                     type: '',
-                    pages: '',
+                    pages: 1,
                     spacing: '',
                     date: '',
                     time: '',
