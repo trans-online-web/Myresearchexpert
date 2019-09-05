@@ -103,6 +103,7 @@ class TaskController extends Controller
     {
         // echo $path;
         $path = Files::where('id', $id)->value('path');
+        
         return response()->download(storage_path('app/' . $path));
     }
 

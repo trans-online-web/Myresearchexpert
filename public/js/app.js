@@ -3287,6 +3287,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -86131,7 +86134,10 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "btn btn-success", attrs: { type: "button" } },
-          [_vm._v("Upload Completed Task")]
+          [
+            _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
+            _vm._v("\n            Upload Completed Task\n          ")
+          ]
         )
       ])
     ])

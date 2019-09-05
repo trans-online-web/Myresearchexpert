@@ -139,7 +139,10 @@
               <h5 class="box-title">Upload</h5>
             </div>
             <div class="box-body">
-                <button type="button" class="btn btn-success">Upload Completed Task</button>
+              <button type="button" class="btn btn-success">
+                <i class="fas fa-cloud-upload-alt"></i>
+                Upload Completed Task
+              </button>
             </div>
         </div>
     </div>
