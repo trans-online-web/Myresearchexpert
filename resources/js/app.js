@@ -34,6 +34,10 @@ import { Datetime } from 'vue-datetime';
 
 Vue.component('datetime', Datetime);
 
+import VueNumericInput from 'vue-numeric-input';
+ 
+Vue.use(VueNumericInput);
+
 //Loadash
 import uniq from 'lodash/uniq'
 window.uniq = uniq;

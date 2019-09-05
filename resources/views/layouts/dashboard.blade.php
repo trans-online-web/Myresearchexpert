@@ -197,7 +197,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/subject" class="nav-link">
-                            <i class="nav-icon fas fa-book green"></i>
+                            <i class="nav-icon fas fa-book-open green"></i>
                             <p>
                                 Subject
                             </p>
@@ -205,7 +205,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/documents" class="nav-link">
-                            <i class="fas fa-file-word green"></i>
+                            <i class="fas fa-file-word indigo"></i>
                             <p>
                                 Documents
                             </p>
@@ -213,7 +213,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/levels" class="nav-link">
-                            <i class="nav-icon fas fa-book green"></i>
+                            <i class="nav-icon fas fa-level-up-alt cyan"></i>
                             <p>
                                 Levels
                             </p>
@@ -221,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/orders" class="nav-link">
-                            <i class="nav-icon fas fa-book green"></i>
+                            <i class="nav-icon fas fa-book white"></i>
                             <p>
                                Orders
                             </p>
