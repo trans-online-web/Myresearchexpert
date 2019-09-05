@@ -26,7 +26,7 @@ Route::apiResources(['document' => 'API\DocumentController']);
 Route::apiResources(['task' => 'API\TaskController']);
 Route::post('/post-task','API\TaskController@store');
 Route::get('/student-task','API\TaskController@student');
-
+Route::apiResources(['dashboard'=>'API\DashboardController']);
 Route::apiResources(['level' => 'API\LevelController']);
 Route::get('ifFiles/{orderId}','API\TaskController@ifFiles');
 Route::get('getFiles/{orderId}','API\TaskController@getFiles');
