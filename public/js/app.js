@@ -3606,6 +3606,32 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    submit: function submit() {
+      var _this = this;
+
+      for (var i = 0; i < this.attachments.length; i++) {
+        this.formf.append('pics[]', this.attachments[i]);
+      }
+
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
+      axios.post('/api/completed/' + this.orderId, this.formf, config).then(function (response) {
+        Fire.$emit('entry');
+        $('#addnew').modal('hide');
+
+        _this.form.reset();
+
+        swal.fire({
+          type: 'success',
+          title: 'Submited!!',
+          text: 'Files added successfully'
+        });
+      })["catch"](function (response) {//error
+      });
+    },
     fieldChange: function fieldChange(e) {
       var selectedFiles = e.target.files;
 
@@ -3627,27 +3653,27 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/download/" + id).then();
     },
     getDetails: function getDetails() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/task/" + this.orderId).then(function (_ref) {
         var data = _ref.data;
-        return [_this.details = data];
+        return [_this2.details = data];
       });
     },
     getFilesCount: function getFilesCount() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/ifFiles/" + this.orderId).then(function (_ref2) {
         var data = _ref2.data;
-        return [_this2.filesCount = data];
+        return [_this3.filesCount = data];
       });
     },
     getFiles: function getFiles() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/getFiles/" + this.orderId).then(function (_ref3) {
         var data = _ref3.data;
-        return [_this3.files = data];
+        return [_this4.files = data];
       });
     }
   },

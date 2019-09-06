@@ -197,6 +197,29 @@
             }
         },
         methods:{
+          submit(){
+              for(let i=0; i<this.attachments.length;i++){
+                    this.formf.append('pics[]',this.attachments[i]);
+                }
+
+                const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
+              axios.post('/api/completed/' + this.orderId,this.formf,config).then(response=>{
+                Fire.$emit('entry');
+                $('#addnew').modal('hide');
+                this.form.reset();
+                swal.fire({
+                      type: 'success',
+                      title: 'Submited!!',
+                      text: 'Files added successfully',
+
+                    })
+
+                })
+                    .catch(response=>{
+                        //error
+                    });
+            },
           fieldChange(e){
                 let selectedFiles=e.target.files;
                 if(!selectedFiles.length){

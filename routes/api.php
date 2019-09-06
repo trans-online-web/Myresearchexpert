@@ -34,6 +34,8 @@ Route::post('addFiles/{orderId}','API\TaskController@addFiles');
 
 Route::get('download/{id}','API\TaskController@downloadFile');
 
+Route::post('completed/{orderId}','API\CompletedController@store');
+
 Route::get('contacts','API\ContactsController@index');
 Route::get('student','API\ContactsController@student');
 Route::get('conversation/{id}','API\ContactsController@getMessagesFor');
