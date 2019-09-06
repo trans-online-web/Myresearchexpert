@@ -68,7 +68,34 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12" v-for="file in files" :key="file.id">
                                                 <a href="#" @click="download(file.id)">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon" style="background-color: green;"><i class="fas fa-download" style="color: white;"></i></span>
+                                                        <span class="info-box-icon" style="background-color: #a60de2;"><i class="fas fa-download" style="color: white;"></i></span>
+
+                                                        <div class="info-box-content">
+                                                            <span class="info-box-text">Download</span>
+                                                        </div>
+                                                        <!-- /.info-box-content -->
+                                                    </div>
+                                                </a>
+                                                <!-- /.info-box -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning alert-dismissible" v-if="this.filesCount == 0">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h5><i class="icon fa fa-ban"></i> Alert!</h5>
+                                        No files attached!!
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h5 class="box-title">Completed</h5>
+                                    </div>
+                                    <div class="box-body" v-if="this.filesCount > 0" style="padding-top: 10px;">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-12" v-for="complete in completed" :key="complete.id">
+                                                <a href="#" @click="downloadCompleted(complete.id)">
+                                                    <div class="info-box">
+                                                        <span class="info-box-icon" style="background-color: #31d125;"><i class="fas fa-download" style="color: white;"></i></span>
 
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Download</span>
@@ -127,6 +154,7 @@
                 details: {},
                 filesCount: {},
                 files: {},
+                completed: {},
                 attachments:[],
                 formf: new FormData(),
                 form: new Form({
@@ -135,6 +163,12 @@
             }
         },
         methods:{
+            downloadCompleted(id){
+                axios.get("/api/downloadcompleted/" + id).then();
+            },
+            getCompleted(){
+                axios.get("/api/getcompleted/" + this.orderId).then(({ data }) => ([this.completed = data]));
+            },
             submit(){
               for(let i=0; i<this.attachments.length;i++){
                     this.formf.append('pics[]',this.attachments[i]);
@@ -191,6 +225,7 @@
             this.getDetails();
             this.getFilesCount();
             this.getFiles();
+            this.getCompleted();
             Fire.$on('entry', () =>{
                 this.getDetails();
                 this.getFilesCount();

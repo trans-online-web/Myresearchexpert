@@ -49,15 +49,23 @@ class CompletedController extends Controller
         return response(['status'=>'success'],200);
     }
 
+    public function downloadCompleted($id)
+    {
+        // echo $path;
+        $path = Completed::where('id', $id)->value('path');
+        
+        return response()->download(storage_path('app/' . $path));
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($orderId)
     {
-        //
+        return Completed::where('task_id', $orderId)->get();
     }
 
     /**

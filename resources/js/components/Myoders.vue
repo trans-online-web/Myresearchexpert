@@ -87,7 +87,10 @@
     export default {
         data(){
             return{
-                orders: {}
+                orders: {},
+                form: new Form({
+
+                })
             }
         },
         methods:{

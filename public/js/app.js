@@ -2529,6 +2529,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2536,14 +2563,26 @@ __webpack_require__.r(__webpack_exports__);
       details: {},
       filesCount: {},
       files: {},
+      completed: {},
       attachments: [],
       formf: new FormData(),
       form: new Form({})
     };
   },
   methods: {
-    submit: function submit() {
+    downloadCompleted: function downloadCompleted(id) {
+      axios.get("/api/downloadcompleted/" + id).then();
+    },
+    getCompleted: function getCompleted() {
       var _this = this;
+
+      axios.get("/api/getcompleted/" + this.orderId).then(function (_ref) {
+        var data = _ref.data;
+        return [_this.completed = data];
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
 
       for (var i = 0; i < this.attachments.length; i++) {
         this.formf.append('pics[]', this.attachments[i]);
@@ -2558,7 +2597,7 @@ __webpack_require__.r(__webpack_exports__);
         Fire.$emit('entry');
         $('#addnew').modal('hide');
 
-        _this.form.reset();
+        _this2.form.reset();
 
         swal.fire({
           type: 'success',
@@ -2589,42 +2628,43 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/download/" + id).then();
     },
     getDetails: function getDetails() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("/api/task/" + this.orderId).then(function (_ref) {
-        var data = _ref.data;
-        return [_this2.details = data];
+      axios.get("/api/task/" + this.orderId).then(function (_ref2) {
+        var data = _ref2.data;
+        return [_this3.details = data];
       });
     },
     getFilesCount: function getFilesCount() {
-      var _this3 = this;
+      var _this4 = this;
 
-      axios.get("/api/ifFiles/" + this.orderId).then(function (_ref2) {
-        var data = _ref2.data;
-        return [_this3.filesCount = data];
+      axios.get("/api/ifFiles/" + this.orderId).then(function (_ref3) {
+        var data = _ref3.data;
+        return [_this4.filesCount = data];
       });
     },
     getFiles: function getFiles() {
-      var _this4 = this;
+      var _this5 = this;
 
-      axios.get("/api/getFiles/" + this.orderId).then(function (_ref3) {
-        var data = _ref3.data;
-        return [_this4.files = data];
+      axios.get("/api/getFiles/" + this.orderId).then(function (_ref4) {
+        var data = _ref4.data;
+        return [_this5.files = data];
       });
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getDetails();
     this.getFilesCount();
     this.getFiles();
+    this.getCompleted();
     Fire.$on('entry', function () {
-      _this5.getDetails();
+      _this6.getDetails();
 
-      _this5.getFilesCount();
+      _this6.getFilesCount();
 
-      _this5.getFiles();
+      _this6.getFiles();
     });
   }
 });
@@ -2728,7 +2768,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      orders: {}
+      orders: {},
+      form: new Form({})
     };
   },
   methods: {
@@ -85397,6 +85438,80 @@ var render = function() {
                         ]
                       )
                     : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "box" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  this.filesCount > 0
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "box-body",
+                          staticStyle: { "padding-top": "10px" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            _vm._l(_vm.completed, function(complete) {
+                              return _c(
+                                "div",
+                                {
+                                  key: complete.id,
+                                  staticClass: "col-md-6 col-sm-6 col-xs-12"
+                                },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: { href: "#" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.downloadCompleted(
+                                            complete.id
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._m(6, true)]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.filesCount == 0
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "alert alert-warning alert-dismissible"
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              attrs: {
+                                type: "button",
+                                "data-dismiss": "alert",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [_vm._v("×")]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(7),
+                          _vm._v(
+                            "\n                                    No files attached!!\n                                "
+                          )
+                        ]
+                      )
+                    : _vm._e()
                 ])
               ])
             ])
@@ -85423,7 +85538,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(5),
+              _vm._m(8),
               _vm._v(" "),
               _c(
                 "form",
@@ -85450,7 +85565,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(6)
+                  _vm._m(9)
                 ]
               )
             ])
@@ -85496,7 +85611,48 @@ var staticRenderFns = [
         "span",
         {
           staticClass: "info-box-icon",
-          staticStyle: { "background-color": "green" }
+          staticStyle: { "background-color": "#a60de2" }
+        },
+        [
+          _c("i", {
+            staticClass: "fas fa-download",
+            staticStyle: { color: "white" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-box-content" }, [
+        _c("span", { staticClass: "info-box-text" }, [_vm._v("Download")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [
+      _c("i", { staticClass: "icon fa fa-ban" }),
+      _vm._v(" Alert!")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h5", { staticClass: "box-title" }, [_vm._v("Completed")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "info-box" }, [
+      _c(
+        "span",
+        {
+          staticClass: "info-box-icon",
+          staticStyle: { "background-color": "#31d125" }
         },
         [
           _c("i", {
@@ -104445,14 +104601,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/Myoders.vue ***!
   \*********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Myoders_vue_vue_type_template_id_390fcc2a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Myoders.vue?vue&type=template&id=390fcc2a& */ "./resources/js/components/Myoders.vue?vue&type=template&id=390fcc2a&");
 /* harmony import */ var _Myoders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Myoders.vue?vue&type=script&lang=js& */ "./resources/js/components/Myoders.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Myoders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Myoders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -104482,7 +104639,7 @@ component.options.__file = "resources/js/components/Myoders.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Myoders.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
