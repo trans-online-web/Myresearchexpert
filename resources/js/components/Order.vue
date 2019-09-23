@@ -1,7 +1,18 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
+        <header class="masthead1">
+          <div class="container h-100">
+            <div class="row h-100 align-items-center">
+              <div class="col-12">
+                <h1 class="font-weight-light">How to Make an Order With us</h1>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+              </div>
+            </div>
+          </div>
+        </header>
         <div class="row justify-content-center">
-            <div class="col-md-8 mt-5">
+            <div class="col-md-10 mt-5">
                 <div class="card mt-5">
                     <div class="card-header">
                     <h3 class="card-title">Post Task</h3>

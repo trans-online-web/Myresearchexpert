@@ -7,11 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>My Assignments Experts</title>
+    <title>My Research Expert</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.13.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,25 +21,27 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    
 </head>
 <body>
     <div id="app">
-        <header>
-            <nav class="navbar navbar-expand-md fixed-top font">
-                <a class="navbar-brand text-light" href="/">My Assignments Experts</a>
+        <header id="sticker" class="header-area">
+            <nav class="navbar navbar-expand-md font bg-transparent">
+                <a class="navbar-brand" href="/">My Research Expert</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                      <a class="nav-link text-light" href="/howitworks">How it Works <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="/howitworks">How it Works <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-light" href="/services">Services</a>
+                      <a class="nav-link" href="/services">Services</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-light" href="/about">About Us</a>
+                      <a class="nav-link" href="/about">About Us</a>
                     </li>
                   </ul>
                   <div class="mt-2 mt-md-0">
@@ -147,6 +151,18 @@
  --}}
         
         @yield('content')
+        <script type="text/javascript">
+            $(window).scroll(function(){
+                if ($(window).scrollTop() >= 300) {
+                    $('#sticker').addClass('stick');
+                }
+                else {
+                    $('#sticker').removeClass('stick');
+                }
+            });
+       </script>
     </div>
+
+@include('includes.footer')
 </body>
 </html>
