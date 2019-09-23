@@ -5,7 +5,7 @@
             <div class="row h-100 align-items-center">
               <div class="col-12">
                 <h1 class="font-weight-light">How to Make an Order With us</h1>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <p class="lead3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
               </div>
             </div>

@@ -6,22 +6,12 @@
         <div class="row h-100 align-items-center">
           <div class="col-12">
             <h1 class="font-weight-light">Our Services</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            <p class="lead3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
           </div>
         </div>
       </div>
     </header>
-	<!-- <header class="service">
-	  <div class="container h-100">
-	    <div class="row h-100 align-items-center">
-	      <div class="col-12 text-center">
-	        <h1 class="font-weight-light">List of Services we Offer</h1>
-	        <p class="lead">These are the simple steps one can follow to me an order</p>
-	      </div>
-	    </div>
-	  </div>
-	</header> -->
     <div class="container">
     	<div class="justify-content-center py-3">
             <div class="row">
@@ -172,5 +162,4 @@
             </div>
         </div>
     </div>
-    @include('includes.footer')
 @endsection

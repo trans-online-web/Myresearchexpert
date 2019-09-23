@@ -6,7 +6,7 @@
 	    <div class="row h-100 align-items-center">
 	      <div class="col-12">
 	        <h1 class="font-weight-light">How to Make an Order With us</h1>
-	        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        <p class="lead3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
 	      </div>
 	    </div>
@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1 class="text-bold">How it Works</h1>
-				<p class="lead3 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptates maiores eius vel, tempora molestias, mollitia, natus quo, deserunt commodi animi qui assumenda. Modi quisquam repellendus illum, exercitationem tenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptatenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptates maiores eius vel, tempora molestias, mollitia, natus quo, deserunt commodi animi qui assumenda. Modi quisquam repellendus illum, exercitationem tenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptatenetur.</p>	
+				<p class="lead2 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptates maiores eius vel, tempora molestias, mollitia, natus quo, deserunt commodi animi qui assumenda. Modi quisquam repellendus illum, exercitationem tenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptatenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptates maiores eius vel, tempora molestias, mollitia, natus quo, deserunt commodi animi qui assumenda. Modi quisquam repellendus illum, exercitationem tenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptatenetur.</p>	
 			</div>
 		</div>
 		<div class="row --mar">
@@ -54,10 +54,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Lorem ipsum dolor sit amet</h3>
-				<p class="lead3 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptates maiores eius vel, tempora molestias, mollitia, natus quo, deserunt commodi animi qui assumenda. Modi quisquam repellendus illum, exercitationem tenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptatenetur.</p>	
+				<p class="lead2 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptates maiores eius vel, tempora molestias, mollitia, natus quo, deserunt commodi animi qui assumenda. Modi quisquam repellendus illum, exercitationem tenetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet voluptatenetur.</p>	
 			</div>
 		</div>
 	</section>
 	
-	@include('includes.footer')
 @endsection

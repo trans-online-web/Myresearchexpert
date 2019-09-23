@@ -59,12 +59,17 @@
                                         </li>
                                     @endif
                                 @else
-                                    <li class="nav-item dropdown">
+                                    <li class="nav-item">
+                                      <a href="/task" class="btn btn-lg btn-success">Submit An Order</a>
+                                    </li>
+                                    <li class="nav-item dropdown bg-transparent">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
 
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div class="dropdown-menu dropdown-menu-right bg-transparent" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="">My Orders</a>
+                                            <a class="dropdown-item" href="">My Profile</a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
@@ -153,7 +158,7 @@
         @yield('content')
         <script type="text/javascript">
             $(window).scroll(function(){
-                if ($(window).scrollTop() >= 300) {
+                if ($(window).scrollTop() >= 1) {
                     $('#sticker').addClass('stick');
                 }
                 else {

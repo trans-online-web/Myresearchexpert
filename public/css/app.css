@@ -40648,6 +40648,7 @@ readers do not read off random characters that represent icons */
 
 * {
   font-family: "Roboto";
+  font-size: 16px;
 }
 
 .row {
@@ -40690,6 +40691,11 @@ nav {
 
 .header-area a {
   color: #fff;
+}
+
+.header-area a:hover {
+  color: #3B0927;
+  transition: color 1s;
 }
 
 .stick {
@@ -40735,11 +40741,11 @@ nav {
 }
 
 .lead2 {
-  font-size: 16px;
+  font-size: 18px;
 }
 
-.lead2 {
-  font-size: 18px;
+.lead3 {
+  font-size: 20px;
 }
 
 .featurette {
@@ -40754,6 +40760,7 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  color: #fff;
 }
 
 .order-form {
@@ -40809,6 +40816,7 @@ hr {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  color: #fff;
 }
 
 .masthead1 {
@@ -40819,6 +40827,7 @@ hr {
   background-position: center;
   background-repeat: no-repeat;
   padding: 0 -15px;
+  color: #fff;
 }
 
 .service {
@@ -40828,6 +40837,7 @@ hr {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  color: #fff;
 }
 
 .about {
@@ -40837,6 +40847,7 @@ hr {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  color: #fff;
 }
 
 .about_p1 {
@@ -40887,7 +40898,7 @@ hr {
 .popular-subjects_item {
   border: solid #724DCE 1px;
   background-color: #f5f5f5;
-  margin: 6px 4px;
+  margin: 6px 2px;
   padding: 2px 8px;
   border-radius: 10px;
 }
@@ -40902,6 +40913,10 @@ hr {
 .input-group-addon {
   border-color: #e1e1e1;
   border-radius: 0;
+}
+
+.login {
+  margin-top: 100px;
 }
 
 .signup-form {

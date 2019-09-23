@@ -20,7 +20,7 @@
         <div class="jumbotron h-100">
           <h1 class="font-weight-bold pt-4"> We Will Help You Do Your Assignments
           <h3>From initial topic to finished paper</h3>
-          <p class="lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          <p class="lead3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -132,5 +132,4 @@
   
 </div>
  
-@include('includes.footer')
 @endsection

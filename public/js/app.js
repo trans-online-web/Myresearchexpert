@@ -2765,6 +2765,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -85784,12 +85786,30 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card mt-4" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("My Orders")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-tools" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/task" } },
+                  [
+                    _c("i", { staticClass: "fa fa-user-plus fa-fw" }),
+                    _vm._v("Add")
+                  ]
+                )
+              ],
+              1
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "card-body table-responsive p-0" }, [
               _c("table", { staticClass: "table table-hover" }, [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -85877,7 +85897,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "form",
@@ -85964,7 +85984,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]
               )
             ])
@@ -85975,21 +85995,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("My Orders")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c("button", { staticClass: "btn btn-success pull-left" }, [
-          _vm._v("Add"),
-          _c("i", { staticClass: "fa fa-user-plus fa-fw" })
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -86844,7 +86849,7 @@ var staticRenderFns = [
               _vm._v("How to Make an Order With us")
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "lead" }, [
+            _c("p", { staticClass: "lead3" }, [
               _vm._v(
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
               )
