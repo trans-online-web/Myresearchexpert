@@ -22,8 +22,7 @@ class CreateTasksTable extends Migration
             $table->string('documentType_name');
             $table->dateTime('deadline_datetime');
             $table->string('level');
-            $table->decimal('suggested_price', 8, 2);
-            $table->decimal('budget', 8, 2);
+            $table->decimal('price', 8, 2);
             $table->string('title');
             $table->string('status')->default('Pending');
             $table->longText('task');
