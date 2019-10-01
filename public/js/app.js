@@ -2773,6 +2773,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -85814,7 +85817,17 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v("$" + _vm._s(order.price))]),
+                      _c("td", [
+                        order.paid == 0
+                          ? _c("span", { staticStyle: { color: "green" } }, [
+                              _vm._v("$" + _vm._s(order.price))
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.paid == 1
+                          ? _c("span", [_vm._v("$" + _vm._s(order.price))])
+                          : _vm._e()
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c(

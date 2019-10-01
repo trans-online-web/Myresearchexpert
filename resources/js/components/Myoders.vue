@@ -31,7 +31,10 @@
                                         <span class="badge badge-pill badge-success" v-if="order.status == 'Completed'">Completed</span>
                                     </td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
-                                    <td>${{order.price}}</td>
+                                    <td>
+                                        <span style="color: green;" v-if="order.paid == 0">${{order.price}}</span>
+                                        <span v-if="order.paid == 1">${{order.price}}</span>
+                                    </td>
                                     <td>
                                         <a :href="'/myorderdetails/' + order.id" type="button" class="btn btn-primary btn-sm">More</a>
                                     </td>

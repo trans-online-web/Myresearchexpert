@@ -147,19 +147,32 @@ class TaskController extends Controller
             'status' => 'required',
         ]);
 
-        $task = Task::findOrFail($id);
-        $task->status = $request->status;
-        $task->update();
+        if ($request->status == 'Paid') {
+            $task = Task::findOrFail($id);
+            $task->status = $request->status;
+            $task->paid = 0;
+            $task->update();
+        } elseif ($request->status == 'Pending') {
+            $task = Task::findOrFail($id);
+            $task->status = $request->status;
+            $task->paid = 1;
+            $task->update();
+        } else {
+            $task = Task::findOrFail($id);
+            $task->status = $request->status;
+            $task->update();
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+/**
+ * Remove the specified resource from storage.
+ *
+ * @param int $id
+ * @return \Illuminate\Http\Response
+ */
+public
+function destroy($id)
+{
+    //
+}
 }
