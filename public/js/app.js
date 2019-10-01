@@ -2766,6 +2766,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -85766,7 +85773,39 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(order.subject_name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(order.status))]),
+                      _c("td", [
+                        order.status == "Pending"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-warning" },
+                              [_vm._v("Pending..")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Paid"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-info" },
+                              [_vm._v("Paid")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Working"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-dark" },
+                              [_vm._v("Working")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Completed"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-success" },
+                              [_vm._v("Completed")]
+                            )
+                          : _vm._e()
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c("i", { staticClass: "fa fa-clock-o mr-1" }),
@@ -85774,6 +85813,8 @@ var render = function() {
                           _vm._s(_vm._f("myDate")(order.deadline_datetime))
                         )
                       ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("$" + _vm._s(order.price))]),
                       _vm._v(" "),
                       _c("td", [
                         _c(
@@ -85949,6 +85990,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Deadline")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Price")]),
         _vm._v(" "),
         _c("th", [_vm._v("More")]),
         _vm._v(" "),

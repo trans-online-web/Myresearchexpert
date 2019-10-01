@@ -14,6 +14,7 @@
                                     <th>Subject</th>
                                     <th>Status</th>
                                     <th>Deadline</th>
+                                    <th>Price</th>
                                     <th>More</th>
                                     <th>Action</th>
                                 </tr>
@@ -23,8 +24,14 @@
                                     <td>#{{order.id}}</td>
                                     <td>{{order.title}}</td>
                                     <td>{{order.subject_name}}</td>
-                                    <td>{{order.status}}</td>
+                                    <td>
+                                        <span class="badge badge-pill badge-warning" v-if="order.status == 'Pending'">Pending..</span>
+                                        <span class="badge badge-pill badge-info" v-if="order.status == 'Paid'">Paid</span>
+                                        <span class="badge badge-pill badge-dark" v-if="order.status == 'Working'">Working</span>
+                                        <span class="badge badge-pill badge-success" v-if="order.status == 'Completed'">Completed</span>
+                                    </td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
+                                    <td>${{order.price}}</td>
                                     <td>
                                         <a :href="'/myorderdetails/' + order.id" type="button" class="btn btn-primary btn-sm">More</a>
                                     </td>
