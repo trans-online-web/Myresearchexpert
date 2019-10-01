@@ -42,7 +42,7 @@ class TaskController extends Controller
         $request->validate([
             'subject' => 'required',
             'type' => 'required',
-            'budget' => 'required',
+            'price' => 'required',
             'title' => 'required',
         ]);
 
@@ -53,8 +53,7 @@ class TaskController extends Controller
         $task->subject_name = $request->subject;
         $task->documentType_name = $request->type;
         $task->deadline_datetime = $request->date;
-        $task->suggested_price = $request->suggested;
-        $task->budget = $request->budget;
+        $task->price = $request->price;
         $task->level = $request->level;
         $task->title = $request->title;
         $task->task = $request->task;

@@ -42,12 +42,12 @@
                             </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="row">
                                 <div class="col">
                                 <div class="form-group">
-                                <label for="status">Subject</label>
+                                <label for="subject">Subject</label>
                                 <select v-model="form.subject" class="form-control" name="subject" id="subject"
                                         :class="{ 'is-invalid': form.errors.has('subject') }">
                                     <option selected value="">--Select Status--</option>
@@ -85,26 +85,26 @@
                                 <has-error :form="form" field="date"></has-error>
                             </div>
                                 </div>
-                                
+
                             </div>
                             <div class="row">
                                 <div class="col">
                                 <label for="spacing">Spacing</label><br>
                                 <div class="form-check form-check-inline">
-                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single" 
+                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="single"
                                         :class="{ 'is-invalid': form.errors.has('spacing') }">
                                 <label class="form-check-label" for="inlineRadio1">Single</label>
                                 <has-error :form="form" field="spacing"></has-error>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double" 
+                                <input v-model="form.spacing" class="form-check-input" type="radio" name="spacing" id="spacing" value="double"
                                           :class="{ 'is-invalid': form.errors.has('spacing') }">
                                 <label class="form-check-label" for="inlineRadio1">Double</label>
                                 <has-error :form="form" field="spacing"></has-error>
                                 </div>
                                 </div>
                                 <div class="col">
-                                
+
                                 </div>
                             </div>
                             <hr>
@@ -121,20 +121,14 @@
                             </div>
                             <hr>
                             <div class="form-group">
-                                <label for="suggested">Suggested</label>
-                                <button @click="getDiff()" type="button" class="btn btn-success btn-sm">Compute</button>
-                                <p>${{this.suggestion}}</p>
+                                <label for="suggested">Price</label><br>
+                                <button @click="getDiff()" type="button" class="btn btn-success btn-sm">Compute Price</button>
+                                <p class="lead" v-if="this.isOk == 1">${{this.suggestion}}</p>
                             </div>
-                            <div class="form-group" v-if="this.isOk == 1">
-                                <label for="budget">Your Budget</label>
-                                <input v-model="form.budget" type="number" class="form-control" name="budget" id="budget"
-                                       placeholder="budget" :class="{ 'is-invalid': form.errors.has('budget') }">
-                                <has-error :form="form" field="budget"></has-error>
-                            </div>
-                            
+
                         </div>
                         <div class="modal-footer" v-if="this.isOk == 1">
-                            <button type="submit" class="btn btn-success" @click="submit()">
+                            <button type="submit" class="btn btn-success btn-lg" @click="submit()">
                                 <i class="fa fa-send"></i>
                                 Submit
                             </button>
@@ -171,7 +165,6 @@ import 'vue-datetime/dist/vue-datetime.css';
                     date: '',
                     time: '',
                     task: '',
-                    budget: '',
                 })
             }
         },
@@ -212,7 +205,7 @@ import 'vue-datetime/dist/vue-datetime.css';
                 let dd = this.form.date;
                let diff = moment(dd).diff(this.now, 'minutes');
                this.diff = diff;
-               
+
                if(this.form.spacing == 'double'){
 
                 if(this.form.level == 'High School'){
@@ -497,8 +490,7 @@ import 'vue-datetime/dist/vue-datetime.css';
               this.formf.append('date',moment(this.form.date).format('YYYY-MM-DD HH:mm:ss'));
               this.formf.append('time',this.form.time);
               this.formf.append('task',this.form.task);
-              this.formf.append('budget',this.form.budget);
-              this.formf.append('suggested',this.suggestion);
+              this.formf.append('price',this.suggestion);
 
               const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
@@ -519,7 +511,7 @@ import 'vue-datetime/dist/vue-datetime.css';
                         //error
                     });
 
-                  
+
             },
             fieldChange(e){
                 let selectedFiles=e.target.files;

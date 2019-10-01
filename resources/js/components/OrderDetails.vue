@@ -30,12 +30,8 @@
                   <td><span>{{details.email}}</span></td>
                 </tr>
                 <tr>
-                  <td>Estimated Cost</td>
-                  <td><span>${{details.suggested_price}}</span></td>
-                </tr>
-                <tr>
-                  <td>Client's Budget</td>
-                  <td><span>${{details.budget}}</span></td>
+                  <td>Price</td>
+                  <td><span>${{details.price}}</span></td>
                 </tr>
               </tbody></table>
             </div>

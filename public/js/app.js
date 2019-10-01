@@ -3039,12 +3039,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3067,8 +3061,7 @@ __webpack_require__.r(__webpack_exports__);
         spacing: '',
         date: '',
         time: '',
-        task: '',
-        budget: ''
+        task: ''
       })
     };
   },
@@ -3410,8 +3403,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formf.append('date', moment(this.form.date).format('YYYY-MM-DD HH:mm:ss'));
       this.formf.append('time', this.form.time);
       this.formf.append('task', this.form.task);
-      this.formf.append('budget', this.form.budget);
-      this.formf.append('suggested', this.suggestion);
+      this.formf.append('price', this.suggestion);
       var config = {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -3464,10 +3456,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -86326,7 +86314,7 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
-                          _c("label", { attrs: { for: "status" } }, [
+                          _c("label", { attrs: { for: "subject" } }, [
                             _vm._v("Subject")
                           ]),
                           _vm._v(" "),
@@ -86707,8 +86695,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "suggested" } }, [
-                      _vm._v("Suggested")
+                      _vm._v("Price")
                     ]),
+                    _c("br"),
                     _vm._v(" "),
                     _c(
                       "button",
@@ -86721,62 +86710,15 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Compute")]
+                      [_vm._v("Compute Price")]
                     ),
                     _vm._v(" "),
-                    _c("p", [_vm._v("$" + _vm._s(this.suggestion))])
-                  ]),
-                  _vm._v(" "),
-                  this.isOk == 1
-                    ? _c(
-                        "div",
-                        { staticClass: "form-group" },
-                        [
-                          _c("label", { attrs: { for: "budget" } }, [
-                            _vm._v("Your Budget")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.budget,
-                                expression: "form.budget"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.form.errors.has("budget")
-                            },
-                            attrs: {
-                              type: "number",
-                              name: "budget",
-                              id: "budget",
-                              placeholder: "budget"
-                            },
-                            domProps: { value: _vm.form.budget },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.form,
-                                  "budget",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            attrs: { form: _vm.form, field: "budget" }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e()
+                    this.isOk == 1
+                      ? _c("p", { staticClass: "lead" }, [
+                          _vm._v("$" + _vm._s(this.suggestion))
+                        ])
+                      : _vm._e()
+                  ])
                 ]),
                 _vm._v(" "),
                 this.isOk == 1
@@ -86784,7 +86726,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-success",
+                          staticClass: "btn btn-success btn-lg",
                           attrs: { type: "submit" },
                           on: {
                             click: function($event) {
@@ -86899,23 +86841,11 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("tr", [
-                            _c("td", [_vm._v("Estimated Cost")]),
+                            _c("td", [_vm._v("Price")]),
                             _vm._v(" "),
                             _c("td", [
                               _c("span", [
-                                _vm._v(
-                                  "$" + _vm._s(_vm.details.suggested_price)
-                                )
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Client's Budget")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("span", [
-                                _vm._v("$" + _vm._s(_vm.details.budget))
+                                _vm._v("$" + _vm._s(_vm.details.price))
                               ])
                             ])
                           ])
