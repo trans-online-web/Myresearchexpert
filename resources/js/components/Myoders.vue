@@ -3,12 +3,6 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card mt-4">
-                    <div class="card-header">
-                        <h3 class="card-title">My Orders</h3>
-                        <div class="card-tools">
-                            <!-- <button class="btn btn-success pull-left">Add<i class="fa fa-user-plus fa-fw"></i></button> -->
-                        </div>
-                    </div>
 
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
@@ -28,12 +22,11 @@
                                 <tr v-for="order in orders" :key="order.id">
                                     <td>#{{order.id}}</td>
                                     <td>{{order.title}}</td>
-                                    <td>{{order.subject_name}}</td>           
-                                    <td>{{order.status}}</td>
                                     <td>{{order.subject_name}}</td>
+                                    <td>{{order.status}}</td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
                                     <td>
-                                        <router-link :to="{path:'/MyOrderDetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
+                                        <a href="/myorderdetails/1" type="button" class="btn btn-primary btn-sm">More</a>
                                     </td>
                                     <td>
                                         <a href="#" @click="deleteorder(order.id)">

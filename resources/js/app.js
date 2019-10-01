@@ -64,7 +64,7 @@ let routes = [
     { path: '/orders', component: require('./components/TaskOrders.vue').default },
     { path: '/orderdetails/:orderId', component: require('./components/OrderDetails.vue').default },
     { path: '/MyOrderDetails/:orderId', component: require('./components/MyOrderDetails.vue').default },
-    // { path: '/MyOrder', component: require('./components/Myoders.vue').default },
+    { path: '/MyOrder', component: require('./components/Myoders.vue').default },
     { path: '/chat', component: require('./components/Chat.vue').default },
 
 ]
@@ -97,6 +97,7 @@ Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('Order', require('./components/Order.vue').default);
 Vue.component('my-order', require('./components/Myoders.vue').default);
+Vue.component('myorderdetails', require('./components/MyOrderDetails.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

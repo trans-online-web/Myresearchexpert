@@ -2553,9 +2553,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2680,13 +2677,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2894,19 +2884,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_datetime_dist_vue_datetime_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-datetime/dist/vue-datetime.css */ "./node_modules/vue-datetime/dist/vue-datetime.css");
 /* harmony import */ var vue_datetime_dist_vue_datetime_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_datetime_dist_vue_datetime_css__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -85266,256 +85243,262 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "box" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "box-body no-padding table-responsive p-0" },
-                    [
-                      _c("table", { staticClass: "table table-striped" }, [
-                        _c("tbody", [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Document's Title")]),
+        _c(
+          "div",
+          { staticClass: "card", staticStyle: { "margin-top": "20px" } },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "box" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "box-body no-padding table-responsive p-0"
+                      },
+                      [
+                        _c("table", { staticClass: "table table-striped" }, [
+                          _c("tbody", [
+                            _vm._m(1),
                             _vm._v(" "),
-                            _c("td", [
-                              _c("span", [_vm._v(_vm._s(_vm.details.title))])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Level")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("span", [_vm._v(_vm._s(_vm.details.level))])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Subject")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("span", [
-                                _vm._v(_vm._s(_vm.details.subject_name))
+                            _c("tr", [
+                              _c("td", [_vm._v("Document's Title")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [_vm._v(_vm._s(_vm.details.title))])
                               ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Document Type")]),
+                            ]),
                             _vm._v(" "),
-                            _c("td", [
-                              _c("span", [
-                                _vm._v(_vm._s(_vm.details.documentType_name))
+                            _c("tr", [
+                              _c("td", [_vm._v("Level")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [_vm._v(_vm._s(_vm.details.level))])
                               ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("No. of Pages")]),
+                            ]),
                             _vm._v(" "),
-                            _c("td", [
-                              _c("span", [_vm._v(_vm._s(_vm.details.pages))])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Deadline")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("span", [
-                                _vm._v(_vm._s(_vm.details.deadline_datetime))
+                            _c("tr", [
+                              _c("td", [_vm._v("Subject")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [
+                                  _vm._v(_vm._s(_vm.details.subject_name))
+                                ])
                               ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Spacing")]),
+                            ]),
                             _vm._v(" "),
-                            _c("td", [
-                              _c("span", [_vm._v(_vm._s(_vm.details.spacing))])
+                            _c("tr", [
+                              _c("td", [_vm._v("Document Type")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [
+                                  _vm._v(_vm._s(_vm.details.documentType_name))
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("No. of Pages")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [_vm._v(_vm._s(_vm.details.pages))])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("Deadline")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [
+                                  _vm._v(_vm._s(_vm.details.deadline_datetime))
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("Spacing")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("span", [
+                                  _vm._v(_vm._s(_vm.details.spacing))
+                                ])
+                              ])
                             ])
                           ])
                         ])
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "box" }, [
-                  _c("div", { staticClass: "box-header" }, [
-                    _c("h5", { staticClass: "box-title" }, [
-                      _vm._v("Files Sent")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "box-tools" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary btn-sm",
-                          on: { click: _vm.newModal }
-                        },
-                        [_vm._v("Add Files")]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  this.filesCount > 0
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "box-body",
-                          staticStyle: { "padding-top": "10px" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "row" },
-                            _vm._l(_vm.files, function(file) {
-                              return _c(
-                                "div",
-                                {
-                                  key: file.id,
-                                  staticClass: "col-md-6 col-sm-6 col-xs-12"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.download(file.id)
-                                        }
-                                      }
-                                    },
-                                    [_vm._m(3, true)]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  this.filesCount == 0
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "alert alert-warning alert-dismissible"
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "close",
-                              attrs: {
-                                type: "button",
-                                "data-dismiss": "alert",
-                                "aria-hidden": "true"
-                              }
-                            },
-                            [_vm._v("×")]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(4),
-                          _vm._v(
-                            "\n                                    No files attached!!\n                                "
-                          )
-                        ]
-                      )
-                    : _vm._e()
+                      ]
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "box" }, [
-                  _vm._m(5),
-                  _vm._v(" "),
-                  this.filesCount > 0
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "box-body",
-                          staticStyle: { "padding-top": "10px" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "row" },
-                            _vm._l(_vm.completed, function(complete) {
-                              return _c(
-                                "div",
-                                {
-                                  key: complete.id,
-                                  staticClass: "col-md-6 col-sm-6 col-xs-12"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.downloadCompleted(
-                                            complete.id
-                                          )
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "box" }, [
+                    _c("div", { staticClass: "box-header" }, [
+                      _c("h5", { staticClass: "box-title" }, [
+                        _vm._v("Files Sent")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "box-tools" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary btn-sm",
+                            on: { click: _vm.newModal }
+                          },
+                          [_vm._v("Add Files")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    this.filesCount > 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "box-body",
+                            staticStyle: { "padding-top": "10px" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "row" },
+                              _vm._l(_vm.files, function(file) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: file.id,
+                                    staticClass: "col-md-6 col-sm-6 col-xs-12"
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { href: "#" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.download(file.id)
+                                          }
                                         }
-                                      }
-                                    },
-                                    [_vm._m(6, true)]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    : _vm._e(),
+                                      },
+                                      [_vm._m(2, true)]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    this.filesCount == 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "alert alert-warning alert-dismissible"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "close",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "alert",
+                                  "aria-hidden": "true"
+                                }
+                              },
+                              [_vm._v("×")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(3),
+                            _vm._v(
+                              "\n                                    No files attached!!\n                                "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  this.filesCount == 0
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "alert alert-warning alert-dismissible"
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "close",
-                              attrs: {
-                                type: "button",
-                                "data-dismiss": "alert",
-                                "aria-hidden": "true"
-                              }
-                            },
-                            [_vm._v("×")]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(7),
-                          _vm._v(
-                            "\n                                    No files attached!!\n                                "
-                          )
-                        ]
-                      )
-                    : _vm._e()
+                  _c("div", { staticClass: "box" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    this.filesCount > 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "box-body",
+                            staticStyle: { "padding-top": "10px" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "row" },
+                              _vm._l(_vm.completed, function(complete) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: complete.id,
+                                    staticClass: "col-md-6 col-sm-6 col-xs-12"
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { href: "#" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.downloadCompleted(
+                                              complete.id
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [_vm._m(5, true)]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    this.filesCount == 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "alert alert-warning alert-dismissible"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "close",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "alert",
+                                  "aria-hidden": "true"
+                                }
+                              },
+                              [_vm._v("×")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(6),
+                            _vm._v(
+                              "\n                                    No files attached!!\n                                "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
                 ])
               ])
             ])
-          ])
-        ])
+          ]
+        )
       ])
     ]),
     _vm._v(" "),
@@ -85537,7 +85520,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(8),
+              _vm._m(7),
               _vm._v(" "),
               _c(
                 "form",
@@ -85564,7 +85547,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(9)
+                  _vm._m(8)
                 ]
               )
             ])
@@ -85575,14 +85558,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Order Details")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -85745,12 +85720,10 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card mt-4" }, [
-          _vm._m(0),
-          _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "card-body table-responsive p-0" }, [
               _c("table", { staticClass: "table table-hover" }, [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -85764,8 +85737,6 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(order.status))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(order.subject_name))]),
-                      _vm._v(" "),
                       _c("td", [
                         _c("i", { staticClass: "fa fa-clock-o mr-1" }),
                         _vm._v(
@@ -85773,23 +85744,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-primary btn-sm",
-                              attrs: {
-                                to: { path: "/MyOrderDetails/" + order.id },
-                                type: "button"
-                              }
-                            },
-                            [_vm._v("More")]
-                          )
-                        ],
-                        1
-                      ),
+                      _vm._m(1, true),
                       _vm._v(" "),
                       _c("td", [
                         _c(
@@ -85940,16 +85895,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("My Orders")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("Order Id")]),
@@ -85966,6 +85911,21 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary btn-sm",
+          attrs: { href: "/myorderdetails/1", type: "button" }
+        },
+        [_vm._v("More")]
+      )
     ])
   },
   function() {
@@ -86154,12 +86114,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _vm._m(0),
-    _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-10 mt-5" }, [
         _c("div", { staticClass: "card mt-5" }, [
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c(
@@ -86667,8 +86625,6 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "files" } }, [
                       _vm._v("Upload Files")
@@ -86680,8 +86636,6 @@ var render = function() {
                       on: { change: _vm.fieldChange }
                     })
                   ]),
-                  _vm._v(" "),
-                  _c("hr"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "suggested" } }, [
@@ -86742,28 +86696,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "masthead1" }, [
-      _c("div", { staticClass: "container h-100" }, [
-        _c("div", { staticClass: "row h-100 align-items-center" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("h1", { staticClass: "font-weight-light" }, [
-              _vm._v("How to Make an Order With us")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "lead3" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -103728,8 +103660,10 @@ var routes = [{
 }, {
   path: '/MyOrderDetails/:orderId',
   component: __webpack_require__(/*! ./components/MyOrderDetails.vue */ "./resources/js/components/MyOrderDetails.vue")["default"]
-}, // { path: '/MyOrder', component: require('./components/Myoders.vue').default },
-{
+}, {
+  path: '/MyOrder',
+  component: __webpack_require__(/*! ./components/Myoders.vue */ "./resources/js/components/Myoders.vue")["default"]
+}, {
   path: '/chat',
   component: __webpack_require__(/*! ./components/Chat.vue */ "./resources/js/components/Chat.vue")["default"]
 }];
@@ -103759,6 +103693,7 @@ Vue.component('chat', __webpack_require__(/*! ./components/Chat.vue */ "./resour
 Vue.component('notification', __webpack_require__(/*! ./components/Notification.vue */ "./resources/js/components/Notification.vue")["default"]);
 Vue.component('Order', __webpack_require__(/*! ./components/Order.vue */ "./resources/js/components/Order.vue")["default"]);
 Vue.component('my-order', __webpack_require__(/*! ./components/Myoders.vue */ "./resources/js/components/Myoders.vue")["default"]);
+Vue.component('myorderdetails', __webpack_require__(/*! ./components/MyOrderDetails.vue */ "./resources/js/components/MyOrderDetails.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

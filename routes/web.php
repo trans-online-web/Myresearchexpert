@@ -37,4 +37,6 @@ Route::get('/task', 'HomeController@task');
 
 Route::get('/myorders', 'HomeController@myorders');
 
+Route::get('/myorderdetails/{id}', 'HomeController@myorderdetails');
+
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d\-/_.]+)?');
