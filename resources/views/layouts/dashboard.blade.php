@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
+@can('isAdmin')
 <div class="wrapper" id="app">
 
     <!-- Navbar -->
@@ -228,14 +229,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/MyOrder" class="nav-link">
-                           <i class="fas fa-folder blue"></i>
-                            <p>
-                                MyOrders
-                            </p>
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
                         <router-link to="/user" class="nav-link">
                             <i class=" nav-icon fas fa-users-cog indigo"></i>
                             <p>
@@ -302,6 +295,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
     </footer>
 </div>
+@endcan
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

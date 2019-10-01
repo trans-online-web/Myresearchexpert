@@ -26,7 +26,7 @@
                                     <td>{{order.status}}</td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
                                     <td>
-                                        <a href="/myorderdetails/1" type="button" class="btn btn-primary btn-sm">More</a>
+                                        <a :href="'/myorderdetails/' + order.id" type="button" class="btn btn-primary btn-sm">More</a>
                                     </td>
                                     <td>
                                         <a href="#" @click="deleteorder(order.id)">

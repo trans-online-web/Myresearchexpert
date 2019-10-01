@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Completed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -26,15 +27,17 @@ class TaskController extends Controller
     {
         return Task::latest()->paginate(20);
     }
+
     public function student()
     {
         $user = auth()->user()->id;
-        return Task::where('user_id',$user)->get();
+        return Task::where('user_id', $user)->get();
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,8 +66,8 @@ class TaskController extends Controller
         $task_id = $task->id;
 
         if ($request->pics) {
-            $uploadedFiles=$request->pics;
-            foreach ($uploadedFiles as $file){
+            $uploadedFiles = $request->pics;
+            foreach ($uploadedFiles as $file) {
                 $filename = $file->store('uploads');
                 // echo $filename;
                 $file = new Files();
@@ -74,13 +77,13 @@ class TaskController extends Controller
                 $file->save();
             }
         }
-        return response(['status'=>'success'],200);
+        return response(['status' => 'success'], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -91,6 +94,11 @@ class TaskController extends Controller
     public function ifFiles($orderId)
     {
         return Files::where('task_id', $orderId)->count();
+    }
+
+    public function ifCompleted($orderId)
+    {
+        return Completed::where('task_id', $orderId)->count();
     }
 
     public function getFiles($orderId)
@@ -105,8 +113,8 @@ class TaskController extends Controller
         ]);
 
         if ($request->pics) {
-            $uploadedFiles=$request->pics;
-            foreach ($uploadedFiles as $file){
+            $uploadedFiles = $request->pics;
+            foreach ($uploadedFiles as $file) {
                 $filename = $file->store('uploads');
                 // echo $filename;
                 $file = new Files();
@@ -122,15 +130,15 @@ class TaskController extends Controller
     {
         // echo $path;
         $path = Files::where('id', $id)->value('path');
-        
+
         return response()->download(storage_path('app/' . $path));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -147,7 +155,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

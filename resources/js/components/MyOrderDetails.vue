@@ -58,6 +58,7 @@
                                         <h5 class="box-title">Files Sent</h5>
                                         <div class="box-tools">
                                             <button class="btn btn-primary btn-sm" @click="newModal">Add Files</button>
+                                            <br>
                                         </div>
                                     </div>
                                     <div class="box-body" v-if="this.filesCount > 0" style="padding-top: 10px;">
@@ -87,7 +88,7 @@
                                     <div class="box-header">
                                         <h5 class="box-title">Completed</h5>
                                     </div>
-                                    <div class="box-body" v-if="this.filesCount > 0" style="padding-top: 10px;">
+                                    <div class="box-body" v-if="this.ifCompleted > 0" style="padding-top: 10px;">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12" v-for="complete in completed" :key="complete.id">
                                                 <a href="#" @click="downloadCompleted(complete.id)">
@@ -104,7 +105,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="alert alert-warning alert-dismissible" v-if="this.filesCount == 0">
+                                    <div class="alert alert-warning alert-dismissible" v-if="this.ifCompleted == 0">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                         <h5><i class="icon fa fa-ban"></i> Alert!</h5>
                                         No files attached!!
@@ -150,6 +151,7 @@
                 orderId: this.$route.params.orderId,
                 details: {},
                 filesCount: {},
+                ifCompleted: {},
                 files: {},
                 completed: {},
                 attachments:[],
@@ -214,6 +216,10 @@
                 axios.get("/api/ifFiles/" + this.orderId).then(({ data }) => ([this.filesCount = data]));
             },
 
+            getCount(){
+                axios.get("/api/ifCompleted/" + this.orderId).then(({ data }) => ([this.ifCompleted = data]));
+            },
+
             getFiles(){
                 axios.get("/api/getFiles/" + this.orderId).then(({ data }) => ([this.files = data]));
             },
@@ -223,6 +229,7 @@
             this.getFilesCount();
             this.getFiles();
             this.getCompleted();
+            this.getCount();
             Fire.$on('entry', () =>{
                 this.getDetails();
                 this.getFilesCount();
