@@ -228,14 +228,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/MyOrder" class="nav-link">
-                           <i class="fas fa-folder blue"></i>
-                            <p>
-                                MyOrders
-                            </p>
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
                         <router-link to="/user" class="nav-link">
                             <i class=" nav-icon fas fa-users-cog indigo"></i>
                             <p>

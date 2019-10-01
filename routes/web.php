@@ -30,9 +30,11 @@ Route::get('/about', function () {
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/markasread', function (){
+Route::get('/markasread', function () {
     auth()->user()->unreadNotifications->markAsRead();
 });
 Route::get('/task', 'HomeController@task');
 
-Route::get('{path}','HomeController@index')->where( 'path', '([A-z\d\-/_.]+)?' );
+Route::get('/myorders', 'HomeController@myorders');
+
+Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d\-/_.]+)?');

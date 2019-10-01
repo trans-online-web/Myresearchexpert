@@ -7,8 +7,6 @@
                         <h3 class="card-title">My Orders</h3>
                         <div class="card-tools">
                             <!-- <button class="btn btn-success pull-left">Add<i class="fa fa-user-plus fa-fw"></i></button> -->
-                            <router-link to="/task" class="nav-link">
-                            <i class="fa fa-user-plus fa-fw"></i>Add</router-link>
                         </div>
                     </div>
 
