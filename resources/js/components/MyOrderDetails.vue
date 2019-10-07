@@ -174,16 +174,11 @@
 
 <script>
     export default {
-        props:{
-            user: {
-                type: Object,
-                required: true
-            }
-        },
         data(){
             return{
                 message: '',
                 typing:'',
+                user: {},
                 users : {},
                 messages:[],
                 orderId: this.$route.params.orderId,
@@ -304,14 +299,8 @@
             getFiles(){
                 axios.get("/api/getFiles/" + this.orderId).then(({ data }) => ([this.files = data]));
             },
-            getUser(){
-                if (this.$gate.isAdmin()) {
-                    axios.get("/api/getUser/" + this.orderId).then(({ data }) => ([this.users = data]));
-                }
-                if (this.$gate.isStudent()) {
-                    axios.get("/api/getAdmin/").then(({ data }) => ([this.users = data]));
-                }
-
+            getThisUser(){
+                axios.get("/api/getThisUser/" + this.orderId).then(({ data }) => ([this.user = data]));
             },
             getMessages(){
                 axios.get("/api/getMessage/" + this.orderId).then((response) => (this.messages = response.data));
@@ -335,7 +324,7 @@
             this.getDetails();
             this.getFilesCount();
             this.getFiles();
-            this.getUser();
+            this.getThisUser();
             this.getMessages();
             this.getCompleted();
             Fire.$on('entry', () =>{
@@ -343,6 +332,7 @@
                 this.getFilesCount();
                 this.getFiles();
                 this. getMessages();
+                this.getThisUser();
             })
         }
     }
