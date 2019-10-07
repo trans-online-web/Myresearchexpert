@@ -156,6 +156,7 @@
  --}}
         
         @yield('content')
+        @include('includes.footer')
         <script type="text/javascript">
             $(window).scroll(function(){
                 if ($(window).scrollTop() >= 1) {
@@ -167,7 +168,5 @@
             });
        </script>
     </div>
-
-@include('includes.footer')
 </body>
 </html>

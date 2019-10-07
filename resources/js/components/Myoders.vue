@@ -39,7 +39,7 @@
                                     </td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
                                     <td>
-                                        <router-link :to="{path:'/MyOrderDetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
+                                        <a href="/myorderdetails/1" type="button" class="btn btn-primary btn-sm">More</a>
                                     </td>
                                     <td>
                                         <a href="#" @click="editModal(order, order.id)">
