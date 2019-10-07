@@ -2688,6 +2688,21 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2767,22 +2782,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
   data: function data() {
     return {
       orders: {},
-      form: new Form({})
+      form: new Form({
+        status: '',
+        id: ''
+      })
     };
   },
-  methods: {
+  mounted: function mounted() {
+    var _this = this;
+
+    Echo["private"]("message.".concat(this.user.id)).listen('ChatEvent', function (e) {
+      _this.$emit('newMessage', e.message);
+    });
+  },
+  methods: (_methods = {
     getOrders: function getOrders() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/student-task").then(function (_ref) {
         var data = _ref.data;
-        return [_this.orders = data];
+        return [_this2.orders = data];
       });
+    },
+    editModal: function editModal(order, id) {
+      $('#addnew').modal('show');
+      this.form.fill(order);
+      this.form.id = id;
+    },
+    updateStatus: function updateStatus() {
+      this.form.put('api/task/' + this.form.id).then(function () {
+        $('#addnew').modal('hide');
+        swal.fire('Updated!', 'Status has been updated.', 'success');
+        Fire.$emit('entry');
+      })["catch"](function () {});
     }
-  },
+  }, _defineProperty(_methods, "editModal", function editModal(order, id) {
+    $('#addnew').modal('show');
+    this.form.fill(order);
+    this.form.id = id;
+  }), _defineProperty(_methods, "updateStatus", function updateStatus() {
+    this.form.put('api/task/' + this.form.id).then(function () {
+      $('#addnew').modal('hide');
+      swal.fire('Updated!', 'Status has been updated.', 'success');
+      Fire.$emit('entry');
+    })["catch"](function () {});
+  }), _methods),
   created: function created() {
     this.getOrders();
   }
@@ -85751,10 +85804,12 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card mt-4" }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "card-body table-responsive p-0" }, [
               _c("table", { staticClass: "table table-hover" }, [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -85766,7 +85821,55 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(order.subject_name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(order.status))]),
+                      _c("td", [
+                        order.status == "Pending"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-warning" },
+                              [_vm._v("Pending..")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Paid"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-info" },
+                              [_vm._v("Paid")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Working"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-dark" },
+                              [_vm._v("Working")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Completed"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-primary" },
+                              [_vm._v("Completed")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Approved"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-success" },
+                              [_vm._v("Approved")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        order.status == "Revision"
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-danger" },
+                              [_vm._v("Revision")]
+                            )
+                          : _vm._e()
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c("i", { staticClass: "fa fa-clock-o mr-1" }),
@@ -85775,19 +85878,23 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary btn-sm",
-                            attrs: {
-                              href: "/myorderdetails/" + order.id,
-                              type: "button"
-                            }
-                          },
-                          [_vm._v("More")]
-                        )
-                      ]),
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary btn-sm",
+                              attrs: {
+                                to: { path: "/MyOrderDetails/" + order.id },
+                                type: "button"
+                              }
+                            },
+                            [_vm._v("More")]
+                          )
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("td", [
                         _c(
@@ -85796,7 +85903,7 @@ var render = function() {
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                return _vm.deleteorder(order.id)
+                                return _vm.editModal(order, order.id)
                               }
                             }
                           },
@@ -85836,7 +85943,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "form",
@@ -85854,7 +85961,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("Select Role")]),
+                        _c("label", [_vm._v("Select Option")]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -85897,20 +86004,12 @@ var render = function() {
                               _vm._v("--Select Status--")
                             ]),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "Pending" } }, [
-                              _vm._v("Pending")
+                            _c("option", { attrs: { value: "Approved" } }, [
+                              _vm._v("Approve submitted Work")
                             ]),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "Paid" } }, [
-                              _vm._v("Paid")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Working" } }, [
-                              _vm._v("Working")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Completed" } }, [
-                              _vm._v("Completed")
+                            _c("option", { attrs: { value: "Revision" } }, [
+                              _vm._v("Order Revision")
                             ])
                           ]
                         ),
@@ -85923,7 +86022,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(3)
                 ]
               )
             ])
@@ -85934,6 +86033,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("My Orders")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c("a", { attrs: { href: "/task" } }, [
+          _c("button", { staticClass: "btn btn-success pull-left" }, [
+            _vm._v("Add new order  "),
+            _c("i", { staticClass: "fas fa-plus" })
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -103855,8 +103971,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "b86f7b545fc3935bcafb",
+  cluster: "ap2",
   encrypted: true
 });
 
@@ -105212,8 +105328,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
