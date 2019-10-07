@@ -43,7 +43,7 @@ Route::get('contacts', 'API\ContactsController@index');
 Route::get('student', 'API\ContactsController@student');
 Route::get('conversation/{id}', 'API\ContactsController@getMessagesFor');
 Route::post('conversation/send', 'API\ContactsController@send');
-
+Route::apiResources(['category' => 'API\CategoryController']);
 Route::apiResources(['messenger'=>'API\MessangerController']);
 Route::post('messenger/send','API\MessangerController@send');
 Route::get('receiver','API\MessangerController@index');
