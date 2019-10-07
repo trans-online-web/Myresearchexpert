@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'category' => 'required|string|max:125|unique:category',
+            'category' => 'required|string|max:125|unique:category,name',
         ]);
 
         $category = new Category();
@@ -66,7 +66,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = findOrFail($id);
+        $category = Category::findOrFail($id);
         $category->delete();
     }
 }
