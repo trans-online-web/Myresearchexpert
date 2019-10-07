@@ -39,7 +39,7 @@
                                     </td>
                                     <td><i class="fa fa-clock-o mr-1"></i>{{order.deadline_datetime | myDate}}</td>
                                     <td>
-                                        <router-link :to="{path:'/MyOrderDetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
+                                        <router-link :to="{path:'/myorderdetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
                                     </td>
                                     <td>
                                         <a href="#" @click="editModal(order, order.id)">
@@ -89,12 +89,6 @@
 
 <script>
     export default {
-        props:{
-            user: {
-                type: Object,
-                required: true
-            }
-        },
         data(){
             return{
                 orders: {},
@@ -103,12 +97,6 @@
                     id: ''
                 }),
             }
-        },
-        mounted() {
-            Echo.private(`message.${this.user.id}`)
-                .listen('ChatEvent',(e)=>{
-                    this.$emit('newMessage', e.message);
-                })
         },
         methods:{
             getOrders(){

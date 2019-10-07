@@ -2986,12 +2986,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    user: {
-      type: Object,
-      required: true
-    }
-  },
   data: function data() {
     return {
       orders: {},
@@ -3001,20 +2995,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    Echo["private"]("message.".concat(this.user.id)).listen('ChatEvent', function (e) {
-      _this.$emit('newMessage', e.message);
-    });
-  },
   methods: (_methods = {
     getOrders: function getOrders() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("api/student-task").then(function (_ref) {
         var data = _ref.data;
-        return [_this2.orders = data];
+        return [_this.orders = data];
       });
     },
     editModal: function editModal(order, id) {
@@ -86590,7 +86577,7 @@ var render = function() {
                             {
                               staticClass: "btn btn-primary btn-sm",
                               attrs: {
-                                to: { path: "/MyOrderDetails/" + order.id },
+                                to: { path: "/myorderdetails/" + order.id },
                                 type: "button"
                               }
                             },
@@ -104762,8 +104749,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "b86f7b545fc3935bcafb",
+  cluster: "ap2",
   encrypted: true
 });
 
@@ -106224,8 +106211,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
