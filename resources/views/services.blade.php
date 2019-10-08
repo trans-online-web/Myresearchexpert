@@ -6,8 +6,7 @@
         <div class="row h-100 align-items-center">
           <div class="col-12">
             <h1 class="font-weight-light">Our Services</h1>
-            <p class="lead3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+            <p class="lead3">Join our list of thrilled customers – place your first order with our writing service and prepare to be blown away as we write it for you!</p>
           </div>
         </div>
       </div>
@@ -18,12 +17,7 @@
                <h2 class="featurette px-4">Our Writing Services</h2>
            </div>
            <div class="justify-content-center container-fluid pt-3">
-                <p class="lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="lead2">We provide a customer-centered research paper writing service that will enable you to receive the paper the way you ordered it. To produce a successful research paper, we ensure requirements are followed accordingly to produce unique and excellent work. Our team can handle research from any level of study. You are guaranteed of a research paper that is outstanding and meets the required standards.</p>
                 <h3>Get help with tasks like</h3>
                 <div class="row">
                    <div class="col-md-4">
