@@ -1803,6 +1803,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Blog",
@@ -1815,17 +1816,45 @@ __webpack_require__.r(__webpack_exports__);
       form: new Form({
         title: '',
         status: '',
-        content: ''
+        bcontent: '',
+        category: '',
+        image: []
       })
     };
   },
   methods: {
-    getCategories: function getCategories() {
+    submit: function submit() {
       var _this = this;
+
+      // const config = {headers: {'Content-Type': 'multipart/form-data'}};
+      this.form.post('/api/blog').then(function (response) {
+        $('#addnew').modal('hide');
+
+        _this.form.reset();
+
+        swal.fire({
+          type: 'success',
+          title: 'Submited!!',
+          text: 'Successfully'
+        });
+      });
+    },
+    fieldChange: function fieldChange(e) {
+      var selectedFiles = e.target.files;
+
+      if (!selectedFiles.length) {
+        return false;
+      }
+
+      this.form.image.push(selectedFiles);
+      console.log(this.attachments);
+    },
+    getCategories: function getCategories() {
+      var _this2 = this;
 
       axios.get("/api/category").then(function (_ref) {
         var data = _ref.data;
-        return [_this.categories = data];
+        return [_this2.categories = data];
       });
     },
     newModal: function newModal() {
@@ -98792,10 +98821,11 @@ var render = function() {
               _c(
                 "form",
                 {
+                  attrs: { enctype: "multipart/form-data" },
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.addCategory()
+                      return _vm.submit()
                     }
                   }
                 },
@@ -98858,7 +98888,7 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("label", { attrs: { for: "level" } }, [
+                            _c("label", { attrs: { for: "status" } }, [
                               _vm._v("Status")
                             ]),
                             _vm._v(" "),
@@ -98869,15 +98899,15 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.form.level,
-                                    expression: "form.level"
+                                    value: _vm.form.status,
+                                    expression: "form.status"
                                   }
                                 ],
                                 staticClass: "form-control",
                                 class: {
                                   "is-invalid": _vm.form.errors.has("level")
                                 },
-                                attrs: { name: "level", id: "level" },
+                                attrs: { name: "status", id: "status" },
                                 on: {
                                   change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
@@ -98891,7 +98921,7 @@ var render = function() {
                                       })
                                     _vm.$set(
                                       _vm.form,
-                                      "level",
+                                      "status",
                                       $event.target.multiple
                                         ? $$selectedVal
                                         : $$selectedVal[0]
@@ -98919,7 +98949,7 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("has-error", {
-                              attrs: { form: _vm.form, field: "level" }
+                              attrs: { form: _vm.form, field: "status" }
                             })
                           ],
                           1
@@ -98938,16 +98968,16 @@ var render = function() {
                         _c("vue-editor", {
                           attrs: { id: "content" },
                           model: {
-                            value: _vm.form.content,
+                            value: _vm.form.bcontent,
                             callback: function($$v) {
-                              _vm.$set(_vm.form, "content", $$v)
+                              _vm.$set(_vm.form, "bcontent", $$v)
                             },
-                            expression: "form.content"
+                            expression: "form.bcontent"
                           }
                         }),
                         _vm._v(" "),
                         _c("has-error", {
-                          attrs: { form: _vm.form, field: "task" }
+                          attrs: { form: _vm.form, field: "bcontent" }
                         })
                       ],
                       1
@@ -98969,7 +98999,7 @@ var render = function() {
                             id: "image",
                             accept: "image/*"
                           },
-                          on: { change: function($event) {} }
+                          on: { change: _vm.fieldChange }
                         }),
                         _vm._v(" "),
                         _c("has-error", {

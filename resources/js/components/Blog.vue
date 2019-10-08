@@ -17,7 +17,8 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="addnewLabel" aria-hidden="true">
+        <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="addnewLabel"
+             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -26,7 +27,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="addCategory()">
+                    <form @submit.prevent="submit()" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col">
@@ -41,25 +42,25 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="level">Status</label>
-                                        <select v-model="form.level" class="form-control" name="level" id="level"
+                                        <label for="status">Status</label>
+                                        <select v-model="form.status" class="form-control" name="status" id="status"
                                                 :class="{ 'is-invalid': form.errors.has('level') }">
                                             <option selected value="">--Select Status--</option>
                                             <option value="published">Published</option>
                                             <option value="draft">Draft</option>
                                         </select>
-                                        <has-error :form="form" field="level"></has-error>
+                                        <has-error :form="form" field="status"></has-error>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <vue-editor v-model="form.content" id="content"></vue-editor>
-                                <has-error :form="form" field="task"></has-error>
+                                <vue-editor v-model="form.bcontent" id="content"></vue-editor>
+                                <has-error :form="form" field="bcontent"></has-error>
                             </div>
                             <div class="form-group">
                                 <label for="image">Headline Image</label>
-                                <input type="file" @change="" class="form-control-file" id="image"
+                                <input type="file" @change="fieldChange" class="form-control-file" id="image"
                                        accept="image/*"
                                        :class="{ 'is-invalid': form.errors.has('image') }">
                                 <has-error :form="form" field="image"></has-error>
@@ -87,27 +88,54 @@
 </template>
 
 <script>
-    import { VueEditor } from "vue2-editor";
+    import {VueEditor} from "vue2-editor";
+
     export default {
         name: "Blog",
         components: {
             VueEditor
         },
-        data(){
-            return{
+        data() {
+            return {
                 categories: '',
                 form: new Form({
                     title: '',
                     status: '',
-                    content: ''
+                    bcontent: '',
+                    category: '',
+                    image: [],
                 })
             }
         },
-        methods:{
-            getCategories(){
-                axios.get("/api/category").then(({ data }) => ([this.categories = data]));
+        methods: {
+            submit(){
+                // const config = {headers: {'Content-Type': 'multipart/form-data'}};
+
+            this.form.post('/api/blog').then(response => {
+                    $('#addnew').modal('hide');
+                    this.form.reset();
+                    swal.fire({
+                        type: 'success',
+                        title: 'Submited!!',
+                        text: 'Successfully',
+
+                    })
+
+                })
             },
-            newModal(){
+            fieldChange(e) {
+                let selectedFiles = e.target.files;
+                if (!selectedFiles.length) {
+                    return false;
+                }
+                this.form.image.push(selectedFiles);
+
+                console.log(this.attachments);
+            },
+            getCategories() {
+                axios.get("/api/category").then(({data}) => ([this.categories = data]));
+            },
+            newModal() {
                 this.form.reset();
                 $('#addnew').modal('show');
             },
