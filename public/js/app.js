@@ -3072,11 +3072,19 @@ __webpack_require__.r(__webpack_exports__);
         return _this10.messages = response.data;
       });
     },
-    getUnread: function getUnread() {
+    getUser: function getUser() {
       var _this11 = this;
 
+      axios.get("/api/getAdmin/").then(function (_ref6) {
+        var data = _ref6.data;
+        return [_this11.users = data];
+      });
+    },
+    getUnread: function getUnread() {
+      var _this12 = this;
+
       axios.get("/api/unread/" + this.orderId).then(function (response) {
-        return _this11.unreadIds = response['unread'];
+        return _this12.unreadIds = response['unread'];
       });
     }
   },
@@ -3091,24 +3099,27 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this12 = this;
+    var _this13 = this;
 
     this.getDetails();
     this.getFilesCount();
     this.getFiles();
+    this.getUser();
     this.getThisUser();
     this.getMessages();
     this.getCompleted();
     Fire.$on('entry', function () {
-      _this12.getDetails();
+      _this13.getDetails();
 
-      _this12.getFilesCount();
+      _this13.getFilesCount();
 
-      _this12.getFiles();
+      _this13.getFiles();
 
-      _this12.getMessages();
+      _this13.getUser();
 
-      _this12.getThisUser();
+      _this13.getMessages();
+
+      _this13.getThisUser();
     });
   }
 });
@@ -4282,19 +4293,10 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser() {
       var _this8 = this;
 
-      if (this.$gate.isAdmin()) {
-        axios.get("/api/getUser/" + this.orderId).then(function (_ref4) {
-          var data = _ref4.data;
-          return [_this8.users = data];
-        });
-      }
-
-      if (this.$gate.isStudent()) {
-        axios.get("/api/getAdmin/").then(function (_ref5) {
-          var data = _ref5.data;
-          return [_this8.users = data.data];
-        });
-      }
+      axios.get("/api/getUser/" + this.orderId).then(function (_ref4) {
+        var data = _ref4.data;
+        return [_this8.users = data];
+      });
     },
     getMessages: function getMessages() {
       var _this9 = this;

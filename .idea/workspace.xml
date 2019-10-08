@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+    <list default="true" id="574ba0ad-7d85-43ad-ab39-0ed6f17ecaf1" name="Default Changelist" comment="" />
+=======
+<<<<<<< HEAD
     <list default="true" id="548b369d-93fa-43f7-a451-c5d9172615ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
@@ -25,6 +28,7 @@
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
 >>>>>>> bcdb79d12f217215552e2689e5931d5daf4f6ef2
     </list>
+>>>>>>> 9ff77a4c75a64b0c4fd3e78eb53c7b906a806d4c
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +239,11 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+=======
+<<<<<<< HEAD
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -287,10 +296,12 @@
   </component>
 =======
 >>>>>>> bcdb79d12f217215552e2689e5931d5daf4f6ef2
+>>>>>>> 9ff77a4c75a64b0c4fd3e78eb53c7b906a806d4c
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../writting-website" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -323,8 +334,12 @@
       <option name="presentableId" value="Default" />
       <updated>1570441576723</updated>
       <workItem from="1570441591040" duration="4725000" />
+<<<<<<< HEAD
+      <workItem from="1570511026298" duration="5210000" />
+=======
       <workItem from="1570508987901" duration="617000" />
       <workItem from="1570510451704" duration="3240000" />
+>>>>>>> 9ff77a4c75a64b0c4fd3e78eb53c7b906a806d4c
     </task>
     <servers />
   </component>
@@ -567,5 +582,8 @@
     </entry>
 =======
 >>>>>>> bcdb79d12f217215552e2689e5931d5daf4f6ef2
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

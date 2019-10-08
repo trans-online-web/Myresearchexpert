@@ -320,13 +320,7 @@
                 axios.get("/api/getFiles/" + this.orderId).then(({ data }) => ([this.files = data]));
             },
             getUser(){
-                if (this.$gate.isAdmin()) {
-                    axios.get("/api/getUser/" + this.orderId).then(({ data }) => ([this.users = data]));
-                }
-                if (this.$gate.isStudent()) {
-                    axios.get("/api/getAdmin/").then(({ data }) => ([this.users = data.data]));
-                }
-
+                axios.get("/api/getUser/" + this.orderId).then(({ data }) => ([this.users = data]));
             },
             getMessages(){
                 axios.get("/api/getMessage/" + this.orderId).then((response) => (this.messages = response.data));
