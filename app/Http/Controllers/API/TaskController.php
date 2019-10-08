@@ -107,7 +107,7 @@ class TaskController extends Controller
     }
     public function user($orderId)
     {
-        return Files::where('task_id', $orderId)->value('user_id');
+        return Task::where('id', $orderId)->value('user_id');
     }
     public function ThisUser($orderId)
     {

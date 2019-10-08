@@ -4101,19 +4101,10 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser() {
       var _this8 = this;
 
-      if (this.$gate.isAdmin()) {
-        axios.get("/api/getUser/" + this.orderId).then(function (_ref4) {
-          var data = _ref4.data;
-          return [_this8.users = data];
-        });
-      }
-
-      if (this.$gate.isStudent()) {
-        axios.get("/api/getAdmin/").then(function (_ref5) {
-          var data = _ref5.data;
-          return [_this8.users = data.data];
-        });
-      }
+      axios.get("/api/getUser/" + this.orderId).then(function (_ref4) {
+        var data = _ref4.data;
+        return [_this8.users = data];
+      });
     },
     getMessages: function getMessages() {
       var _this9 = this;
