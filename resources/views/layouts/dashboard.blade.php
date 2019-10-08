@@ -251,10 +251,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <router-link to="" class="nav-link">
+                                    <router-link to="/blog" class="nav-link">
                                         <i class="fa fa-calendar-week teal"></i>
                                         <p>
-                                            Make Post
+                                            Create Story
                                         </p>
                                     </router-link>
                                 </li>
