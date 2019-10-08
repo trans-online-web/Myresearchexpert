@@ -22,7 +22,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    
+
 </head>
 <body>
     <div id="app">
@@ -96,7 +96,7 @@
                                         @endif
                                     @endauth
                                 </li>
-                            </ul>  --}} 
+                            </ul>  --}}
                           </div>
                       @endif
                   </div>
@@ -154,8 +154,10 @@
             </div>
         </nav>
  --}}
-        
+
+
         @yield('content')
+        @include('includes.footer')
         <script type="text/javascript">
             $(window).scroll(function(){
                 if ($(window).scrollTop() >= 1) {
@@ -166,8 +168,11 @@
                 }
             });
        </script>
+        @auth
+            <script>
+                window.user = @json(auth()->user())
+            </script>
+        @endauth
     </div>
-
-@include('includes.footer')
 </body>
 </html>

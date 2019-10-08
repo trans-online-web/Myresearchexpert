@@ -105,7 +105,18 @@ class TaskController extends Controller
     {
         return Files::where('task_id', $orderId)->get();
     }
-
+    public function user($orderId)
+    {
+        return Files::where('task_id', $orderId)->value('user_id');
+    }
+    public function ThisUser($orderId)
+    {
+        return Files::where('task_id', $orderId)->get();
+    }
+    public function admin()
+    {
+        return User::where('role','admin')->value('id');
+    }
     public function addFiles(Request $request, $orderId)
     {
         $request->validate([
