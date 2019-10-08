@@ -305,6 +305,9 @@
             getMessages(){
                 axios.get("/api/getMessage/" + this.orderId).then((response) => (this.messages = response.data));
             },
+            getUser(){
+                axios.get("/api/getAdmin/").then(({ data }) => ([this.users = data]));
+            },
             getUnread(){
                 axios.get("/api/unread/" + this.orderId).then((response) => (this.unreadIds = response['unread']));
             },
@@ -324,6 +327,7 @@
             this.getDetails();
             this.getFilesCount();
             this.getFiles();
+            this.getUser();
             this.getThisUser();
             this.getMessages();
             this.getCompleted();
@@ -331,6 +335,7 @@
                 this.getDetails();
                 this.getFilesCount();
                 this.getFiles();
+                this.getUser();
                 this. getMessages();
                 this.getThisUser();
             })
