@@ -22,7 +22,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    
+
 </head>
 <body>
     <div id="app">
@@ -96,7 +96,7 @@
                                         @endif
                                     @endauth
                                 </li>
-                            </ul>  --}} 
+                            </ul>  --}}
                           </div>
                       @endif
                   </div>
@@ -154,7 +154,8 @@
             </div>
         </nav>
  --}}
-        
+
+
         @yield('content')
         @include('includes.footer')
         <script type="text/javascript">
@@ -167,6 +168,11 @@
                 }
             });
        </script>
+        @auth
+            <script>
+                window.user = @json(auth()->user())
+            </script>
+        @endauth
     </div>
 </body>
 </html>

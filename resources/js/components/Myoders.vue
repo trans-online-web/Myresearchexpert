@@ -89,12 +89,6 @@
 
 <script>
     export default {
-        props:{
-            user: {
-                type: Object,
-                required: true
-            }
-        },
         data(){
             return{
                 orders: {},
@@ -103,12 +97,6 @@
                     id: ''
                 }),
             }
-        },
-        mounted() {
-            Echo.private(`message.${this.user.id}`)
-                .listen('ChatEvent',(e)=>{
-                    this.$emit('newMessage', e.message);
-                })
         },
         methods:{
             getOrders(){

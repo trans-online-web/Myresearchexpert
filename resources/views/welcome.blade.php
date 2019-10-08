@@ -18,14 +18,9 @@
       </div>
       <div class="hero-text-inner col-md-7 mx-auto">
         <div class="jumbotron h-100">
-          <h1 class="font-weight-bold pt-4"> We Will Help You Do Your Assignments
-          <h3>From initial topic to finished paper</h3>
-          <p class="lead3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h1 class="font-weight-bold pt-4">Professional research paper writing services for students.</h1>
+          <!-- <h3>From initial topic to finished paper</h3> -->
+          <p class="lead3">Describe what you need done and get assistance. In order to write a good research paper, one needs a professional. We have a very qualified team of writers who can assist you with your research paper; they possess reputable qualifications and have undergone thorough vetting to produce unique and quality papers. Our services are quite affordable. As a reliable writing service provider, we understand that writing a research paper requires skills and expertise. Place an order on our website today and get research paper writing help.</p>
         </div>
       </div>
     </div>
@@ -49,21 +44,21 @@
           <div class="card p-3 align-items-center">
             <img src="./img/contract.svg" style="height: 60px; width: 60px" alt="">
             <h3 class="pt-2 featurette">Any Deadline - Any Subject</h3>
-            <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p>
+            <!-- <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p> -->
           </div>
         </div>
         <div class="col-md-4">
           <div class="card p-3 align-items-center">
             <img src="./img/notification.svg" style="height: 60px; width: 60px" alt="">
             <h3 class="pt-2 featurette">Email Notifications</h3>
-            <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p>
+            <!-- <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p> -->
           </div>
         </div>
         <div class="col-md-4">
           <div class="card p-3 align-items-center">
             <img src="./img/chat.svg" style="height: 60px; width: 60px" alt="">
             <h3 class="pt-2 featurette">Online Writer Chat</h3>
-            <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p>
+            <!-- <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p> -->
           </div>
         </div>
     </div>
@@ -72,21 +67,21 @@
           <div class="card p-3 align-items-center">
             <img src="./img/bargains.svg" style="height: 60px; width: 60px" alt="">
             <h3 class="pt-2 featurette">Have the Bargaing Power</h3>
-            <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p>
+            <!-- <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p> -->
           </div>
         </div>
         <div class="col-md-4">
           <div class="card p-3 align-items-center">
             <img src="./img/file.svg" style="height: 60px; width: 60px" alt="">
             <h3 class="pt-2 featurette">Plagiarism Free Papers</h3>
-            <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p>
+            <!-- <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p> -->
           </div>
         </div>
         <div class="col-md-4">
           <div class="card p-3 align-items-center">
             <img src="./img/coin.svg" style="height: 60px; width: 60px" alt="">
             <h3 class="pt-2 featurette">Affordable Prices</h3>
-            <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p>
+            <!-- <p class="pt-2 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima commodi autem, nam, a iste quia quos quidem provident magnam. Necessitatibus at ducimus odit amet mollitia facilis molestias iste pariatur atque.</p> -->
           </div>
         </div>
     </div>
@@ -97,9 +92,8 @@
     <img class="img-fluid" src="./img/graph.jpg" alt="">
   </div>
   <div class="col-md-7 pt-5">
-    <h3 class="featurette">Choose your preferred writer
-    <span class="text-muted">It’ll blow your mind.</span></h3>
-    <p class="lead2 pt-3">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    <h3 class="featurette">Customized research paper writing.</h3>
+    <p class="lead2 pt-3">We provide a customer-centered research paper writing service that will enable you to receive the paper the way you ordered it. To produce a successful research paper, we ensure requirements are followed accordingly to produce unique and excellent work. Our team can handle research from any level of study. You are guaranteed of a research paper that is outstanding and meets the required standards.</p>
   </div>
 </div>
 
@@ -110,16 +104,16 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <h4 class="text-center px-5 featurette">24/7 Customer Support</h4>
-      <p class="text-justify px-5 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quod , possimus, minus, culpa recusandae nesciunt dolor magni! Itaque, dolorum iste!</p>
+      <h4 class="text-center px-5 featurette">Quality work</h4>
+      <p class="text-justify px-5 lead2">Our company is made up of a large team of highly qualified writers from different fields with firsthand experience on handling essays. Such a team is dedicated to offer nothing short of quality. Each paper is done from scratch through extensive research on the topic. Moreover, our writers guarantee a paper free of grammar mistakes. With us, you can, therefore, bet on getting the best research paper. </p>
     </div>
     <div class="col-md-4">
-      <h4 class="text-center px-5 featurette">First Class Papers</h4>
-      <p class="text-justify px-5 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quod , possimus, minus, culpa recusandae nesciunt dolor magni! Itaque, dolorum iste!</p>
+      <h4 class="text-center px-5 featurette">Originality</h4>
+      <p class="text-justify px-5 lead2">All our writers produce non-plagiarized research papers because we start each item from scratch following the order requirements and client’s preferences. Our writers conduct extensive research on the given topic and gather sufficient content, including evidence to include in your paper.</p>
     </div>
     <div class="col-md-4">
-      <h4 class="text-center px-5 featurette">On Time Delivery</h4>
-      <p class="text-justify px-5 lead2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quod , possimus, minus, culpa recusandae nesciunt dolor magni! Itaque, dolorum iste!</p>
+      <h4 class="text-center px-5 featurette">Timely delivery</h4>
+      <p class="text-justify px-5 lead2">Our company is time conscious; submit an order to us if you need help writing research paper to avoid last minute panic or delayed delivery. All our writers are disciplined individuals who are very time conscious. We believe in working on a client’s work immediately and strive to submit it as early as possible. Most of our orders are submitted before the stipulated time.</p>
     </div>
   </div>
   <h4 class="featurette text-center px-5 pt-3">Let us take care of your order details while you enjoy your free time!</h4>
