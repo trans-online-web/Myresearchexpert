@@ -158,21 +158,12 @@
 
         @yield('content')
         @include('includes.footer')
-        <script type="text/javascript">
-            $(window).scroll(function(){
-                if ($(window).scrollTop() >= 1) {
-                    $('#sticker').addClass('stick');
-                }
-                else {
-                    $('#sticker').removeClass('stick');
-                }
-            });
-       </script>
         @auth
             <script>
-                window.user = @json(auth()->user())
+                window.user =@json(auth()->user())
             </script>
         @endauth
     </div>
+<script src="{{ asset('js/main.js') }} " defer></script>
 </body>
 </html>

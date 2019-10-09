@@ -1714,7 +1714,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.esm.js");
+/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.esm.js");
 //
 //
 //
@@ -1807,7 +1807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Blog",
   components: {
-    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"]
+    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_0__["VueEditor"]
   },
   data: function data() {
     return {
@@ -120022,7 +120022,7 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "b86f7b545fc3935bcafb",
+  key: "afd722e948ad632b30cb",
   cluster: "ap2",
   encrypted: true
 });
