@@ -1813,6 +1813,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: '',
+      attachments: [],
+      formf: new FormData(),
       form: new Form({
         title: '',
         status: '',
@@ -1826,8 +1828,21 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      // const config = {headers: {'Content-Type': 'multipart/form-data'}};
-      this.form.post('/api/blog').then(function (response) {
+      for (var i = 0; i < this.attachments.length; i++) {
+        this.formf.append('image[]', this.attachments[i]);
+      }
+
+      this.formf.append('title', this.form.title);
+      this.formf.append('status', this.form.status);
+      this.formf.append('bcontent', this.form.bcontent);
+      this.formf.append('category', this.form.category); // this.formf.append('image[]', this.attachments);
+
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
+      axios.post('/api/blog', this.formf, config).then(function (response) {
         $('#addnew').modal('hide');
 
         _this.form.reset();
@@ -1837,6 +1852,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Submited!!',
           text: 'Successfully'
         });
+      })["catch"](function (response) {//error
       });
     },
     fieldChange: function fieldChange(e) {
@@ -1846,8 +1862,9 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
 
-      this.form.image.push(selectedFiles);
-      console.log(this.attachments);
+      for (var i = 0; i < selectedFiles.length; i++) {
+        this.attachments.push(selectedFiles[i]);
+      }
     },
     getCategories: function getCategories() {
       var _this2 = this;
@@ -3923,9 +3940,8 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var i = 0; i < selectedFiles.length; i++) {
         this.attachments.push(selectedFiles[i]);
-      }
+      } // console.log(this.attachments);
 
-      console.log(this.attachments);
     }
   },
   created: function created() {
@@ -98999,7 +99015,8 @@ var render = function() {
                           attrs: {
                             type: "file",
                             id: "image",
-                            accept: "image/*"
+                            accept: "image/*",
+                            name: "image"
                           },
                           on: { change: _vm.fieldChange }
                         }),

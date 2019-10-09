@@ -526,7 +526,7 @@
                 for (let i = 0; i < selectedFiles.length; i++) {
                     this.attachments.push(selectedFiles[i]);
                 }
-                console.log(this.attachments);
+                // console.log(this.attachments);
             }
         },
         created() {

@@ -62,7 +62,7 @@
                                 <label for="image">Headline Image</label>
                                 <input type="file" @change="fieldChange" class="form-control-file" id="image"
                                        accept="image/*"
-                                       :class="{ 'is-invalid': form.errors.has('image') }">
+                                       :class="{ 'is-invalid': form.errors.has('image') }" name="image">
                                 <has-error :form="form" field="image"></has-error>
                             </div>
                             <div class="col">
@@ -98,6 +98,8 @@
         data() {
             return {
                 categories: '',
+                attachments: [],
+                formf: new FormData(),
                 form: new Form({
                     title: '',
                     status: '',
@@ -109,9 +111,20 @@
         },
         methods: {
             submit(){
-                // const config = {headers: {'Content-Type': 'multipart/form-data'}};
 
-            this.form.post('/api/blog').then(response => {
+                for (let i = 0; i < this.attachments.length; i++) {
+                    this.formf.append('image[]', this.attachments[i]);
+                }
+                this.formf.append('title', this.form.title);
+                this.formf.append('status', this.form.status);
+                this.formf.append('bcontent', this.form.bcontent);
+                this.formf.append('category', this.form.category);
+                // this.formf.append('image[]', this.attachments);
+
+
+                const config = {headers: {'Content-Type': 'multipart/form-data'}};
+
+                axios.post('/api/blog', this.formf, config).then(response => {
                     $('#addnew').modal('hide');
                     this.form.reset();
                     swal.fire({
@@ -122,15 +135,18 @@
                     })
 
                 })
+                    .catch(response => {
+                        //error
+                    });
             },
             fieldChange(e) {
                 let selectedFiles = e.target.files;
                 if (!selectedFiles.length) {
                     return false;
                 }
-                this.form.image.push(selectedFiles);
-
-                console.log(this.attachments);
+                for (let i = 0; i < selectedFiles.length; i++) {
+                    this.attachments.push(selectedFiles[i]);
+                }
             },
             getCategories() {
                 axios.get("/api/category").then(({data}) => ([this.categories = data]));

@@ -44,14 +44,17 @@ class BlogController extends Controller
 
         $blog_id = $blog->id;
 
-        $files = $request->image;
+//        $file[] = $request->image;
 
-        foreach ($files as $file) {
-            $filename = $file[0]->store('uploads');
-            $blog_image = new BlogImages();
-            $blog_image->path = $filename;
-            $blog_image->blog_id = $blog_id;
-            $blog_image->save();
+        if ($request->image){
+            $uploadedFiles = $request->image;
+            foreach ($uploadedFiles as $file){
+                $filename = $file->store('uploads');
+                $blog_image = new BlogImages();
+                $blog_image->path = $filename;
+                $blog_image->blog_id = $blog_id;
+                $blog_image->save();
+            }
         }
     }
 
