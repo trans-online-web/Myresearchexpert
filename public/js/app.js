@@ -1804,6 +1804,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Blog",
@@ -1813,6 +1824,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: '',
+      blogs: {},
+      path: '',
+      images: {},
       attachments: [],
       formf: new FormData(),
       form: new Form({
@@ -1825,8 +1839,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    submit: function submit() {
+    getBlog: function getBlog() {
       var _this = this;
+
+      axios.get("/api/blog").then(function (_ref) {
+        var data = _ref.data;
+        return [_this.blogs = data['parent']];
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
 
       for (var i = 0; i < this.attachments.length; i++) {
         this.formf.append('image[]', this.attachments[i]);
@@ -1845,8 +1867,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/blog', this.formf, config).then(function (response) {
         $('#addnew').modal('hide');
 
-        _this.form.reset();
+        _this2.form.reset();
 
+        Fire.$emit('entry');
         swal.fire({
           type: 'success',
           title: 'Submited!!',
@@ -1867,11 +1890,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getCategories: function getCategories() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("/api/category").then(function (_ref) {
-        var data = _ref.data;
-        return [_this2.categories = data];
+      axios.get("/api/category").then(function (_ref2) {
+        var data = _ref2.data;
+        return [_this3.categories = data];
       });
     },
     newModal: function newModal() {
@@ -1880,7 +1903,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this4 = this;
+
     this.getCategories();
+    this.getBlog();
+    Fire.$on('entry', function () {
+      _this4.getBlog();
+    });
   }
 });
 
@@ -98808,8 +98837,45 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _vm._v(
-              "\n                    I'm an example component.\n                "
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.blogs, function(blog) {
+                return _c("div", { key: blog.id, staticClass: "col-sm-4" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: {
+                        src: "storage/" + blog[0]["image"],
+                        alt: "Card image cap"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c(
+                        "h5",
+                        {
+                          staticClass: "card-title",
+                          staticStyle: { color: "black" }
+                        },
+                        [_vm._v(_vm._s(blog[0]["title"]))]
+                      ),
+                      _vm._v(" "),
+                      _c("small", [_vm._v(_vm._s(blog[0]["date"]))]),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Go somewhere")]
+                      )
+                    ])
+                  ])
+                ])
+              }),
+              0
             )
           ])
         ])

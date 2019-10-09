@@ -12,7 +12,18 @@
                     </div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <div class="row">
+                            <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
+                                <div class="card">
+                                    <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
+                                        <small>{{blog[0]['date']}}</small>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,6 +109,9 @@
         data() {
             return {
                 categories: '',
+                blogs: {},
+                path: '',
+                images: {},
                 attachments: [],
                 formf: new FormData(),
                 form: new Form({
@@ -110,6 +124,9 @@
             }
         },
         methods: {
+            getBlog(){
+                axios.get("/api/blog").then(({data}) => ([this.blogs = data['parent']]));
+            },
             submit(){
 
                 for (let i = 0; i < this.attachments.length; i++) {
@@ -127,6 +144,7 @@
                 axios.post('/api/blog', this.formf, config).then(response => {
                     $('#addnew').modal('hide');
                     this.form.reset();
+                    Fire.$emit('entry');
                     swal.fire({
                         type: 'success',
                         title: 'Submited!!',
@@ -158,6 +176,10 @@
         },
         created() {
             this.getCategories();
+            this.getBlog();
+            Fire.$on('entry', () =>{
+                this.getBlog();
+            })
         }
     }
 </script>
