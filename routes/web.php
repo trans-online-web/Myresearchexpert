@@ -23,13 +23,16 @@ Route::get('/services', function () {
 Route::get('/about', function () {
     return view('about');
 });
-
+Route::get('/blog', function () {
+    return view('blog');
+});
 // Route::get('/task', function () {
 //     return view('order');
 // });
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/newsletter', 'NewsletterController@store')->name('newsletter');
 Route::get('/markasread', function () {
     auth()->user()->unreadNotifications->markAsRead();
 });
