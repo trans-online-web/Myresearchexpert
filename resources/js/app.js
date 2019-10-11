@@ -35,7 +35,7 @@ import { Datetime } from 'vue-datetime';
 Vue.component('datetime', Datetime);
 
 import VueNumericInput from 'vue-numeric-input';
- 
+
 Vue.use(VueNumericInput);
 
 //Loadash
@@ -100,7 +100,7 @@ Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('Order', require('./components/Order.vue').default);
 Vue.component('my-order', require('./components/Myoders.vue').default);
 Vue.component('myorderdetails', require('./components/MyOrderDetails.vue').default);
-
+Vue.component('newsletter', require('./components/Newsletter.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

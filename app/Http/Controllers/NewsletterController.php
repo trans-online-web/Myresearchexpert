@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Newsletter\Newsletter;
+use Newsletter;
 class NewsletterController extends Controller
 {
     /**
@@ -34,11 +34,19 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        if ( ! Newsletter::isSubscribed($request->user_email) ) {
-            Newsletter::subscribePending($request->user_email);
-           echo "thank you for subscribing";
+        $request->validate([
+            'email' => 'required',
+        ]);
+        if ( ! Newsletter::isSubscribed($request->email) ) {
+            Newsletter::subscribe($request->email);
+            return response()->json([
+                'status' => 'success',
+                'msg'=>'thank you for subscribing'], 200);
+        }else{
+            return response()->json(['status' => 'error',
+                'msg'=>'you are already subscribed!'], 422);
         }
-        echo "you are subscribed";
+
     }
 
     /**

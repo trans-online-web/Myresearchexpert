@@ -11,19 +11,5 @@
             </div>
         </div>
     </header>
-    <div class="container">
-        <div class="justify-content-center py-3">
-            <h1>Subscribe to our Newsletter</h1>
-            <div class="row">
-                <form action="{{ url('newsletter') }}" method="post">
-                    <div class="form-group">
-                        <label for="exampleInputEmail">Email</label>
-                        <input type="email" name="user_email" id="exampleInputEmail" class="form-control">
-                    </div>
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
+    <newsletter></newsletter>
 @endsection
