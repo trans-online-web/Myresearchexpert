@@ -225,7 +225,6 @@
                 attachments:[],
                 formf: new FormData(),
                 form: new Form({
-
                 })
             }
         },
