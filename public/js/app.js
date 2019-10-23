@@ -3575,6 +3575,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -102045,9 +102047,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "row" }, [
-          _c("form", [
+          _c("form", { staticClass: "form-inline" }, [
             _c(
               "div",
               { staticClass: "form-group" },
@@ -102055,7 +102057,7 @@ var render = function() {
                 _c("label", { attrs: { for: "exampleInputEmail" } }, [
                   _vm._v("Email")
                 ]),
-                _vm._v(" "),
+                _vm._v(" :\n                            "),
                 _c("input", {
                   directives: [
                     {
@@ -102088,19 +102090,21 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.send()
+            _c("div", { staticClass: "col" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.send()
+                    }
                   }
-                }
-              },
-              [_vm._v("Submit")]
-            )
+                },
+                [_vm._v("Submit")]
+              )
+            ])
           ])
         ])
       ])
@@ -121092,8 +121096,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "afd722e948ad632b30cb",
+  cluster: "ap2",
   encrypted: true
 });
 
@@ -122830,8 +122834,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
