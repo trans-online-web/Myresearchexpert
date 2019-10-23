@@ -54,3 +54,4 @@ Route::get('send','API\MessangerController@send');
 Route::get('unread','API\ContactsController@index');
 Route::get('getMessage/{orderId}','API\MessangerController@getMessagesFor');
 Route::apiResources(['blog' => 'API\BlogController']);
+Route::post('downloadAll/{orderId}', 'API\CompletedController@downloadAll');

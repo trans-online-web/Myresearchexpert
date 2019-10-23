@@ -68,6 +68,7 @@ let routes = [
     { path: '/chat', component: require('./components/Chat.vue').default },
     { path: '/blog', component: require('./components/Blog.vue').default },
     { path: '/blog-categories', component: require('./components/BlogCategories.vue').default },
+    { path: '/readmore/:blogId', component: require('./components/ReadMore.vue').default },
 
 ]
 const router = new VueRouter({

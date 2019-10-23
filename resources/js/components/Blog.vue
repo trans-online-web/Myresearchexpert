@@ -19,7 +19,10 @@
                                     <div class="card-body">
                                         <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
                                         <small>{{blog[0]['date']}}</small>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <p>
+                                            <router-link :to="{path:'/readmore/'+ blog[0]['id']}" class="btn btn-primary btn-sm">Read More</router-link>
+                                            <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -124,10 +127,10 @@
             }
         },
         methods: {
-            getBlog(){
+            getBlog() {
                 axios.get("/api/blog").then(({data}) => ([this.blogs = data['parent']]));
             },
-            submit(){
+            submit() {
 
                 for (let i = 0; i < this.attachments.length; i++) {
                     this.formf.append('image[]', this.attachments[i]);
@@ -177,7 +180,7 @@
         created() {
             this.getCategories();
             this.getBlog();
-            Fire.$on('entry', () =>{
+            Fire.$on('entry', () => {
                 this.getBlog();
             })
         }
