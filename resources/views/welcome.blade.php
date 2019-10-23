@@ -120,8 +120,12 @@
   <div class="center">
     <a href="" class="btn btn-lg btn-success">Make An Order</a>
   </div>
-
+    <h4 class="featurette text-center px-5 pt-3">Subscribe to our Newsletter</h4>
+    <div class="center">
+        <newsletter></newsletter>
+    </div>
 </div>
+
 <div class="row p-2">
 
 </div>

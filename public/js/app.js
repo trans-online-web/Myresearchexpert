@@ -3359,6 +3359,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -101310,9 +101312,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "row" }, [
-          _c("form", [
+          _c("form", { staticClass: "form-inline" }, [
             _c(
               "div",
               { staticClass: "form-group" },
@@ -101320,7 +101322,7 @@ var render = function() {
                 _c("label", { attrs: { for: "exampleInputEmail" } }, [
                   _vm._v("Email")
                 ]),
-                _vm._v(" "),
+                _vm._v(" :\n                            "),
                 _c("input", {
                   directives: [
                     {
@@ -101353,19 +101355,21 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.send()
+            _c("div", { staticClass: "col" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.send()
+                    }
                   }
-                }
-              },
-              [_vm._v("Submit")]
-            )
+                },
+                [_vm._v("Submit")]
+              )
+            ])
           ])
         ])
       ])
