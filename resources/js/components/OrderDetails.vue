@@ -30,12 +30,8 @@
                                                 <td><span>{{details.email}}</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Estimated Cost</td>
-                                                <td><span>${{details.suggested_price}}</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Client's Budget</td>
-                                                <td><span>${{details.budget}}</span></td>
+                                                <td>Price</td>
+                                                <td><span>${{details.price}}</span></td>
                                             </tr>
                                             </tbody></table>
                                     </div>
@@ -108,6 +104,7 @@
                                                 </a>
                                                 <!-- /.info-box -->
                                             </div>
+                                            <button type="button" class="btn btn-primary" @click="downloadAll">Download all files</button>
                                         </div>
                                     </div>
                                     <div class="alert alert-warning alert-dismissible" v-if="this.filesCount == 0">
@@ -245,6 +242,9 @@
                 });
         },
         methods:{
+            downloadAll(){
+                axios.post('/api/downloadAll/' + this.orderId);
+            },
             submit(){
                 for(let i=0; i<this.attachments.length;i++){
                     this.formf.append('pics[]',this.attachments[i]);

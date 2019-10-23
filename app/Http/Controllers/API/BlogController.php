@@ -95,7 +95,11 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $details = Blog::where('id', $id)->first();
+        $image = BlogImages::where('blog_id', $id)->value('path');
+        $path = substr($image, 7);
+
+        return ['details' => $details, 'path' => $path];
     }
 
     /**
