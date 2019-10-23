@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>My Research Expert</title>
+    <title>assignmentexperts4hire</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -28,7 +28,7 @@
     <div id="app">
         <header id="sticker" class="header-area">
             <nav class="navbar navbar-expand-md font bg-transparent">
-                <a class="navbar-brand" href="/">My Research Expert</a>
+                <a class="navbar-brand" href="/">assignmentexperts4hire</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
