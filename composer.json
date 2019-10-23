@@ -14,7 +14,11 @@
         "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "pusher/pusher-php-server": "^4.0",
+<<<<<<< HEAD
         "ext-zip": "*"
+=======
+        "spatie/laravel-newsletter": "^4.7"
+>>>>>>> 33477a20f023ef1f2f6441b60d54db2c34982a0f
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -43,6 +43,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/about">About Us</a>
                     </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/blog">Blog</a>
+                      </li>
                   </ul>
                   <div class="mt-2 mt-md-0">
                       @if (Route::has('login'))
@@ -158,21 +161,12 @@
 
         @yield('content')
         @include('includes.footer')
-        <script type="text/javascript">
-            $(window).scroll(function(){
-                if ($(window).scrollTop() >= 1) {
-                    $('#sticker').addClass('stick');
-                }
-                else {
-                    $('#sticker').removeClass('stick');
-                }
-            });
-       </script>
         @auth
             <script>
-                window.user = @json(auth()->user())
+                window.user =@json(auth()->user())
             </script>
         @endauth
     </div>
+<script src="{{ asset('js/main.js') }} " defer></script>
 </body>
 </html>

@@ -34,7 +34,7 @@ Route::get('getFiles/{orderId}', 'API\TaskController@getFiles');
 Route::post('addFiles/{orderId}', 'API\TaskController@addFiles');
 Route::get('getUser/{orderId}','API\TaskController@user');
 Route::get('getAdmin','API\TaskController@admin');
-Route::get('getThisUser/{orderId}','API\TaskController@user');
+Route::get('getThisUser/{orderId}','API\TaskController@ThisUser');
 
 Route::get('download/{id}', 'API\TaskController@downloadFile');
 
@@ -54,4 +54,5 @@ Route::get('send','API\MessangerController@send');
 Route::get('unread','API\ContactsController@index');
 Route::get('getMessage/{orderId}','API\MessangerController@getMessagesFor');
 Route::apiResources(['blog' => 'API\BlogController']);
+Route::post('newsletter','NewsletterController@store');
 Route::post('downloadAll/{orderId}', 'API\CompletedController@downloadAll');

@@ -178,7 +178,7 @@
             return{
                 message: '',
                 typing:'',
-                user: {},
+                user : {},
                 users : {},
                 messages:[],
                 orderId: this.$route.params.orderId,

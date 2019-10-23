@@ -37255,13 +37255,8 @@ readers do not read off random characters that represent icons */
   cursor: #fff;
 }
 
-nav.font {
-  font-size: 16px;
-  font-weight: 700;
-}
-
 nav {
-  background-color: #6369DC;
+  /*background-color: #6369DC;*/
   font-family: "Roboto" san serif;
   /*opacity: 0.5;*/
 }
