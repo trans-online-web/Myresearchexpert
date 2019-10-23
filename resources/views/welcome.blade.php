@@ -4,7 +4,7 @@
 <div class="home">
   <div class="hero-text pt--5">
     <div class="row">
-      <div class="col-md-5 pt-4">
+      {{--<div class="col-md-5 pt-4">
         <div class="card mx-auto">
           <h3 class="py-4 colorw">Submit your order</h3>
           <form class="p-2 order-form">
@@ -15,8 +15,8 @@
             <button class="btn btn-lg btn-success">Make an Order</button>
           </form>
         </div>
-      </div>
-      <div class="hero-text-inner col-md-7 mx-auto">
+      </div>--}}
+      <div class="hero-text-inner col-md-10 mx-auto">
         <div class="jumbotron h-100">
           <h1 class="font-weight-bold pt-4">Professional research paper writing services for students.</h1>
           <!-- <h3>From initial topic to finished paper</h3> -->
@@ -120,10 +120,10 @@
   <div class="center">
     <a href="" class="btn btn-lg btn-success">Make An Order</a>
   </div>
-  
+
 </div>
 <div class="row p-2">
-  
+
 </div>
- 
+
 @endsection

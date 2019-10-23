@@ -195,7 +195,7 @@
         },
 
         mounted() {
-            Echo.private(`message.${this.user.id}`)
+            Echo.private(`message.${user['id']}`)
                 .listen('ChatEvent',(e)=>{
                     this.messages.push(e.message);
                 })
@@ -317,7 +317,7 @@
                 this.scrollToBottom();
             },
             message() {
-                Echo.private(`message.${this.user.id}`)
+                Echo.private(`message.${user['id']}`)
                     .whisper('typing', {
                         name: this.message
                     });

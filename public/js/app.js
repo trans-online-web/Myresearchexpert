@@ -3187,7 +3187,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    Echo["private"]("message.".concat(this.user.id)).listen('ChatEvent', function (e) {
+    Echo["private"]("message.".concat(user['id'])).listen('ChatEvent', function (e) {
       _this.messages.push(e.message);
     }).listenForWhisper('typing', function (e) {
       if (e.name != '') {
@@ -3355,7 +3355,7 @@ __webpack_require__.r(__webpack_exports__);
       this.scrollToBottom();
     },
     message: function message() {
-      Echo["private"]("message.".concat(this.user.id)).whisper('typing', {
+      Echo["private"]("message.".concat(user['id'])).whisper('typing', {
         name: this.message
       });
     }
@@ -3491,6 +3491,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
   data: function data() {
     return {
       orders: {},

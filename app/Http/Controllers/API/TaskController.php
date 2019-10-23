@@ -111,7 +111,9 @@ class TaskController extends Controller
     }
     public function ThisUser($orderId)
     {
-        return Task::where('id', $orderId)->get();
+        $id = Task::where('id', $orderId)->value('user_id');
+        $user = User::where('id',$id)->first();
+        return $user;
     }
     public function admin()
     {
