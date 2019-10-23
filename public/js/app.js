@@ -2971,7 +2971,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    Echo["private"]("message.".concat(this.user.id)).listen('ChatEvent', function (e) {
+    Echo["private"]("message.".concat(user['id'])).listen('ChatEvent', function (e) {
       _this.messages.push(e.message);
     }).listenForWhisper('typing', function (e) {
       if (e.name != '') {
@@ -3139,7 +3139,7 @@ __webpack_require__.r(__webpack_exports__);
       this.scrollToBottom();
     },
     message: function message() {
-      Echo["private"]("message.".concat(this.user.id)).whisper('typing', {
+      Echo["private"]("message.".concat(user['id'])).whisper('typing', {
         name: this.message
       });
     }
@@ -3275,6 +3275,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
   data: function data() {
     return {
       orders: {},
@@ -101046,7 +101052,19 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(2, true),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-primary btn-sm",
+                            attrs: {
+                              href: "/myorderdetails/" + order.id,
+                              type: "button"
+                            }
+                          },
+                          [_vm._v("More")]
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c(
@@ -101095,7 +101113,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "form",
@@ -101174,7 +101192,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ]
               )
             ])
@@ -101222,21 +101240,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary btn-sm",
-          attrs: { href: "/myorderdetails/1", type: "button" }
-        },
-        [_vm._v("More")]
-      )
     ])
   },
   function() {
