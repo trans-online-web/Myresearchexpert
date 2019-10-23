@@ -11,5 +11,5 @@
             </div>
         </div>
     </header>
-    <newsletter></newsletter>
+    <blogUser></blogUser>
 @endsection

@@ -72,7 +72,7 @@ let routes = [
     {path: '/MyOrderDetails/:orderId', component: require('./components/MyOrderDetails.vue').default},
     {path: '/MyOrder', component: require('./components/Myoders.vue').default},
     {path: '/chat', component: require('./components/Chat.vue').default},
-    {path: '/blog', component: require('./components/Blog.vue').default},
+    {path: '/blog-admin', component: require('./components/Blog.vue').default},
     {path: '/blog-categories', component: require('./components/BlogCategories.vue').default},
     {path: '/readmore/:blogId', component: require('./components/ReadMore.vue').default},
 
@@ -108,6 +108,7 @@ Vue.component('Order', require('./components/Order.vue').default);
 Vue.component('my-order', require('./components/Myoders.vue').default);
 Vue.component('myorderdetails', require('./components/MyOrderDetails.vue').default);
 Vue.component('newsletter', require('./components/Newsletter.vue').default);
+Vue.component('blogUser', require('./components/Blog/BlogUser.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

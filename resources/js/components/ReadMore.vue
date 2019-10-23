@@ -3,7 +3,7 @@
         <div class="col-lg-9 ml-auto mr-auto mt-5">
             <div class="col-sm-12">
                 <p class="lead3">
-                    <a href="/blog">
+                    <a href="/blog-admin">
                         <button type="button" class="btn btn-primary">
                             <i class="fa fa-hand-point-left"></i>
                             Back
