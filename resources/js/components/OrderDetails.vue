@@ -92,7 +92,7 @@
                                     <div class="box-body" v-if="this.filesCount > 0">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12" v-for="file in files" :key="file.id">
-                                                <a href="#" @click="download(file.id)">
+                                                <a @click.prevent="download(file.id)">
                                                     <div class="info-box">
                                                         <span class="info-box-icon" style="background-color: green;"><i class="fas fa-download" style="color: white;"></i></span>
 
@@ -104,7 +104,7 @@
                                                 </a>
                                                 <!-- /.info-box -->
                                             </div>
-                                            <button type="button" class="btn btn-primary" @click="downloadAll">Download all files</button>
+<!--                                            <button type="button" class="btn btn-primary" @click="downloadAll">Download all files</button>-->
                                         </div>
                                     </div>
                                     <div class="alert alert-warning alert-dismissible" v-if="this.filesCount == 0">

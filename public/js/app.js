@@ -103021,42 +103021,30 @@ var render = function() {
                         _c(
                           "div",
                           { staticClass: "row" },
-                          [
-                            _vm._l(_vm.files, function(file) {
-                              return _c(
-                                "div",
-                                {
-                                  key: file.id,
-                                  staticClass: "col-md-6 col-sm-6 col-xs-12"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.download(file.id)
-                                        }
-                                      }
-                                    },
-                                    [_vm._m(6, true)]
-                                  )
-                                ]
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "button",
+                          _vm._l(_vm.files, function(file) {
+                            return _c(
+                              "div",
                               {
-                                staticClass: "btn btn-primary",
-                                attrs: { type: "button" },
-                                on: { click: _vm.downloadAll }
+                                key: file.id,
+                                staticClass: "col-md-6 col-sm-6 col-xs-12"
                               },
-                              [_vm._v("Download all files")]
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.download(file.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._m(6, true)]
+                                )
+                              ]
                             )
-                          ],
-                          2
+                          }),
+                          0
                         )
                       ])
                     : _vm._e(),
@@ -103083,7 +103071,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm._m(7),
                           _vm._v(
-                            "\n                                    No files attached!!\n                                "
+                            "\n                                        No files attached!!\n                                    "
                           )
                         ]
                       )
@@ -103105,9 +103093,9 @@ var render = function() {
                       [
                         _c("div", { staticClass: "card card-body" }, [
                           _vm._v(
-                            "\n                                            " +
+                            "\n                                                " +
                               _vm._s(_vm.details.task) +
-                              "\n                                        "
+                              "\n                                            "
                           )
                         ])
                       ]
@@ -103129,7 +103117,7 @@ var render = function() {
                       [
                         _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
                         _vm._v(
-                          "\n                                        Upload Completed Task\n                                    "
+                          "\n                                            Upload Completed Task\n                                        "
                         )
                       ]
                     )
@@ -103402,7 +103390,7 @@ var staticRenderFns = [
         [
           _c("i", { staticClass: "fas fa-eye" }),
           _vm._v(
-            "\n                                            View\n                                        "
+            "\n                                                View\n                                            "
           )
         ]
       )
@@ -103459,7 +103447,7 @@ var staticRenderFns = [
         [
           _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
           _vm._v(
-            "\n                            Upload\n                        "
+            "\n                                Upload\n                            "
           )
         ]
       )
