@@ -2,16 +2,15 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12" style="padding: 30px">
-                <div class="row justify-content-center">
+                <div class="row">
                     <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
                         <div class="card justify-content-center">
-                            <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap">
+                            <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap" style="height: 250px">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
                                 <small>{{blog[0]['date'] | myDate}}</small>
-<!--                                <small>{{moment(blog[0]['date']).format('MMMM Do YYYY, h:mm:ss a')}}</small>-->
                                 <p>
-                                    <router-link :to="{path:'/readmore/'+ blog[0]['id']}" class="btn btn-primary btn-sm">Read More</router-link>
+                                    <a :href="'/blogcontent/'+ blog[0]['id']" class="btn btn-primary btn-sm">Read More</a>
                                 </p>
                             </div>
                         </div>
@@ -72,7 +71,7 @@
                                 <div class="form-check form-check-inline" v-for="cat in categories.data" :key="cat.id">
                                     <input v-model="form.category" class="form-check-input" type="radio"
                                            name="category" id="category" :value="cat.id"
-                                           :class="{ 'is-invalid': form.errors.has('mliving') }">
+                                           :class="{ 'is-invalid': form.errors.has('category') }">
                                     <label class="form-check-label">{{cat.name}}</label>
                                     <has-error :form="form" field="category"></has-error>
                                 </div>
