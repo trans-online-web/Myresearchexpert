@@ -32,7 +32,7 @@
                                   </td>
                                   <td>{{order.level}}</td>
                                   <td>{{order.subject_name}}</td>
-                                  <td>{{order.deadline_datetime}}</td>
+                                  <td>{{order.deadline_datetime|myDate}}</td>
                                   <td>
                                       <router-link :to="{path:'/orderdetails/'+ order.id}" type="button" class="btn btn-primary btn-sm">More</router-link>
                                   </td>

@@ -1,30 +1,18 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h3 class="card-title">Stories</h3>
-
-                        <div class="card-tools">
-                            <button class="btn btn-sm btn-primary" @click="newModal">Create Story</button>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
-                                <div class="card">
-                                    <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
-                                        <small>{{blog[0]['date']}}</small>
-                                        <p>
-                                            <router-link :to="{path:'/readmore/'+ blog[0]['id']}" class="btn btn-primary btn-sm">Read More</router-link>
-                                            <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                        </p>
-                                    </div>
-                                </div>
+            <div class="col-md-12" style="padding: 30px">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
+                        <div class="card justify-content-center">
+                            <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
+                                <small>{{blog[0]['date'] | myDate}}</small>
+<!--                                <small>{{moment(blog[0]['date']).format('MMMM Do YYYY, h:mm:ss a')}}</small>-->
+                                <p>
+                                    <router-link :to="{path:'/readmore/'+ blog[0]['id']}" class="btn btn-primary btn-sm">Read More</router-link>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -103,6 +91,7 @@
 
 <script>
     import {VueEditor} from "vue2-editor";
+    import moment from 'moment';
 
     export default {
         name: "Blog",

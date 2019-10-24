@@ -15,6 +15,10 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 //moment js
 import moment from 'moment';
+Vue.filter('myDate',function(created){
+    return moment(created).format('MMMM Do YYYY');
+});
+
 //Gate
 import Gate from "./Gate";
 
@@ -108,7 +112,7 @@ Vue.component('Order', require('./components/Order.vue').default);
 Vue.component('my-order', require('./components/Myoders.vue').default);
 Vue.component('myorderdetails', require('./components/MyOrderDetails.vue').default);
 Vue.component('newsletter', require('./components/Newsletter.vue').default);
-Vue.component('blogUser', require('./components/Blog/BlogUser.vue').default);
+Vue.component('blog-user', require('./components/Blog/BlogUser.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

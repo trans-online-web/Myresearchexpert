@@ -72,7 +72,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Deadline</td>
-                                                <td><span>{{details.deadline_datetime}}</span></td>
+                                                <td><span>{{details.deadline_datetime|myDate}}</span></td>
                                             </tr>
                                             <tr>
                                                 <td>Spacing</td>
@@ -136,7 +136,7 @@
                                         <h5 class="box-title">Upload</h5>
                                     </div>
                                     <div class="box-body">
-                                        <button type="button" class="btn btn-success" @click="newModal">
+                                        <button type="button" class="btn btn-success btn-sm" @click="newModal">
                                             <i class="fas fa-cloud-upload-alt"></i>
                                             Upload Completed Task
                                         </button>

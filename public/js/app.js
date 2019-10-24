@@ -1928,6 +1928,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.esm.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2019,18 +2021,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Blog",
@@ -99614,84 +99605,62 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card mt-4" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Stories")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm btn-primary",
-                  on: { click: _vm.newModal }
-                },
-                [_vm._v("Create Story")]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.blogs, function(blog) {
-                return _c("div", { key: blog.id, staticClass: "col-sm-4" }, [
-                  _c("div", { staticClass: "card" }, [
-                    _c("img", {
-                      staticClass: "card-img-top",
-                      attrs: {
-                        src: "storage/" + blog[0]["image"],
-                        alt: "Card image cap"
-                      }
-                    }),
+      _c(
+        "div",
+        { staticClass: "col-md-12", staticStyle: { padding: "30px" } },
+        [
+          _c(
+            "div",
+            { staticClass: "row justify-content-center" },
+            _vm._l(_vm.blogs, function(blog) {
+              return _c("div", { key: blog.id, staticClass: "col-sm-4" }, [
+                _c("div", { staticClass: "card justify-content-center" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: {
+                      src: "storage/" + blog[0]["image"],
+                      alt: "Card image cap"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "card-title",
+                        staticStyle: { color: "black" }
+                      },
+                      [_vm._v(_vm._s(blog[0]["title"]))]
+                    ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c(
-                        "h5",
-                        {
-                          staticClass: "card-title",
-                          staticStyle: { color: "black" }
-                        },
-                        [_vm._v(_vm._s(blog[0]["title"]))]
-                      ),
-                      _vm._v(" "),
-                      _c("small", [_vm._v(_vm._s(blog[0]["date"]))]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-primary btn-sm",
-                              attrs: {
-                                to: { path: "/readmore/" + blog[0]["id"] }
-                              }
-                            },
-                            [_vm._v("Read More")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-primary btn-sm",
-                              attrs: { href: "#" }
-                            },
-                            [_vm._v("Edit")]
-                          )
-                        ],
-                        1
-                      )
-                    ])
+                    _c("small", [
+                      _vm._v(_vm._s(_vm._f("myDate")(blog[0]["date"])))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-primary btn-sm",
+                            attrs: {
+                              to: { path: "/readmore/" + blog[0]["id"] }
+                            }
+                          },
+                          [_vm._v("Read More")]
+                        )
+                      ],
+                      1
+                    )
                   ])
                 ])
-              }),
-              0
-            )
-          ])
-        ])
-      ])
+              ])
+            }),
+            0
+          )
+        ]
+      )
     ]),
     _vm._v(" "),
     _c(
@@ -102997,7 +102966,13 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [
                               _c("span", [
-                                _vm._v(_vm._s(_vm.details.deadline_datetime))
+                                _vm._v(
+                                  _vm._s(
+                                    _vm._f("myDate")(
+                                      _vm.details.deadline_datetime
+                                    )
+                                  )
+                                )
                               ])
                             ])
                           ]),
@@ -103114,7 +103089,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-success",
+                        staticClass: "btn btn-success btn-sm",
                         attrs: { type: "button" },
                         on: { click: _vm.newModal }
                       },
@@ -103913,7 +103888,11 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(order.subject_name))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(order.deadline_datetime))]),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(_vm._f("myDate")(order.deadline_datetime))
+                            )
+                          ]),
                           _vm._v(" "),
                           _c(
                             "td",
@@ -120911,7 +120890,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); //moment js
 
- //Gate
+
+Vue.filter('myDate', function (created) {
+  return moment__WEBPACK_IMPORTED_MODULE_1___default()(created).format('MMMM Do YYYY');
+}); //Gate
 
 
 Vue.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_2__["default"](window.user); // VForm
@@ -121016,7 +120998,7 @@ Vue.component('Order', __webpack_require__(/*! ./components/Order.vue */ "./reso
 Vue.component('my-order', __webpack_require__(/*! ./components/Myoders.vue */ "./resources/js/components/Myoders.vue")["default"]);
 Vue.component('myorderdetails', __webpack_require__(/*! ./components/MyOrderDetails.vue */ "./resources/js/components/MyOrderDetails.vue")["default"]);
 Vue.component('newsletter', __webpack_require__(/*! ./components/Newsletter.vue */ "./resources/js/components/Newsletter.vue")["default"]);
-Vue.component('blogUser', __webpack_require__(/*! ./components/Blog/BlogUser.vue */ "./resources/js/components/Blog/BlogUser.vue")["default"]);
+Vue.component('blog-user', __webpack_require__(/*! ./components/Blog/BlogUser.vue */ "./resources/js/components/Blog/BlogUser.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -121096,8 +121078,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "afd722e948ad632b30cb",
-  cluster: "ap2",
+  key: "",
+  cluster: "mt1",
   encrypted: true
 });
 
@@ -122834,8 +122816,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Myresearchexpert\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
