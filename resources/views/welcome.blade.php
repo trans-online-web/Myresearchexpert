@@ -122,10 +122,7 @@
   </div>
     <div class="row p-2">
     </div>
-    <h4 class="featurette text-center px-5 pt-3">Subscribe to our Newsletter</h4>
-    <div class="center p-2">
-        <newsletter></newsletter>
-    </div>
+   
 </div>
 
 <div class="row p-2">

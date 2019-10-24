@@ -1,4 +1,13 @@
+
 <footer class="color p-5 ">
+  <h4 class="text-light center"> NEWSLETTER</h4>
+  <br>
+  <h5 class="text-light center"> Subscribe to our Neswletter for updates</h5>
+  <div class="clearfix">
+  <div class=" text-light pull-left">
+  <newsletter></newsletter>
+</div>
+<br><br>
   <div class="container">
     <div class="row footer-text">
       <div class="col-6 col-md">
@@ -33,6 +42,7 @@
         </ul>
       </div>
     </div>
+
     <div class="row center">
       <div class="col-12 col-md">
         <h5 class="text-light">All rights reserved, My Research Expert &copy; 2017-2019</h5>
