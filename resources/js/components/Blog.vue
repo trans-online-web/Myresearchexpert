@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
                                 <div class="card">
-                                    <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap">
+                                    <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap" style="height: 250px;">
                                     <div class="card-body">
                                         <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
                                         <small>{{blog[0]['date']}}</small>
