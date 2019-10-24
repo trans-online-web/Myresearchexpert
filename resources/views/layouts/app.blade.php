@@ -28,7 +28,7 @@
     <div id="app">
         <header id="sticker" class="header-area">
             <nav class="navbar navbar-expand-md font bg-transparent">
-                <a class="navbar-brand" href="/">assignmentexperts4hire</a>
+               <b> <a class="navbar-brand" href="/"><h1>AssignmentExperts4hire</h1></a></b>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
