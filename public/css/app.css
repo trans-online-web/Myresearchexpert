@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);/*!
+
  *   AdminLTE v3.0.0-beta.2
  *   Author: Colorlib
  *	 Website: AdminLTE.io <http://adminlte.io>
@@ -37276,7 +37277,7 @@ nav {
 }
 
 .header-area a {
-  color: #fff;
+  color: #343a40;
 }
 
 .header-area a:hover {
