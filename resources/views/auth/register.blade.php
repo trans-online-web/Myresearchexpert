@@ -75,7 +75,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <h2>Create Account</h2>
-                    <p class="lead">It's free and hardly takes more than 30 seconds.</p>
+                    <p class="lead">Registration is free and takes just a few seconds.</p>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
