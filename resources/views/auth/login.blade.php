@@ -1,6 +1,10 @@
 <!-- @extends('layouts.app') -->
 
 @section('content')
+
+  <section class="section overflow-hidden bg-image" style="background-image: url(assets/images/background.jpg)">
+          
+        </section>
     <div class="container">
         <div class="row justify-content-center mt-10 login">
             <div class="col-md-8">
