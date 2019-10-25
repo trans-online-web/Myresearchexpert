@@ -13,9 +13,8 @@
       <div class="col-6 col-md">
         <h5 class="text-light">Company</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="#">About </a></li>
+         
           <li><a class="text-muted" href="#">Testimonials</a></li>
-          <li><a class="text-muted" href="#">How it Works</a></li>
           <li><a class="text-muted" href="#">Contact Us</a></li>
           <li><a class="text-muted" href="#">Terms of Use</a></li>
           <li><a class="text-muted" href="#">Affordable Prices</a></li>
