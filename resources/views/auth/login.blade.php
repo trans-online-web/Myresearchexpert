@@ -1,10 +1,20 @@
 <!-- @extends('layouts.app') -->
 
 @section('content')
-
-  <section class="section overflow-hidden bg-image" style="background-image: url(assets/images/background.jpg)">
-          
-        </section>
+<style>
+    
+h4{
+  text-align:center;
+}
+.container form{
+  width:250px;
+  margin:20px auto;
+}
+i{
+  cursor:pointer;
+}
+</style>
+<div style="background-image:url('{{ asset('images/background.jpg') }}">
     <div class="container">
         <div class="row justify-content-center mt-10 login">
             <div class="col-md-8">
@@ -31,11 +41,14 @@
                                 <input id="password" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="current-password" placeholder="Password">
+                                       <div class="input-group-text"><i class="fas fa-eye-slash" id="eye"></i></div>
+    
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                 <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -67,4 +80,28 @@
             </div>
         </div>
     </div>
+    <script>
+       $(function(){
+  
+  $('#eye').click(function(){
+       
+        if($(this).hasClass('fa-eye-slash')){
+           
+          $(this).removeClass('fa-eye-slash');
+          
+          $(this).addClass('fa-eye');
+          
+          $('#password').attr('type','text');
+            
+        }else{
+         
+          $(this).removeClass('fa-eye');
+          
+          $(this).addClass('fa-eye-slash');  
+          
+          $('#password').attr('type','password');
+        }
+    });
+}); 
+    </script>
 @endsection

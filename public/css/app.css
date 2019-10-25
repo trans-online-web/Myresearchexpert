@@ -37260,6 +37260,9 @@ nav {
   font-family: "Roboto" san serif;
   /*opacity: 0.5;*/
 }
+.some-class{
+background-image: url("/image/background.jpg"); 
+}
 
 .nav-link {
   color: #000000;
