@@ -27,7 +27,7 @@
           <li><a class="text-muted" href="#">Any Deadline - Any Subject</a></li>
           <li><a class="text-muted" href="#">Email Notifications</a></li>
           <li><a class="text-muted" href="#">Online Writer Chat</a></li>
-          <li><a class="text-muted" href="#">Have the Bargaing Power</a></li>
+          <li><a class="text-muted" href="#">Have the Bargaining power</a></li>
           <li><a class="text-muted" href="#">Plagiarism Free Papers</a></li>
           <li><a class="text-muted" href="#">Affordable Prices</a></li>
         </ul>
