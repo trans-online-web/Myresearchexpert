@@ -13,8 +13,13 @@ h4{
 i{
   cursor:pointer;
 }
+
+
 </style>
-<div style="background-image:url('{{ asset('images/background.jpg') }}">
+ <div class='view_parent_image1'>
+
+
+
     <div class="container">
         <div class="row justify-content-center mt-10 login">
             <div class="col-md-8">
@@ -79,6 +84,7 @@ i{
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script>
        $(function(){

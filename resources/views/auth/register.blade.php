@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div style="background-image:url('{{ asset('images/background.jpg') }}">
+ <div class='view_parent_image2'>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 p-5">
@@ -128,5 +128,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
