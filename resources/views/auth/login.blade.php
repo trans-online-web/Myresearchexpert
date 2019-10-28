@@ -87,7 +87,7 @@ i{
     </div>
     </div>
     <script>
-       $(function(){
+    $(function(){
   
   $('#eye').click(function(){
        
@@ -108,6 +108,6 @@ i{
           $('#password').attr('type','password');
         }
     });
-}); 
+});
     </script>
 @endsection

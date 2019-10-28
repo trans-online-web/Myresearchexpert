@@ -4,8 +4,9 @@
   <br>
   <h5 class="text-light center"> Subscribe to our Neswletter for updates</h5>
   <div class="clearfix">
-  <div class=" text-light pull-left">
+  <div class=" text-light">
   <newsletter></newsletter>
+</div>
 </div>
 <br><br>
   <div class="container">
