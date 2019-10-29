@@ -1879,7 +1879,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/blog").then(function (_ref) {
         var data = _ref.data;
-        return [_this2.blogs = data['parent']];
+        return [_this2.blogs = data];
       });
     },
     submit: function submit() {
@@ -1982,10 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/blog/" + this.blogId).then(function (_ref) {
         var data = _ref.data;
         return [_this.details = data['details']];
-      });
-      axios.get("/api/blog/" + this.blogId).then(function (_ref2) {
-        var data = _ref2.data;
-        return [_this.path = data['path']];
       });
     }
   },
@@ -2128,7 +2124,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/blog").then(function (_ref) {
         var data = _ref.data;
-        return [_this.blogs = data['parent']];
+        return [_this.blogs = data];
       });
     },
     submit: function submit() {
@@ -99266,16 +99262,13 @@ var render = function() {
             _c(
               "div",
               { staticClass: "row" },
-              _vm._l(_vm.blogs, function(blog) {
+              _vm._l(_vm.blogs.data, function(blog) {
                 return _c("div", { key: blog.id, staticClass: "col-sm-4" }, [
                   _c("div", { staticClass: "card" }, [
                     _c("img", {
                       staticClass: "card-img-top",
                       staticStyle: { height: "250px" },
-                      attrs: {
-                        src: "storage/" + blog[0]["image"],
-                        alt: "Card image cap"
-                      }
+                      attrs: { src: blog.image, alt: "Card image cap" }
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
@@ -99285,10 +99278,12 @@ var render = function() {
                           staticClass: "card-title",
                           staticStyle: { color: "black" }
                         },
-                        [_vm._v(_vm._s(blog[0]["title"]))]
+                        [_vm._v(_vm._s(blog.title))]
                       ),
                       _vm._v(" "),
-                      _c("small", [_vm._v(_vm._s(blog[0]["date"]))]),
+                      _c("small", [
+                        _vm._v(_vm._s(_vm._f("myDate")(blog["date"])))
+                      ]),
                       _vm._v(" "),
                       _c(
                         "p",
@@ -99297,9 +99292,7 @@ var render = function() {
                             "router-link",
                             {
                               staticClass: "btn btn-primary btn-sm",
-                              attrs: {
-                                to: { path: "/readmore/" + blog[0]["id"] }
-                              }
+                              attrs: { to: { path: "/readmore/" + blog.id } }
                             },
                             [
                               _vm._v(
@@ -99694,7 +99687,7 @@ var render = function() {
         _c("img", {
           staticClass: "rounded img-fluid mx-auto d-block",
           staticStyle: { width: "100%", height: "400px" },
-          attrs: { src: "/storage/" + this.path }
+          attrs: { src: _vm.details.image }
         })
       ]),
       _vm._v(" "),
@@ -99747,16 +99740,13 @@ var render = function() {
           _c(
             "div",
             { staticClass: "row" },
-            _vm._l(_vm.blogs, function(blog) {
+            _vm._l(_vm.blogs.data, function(blog) {
               return _c("div", { key: blog.id, staticClass: "col-sm-4" }, [
                 _c("div", { staticClass: "card justify-content-center" }, [
                   _c("img", {
                     staticClass: "card-img-top",
                     staticStyle: { height: "250px" },
-                    attrs: {
-                      src: "/storage/" + blog[0]["image"],
-                      alt: "Card image cap"
-                    }
+                    attrs: { src: blog.image, alt: "Card image cap" }
                   }),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body" }, [
@@ -99766,19 +99756,17 @@ var render = function() {
                         staticClass: "card-title",
                         staticStyle: { color: "black" }
                       },
-                      [_vm._v(_vm._s(blog[0]["title"]))]
+                      [_vm._v(_vm._s(blog.title))]
                     ),
                     _vm._v(" "),
-                    _c("small", [
-                      _vm._v(_vm._s(_vm._f("myDate")(blog[0]["date"])))
-                    ]),
+                    _c("small", [_vm._v(_vm._s(_vm._f("myDate")(blog.date)))]),
                     _vm._v(" "),
                     _c("p", [
                       _c(
                         "a",
                         {
                           staticClass: "btn btn-primary btn-sm",
-                          attrs: { href: "/blogcontent/" + blog[0]["id"] }
+                          attrs: { href: "/blogcontent/" + blog.id }
                         },
                         [_vm._v("Read More")]
                       )
@@ -103592,7 +103580,7 @@ var render = function() {
         _c("img", {
           staticClass: "img-fluid",
           staticStyle: { width: "700px" },
-          attrs: { src: "/storage/" + this.path }
+          attrs: { src: _vm.details.image }
         })
       ]),
       _vm._v(" "),
@@ -103600,9 +103588,10 @@ var render = function() {
         "div",
         { staticClass: "col-sm-12", staticStyle: { padding: "15px" } },
         [
-          _vm._v(
-            "\n            " + _vm._s(_vm.details.created_at) + "\n            "
-          ),
+          _c("small", [
+            _vm._v(_vm._s(_vm._f("myDate")(_vm.details.created_at)))
+          ]),
+          _vm._v(" "),
           _c("hr", { staticStyle: { color: "blue" } }),
           _vm._v(" "),
           _c("h4", [_vm._v(_vm._s(_vm.details.title))]),
@@ -123019,8 +123008,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mihz\Desktop\Myresearchexpert\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mihz\Desktop\Myresearchexpert\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Transonline/Myresearchexpert/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

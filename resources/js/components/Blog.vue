@@ -13,15 +13,15 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
+                            <div class="col-sm-4" v-for="blog in blogs.data" :key="blog.id">
                                 <div class="card">
-                                    <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap"
+                                    <img class="card-img-top" :src="blog.image" alt="Card image cap"
                                          style="height: 250px;">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
-                                        <small>{{blog[0]['date']}}</small>
+                                        <h5 class="card-title" style="color: black">{{blog.title}}</h5>
+                                        <small>{{blog['date']|myDate}}</small>
                                         <p>
-                                            <router-link :to="{path:'/readmore/'+ blog[0]['id']}"
+                                            <router-link :to="{path:'/readmore/'+ blog.id}"
                                                          class="btn btn-primary btn-sm">Read More
                                             </router-link>
                                             <a href="#" class="btn btn-primary btn-sm">Edit</a>
@@ -158,7 +158,7 @@
                 }
             },
             getBlog() {
-                axios.get("/api/blog").then(({data}) => ([this.blogs = data['parent']]));
+                axios.get("/api/blog").then(({data}) => ([this.blogs = data]));
             },
             submit() {
                 this.form.post('/api/blog').then(() => {

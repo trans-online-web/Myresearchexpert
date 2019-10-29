@@ -12,10 +12,10 @@
                 </p>
             </div>
             <div class="col-sm-12">
-                <img :src="'/storage/' + this.path" class="img-fluid" style="width: 700px;">
+                <img :src="details.image" class="img-fluid" style="width: 700px;">
             </div>
             <div class="col-sm-12" style="padding: 15px">
-                {{details.created_at}}
+                <small>{{details.created_at|myDate}}</small>
                 <hr style="color: blue;">
                 <h4>{{details.title}}</h4>
                 <div v-html="details.content"></div>

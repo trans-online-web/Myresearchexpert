@@ -3,14 +3,14 @@
         <div class="row justify-content-center">
             <div class="col-md-12" style="padding: 30px">
                 <div class="row">
-                    <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
+                    <div class="col-sm-4" v-for="blog in blogs.data" :key="blog.id">
                         <div class="card justify-content-center">
-                            <img class="card-img-top" :src="'/storage/' + blog[0]['image']" alt="Card image cap" style="height: 250px">
+                            <img class="card-img-top" :src="blog.image" alt="Card image cap" style="height: 250px">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
-                                <small>{{blog[0]['date'] | myDate}}</small>
+                                <h5 class="card-title" style="color: black">{{blog.title}}</h5>
+                                <small>{{blog.date | myDate}}</small>
                                 <p>
-                                    <a :href="'/blogcontent/'+ blog[0]['id']" class="btn btn-primary btn-sm">Read More</a>
+                                    <a :href="'/blogcontent/'+ blog.id" class="btn btn-primary btn-sm">Read More</a>
                                 </p>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
         },
         methods: {
             getBlog() {
-                axios.get("/api/blog").then(({data}) => ([this.blogs = data['parent']]));
+                axios.get("/api/blog").then(({data}) => ([this.blogs = data]));
             },
             submit() {
 

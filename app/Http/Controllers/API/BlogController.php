@@ -17,35 +17,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
-        $parent = array();
+        return Blog::latest()->paginate(6);
 
-        foreach ($blogs as $blog) {
-            $id = $blog['id'];
-            $title = $blog['title'];
-            $status = $blog['status'];
-            $content = $blog['content'];
-            $image = BlogImages::where('blog_id', $id)->value('path');
-            $category = Category::where('id', $blog['category'])->value('name');
-            $date = $blog['created_at'];
-//            $title = $blog['title'];
-
-            $child = array([
-                'id' => $id,
-                'title' => $title,
-                'status' => $status,
-                'content' => $content,
-                'category' => $category,
-                'date' => $date,
-                'image' => substr($image, 7)
-
-            ]);
-
-            array_push($parent, $child);
-
-        }
-
-        return ['parent' => $parent];
     }
 
     /**
