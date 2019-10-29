@@ -4122,6 +4122,15 @@ input[type="button"].btn-block {
   cursor: default;
 }
 
+.view_parent_image1{
+    background-image: url('/images/login.jpg');
+    background-size: cover;
+}
+
+.view_parent_image2{
+    background-image: url('/images/register.jpg');
+    background-size: cover;
+}
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
 }
@@ -37260,6 +37269,9 @@ nav {
   font-family: "Roboto" san serif;
   /*opacity: 0.5;*/
 }
+.some-class{
+background-image: url("/image/background.jpg"); 
+}
 
 .nav-link {
   color: #000000;
@@ -37276,7 +37288,7 @@ nav {
 }
 
 .header-area a {
-  color: #fff;
+  color: #343a40;
 }
 
 .header-area a:hover {
