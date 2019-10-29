@@ -69,22 +69,8 @@ class BlogController extends Controller
         $blog->status = $request->status;
         $blog->content = $request->bcontent;
         $blog->category = $request->category;
+        $blog->image = $request->image;
         $blog->save();
-
-        $blog_id = $blog->id;
-
-//        $file[] = $request->image;
-
-        if ($request->image) {
-            $uploadedFiles = $request->image;
-            foreach ($uploadedFiles as $file) {
-                $filename = $file->store('public/uploads');
-                $blog_image = new BlogImages();
-                $blog_image->path = $filename;
-                $blog_image->blog_id = $blog_id;
-                $blog_image->save();
-            }
-        }
     }
 
     /**

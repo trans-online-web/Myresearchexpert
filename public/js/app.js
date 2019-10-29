@@ -1818,6 +1818,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Blog",
@@ -1837,40 +1840,55 @@ __webpack_require__.r(__webpack_exports__);
         status: '',
         bcontent: '',
         category: '',
-        image: []
+        image: ''
       })
     };
   },
   methods: {
-    getBlog: function getBlog() {
+    getImage: function getImage(e) {
       var _this = this;
+
+      var file = e.target.files[0];
+      var reader = new FileReader();
+
+      if (file['size'] < 2111775) {
+        if (file['type'] == 'image/png' || file['type'] == 'image/jpg' || file['type'] == 'image/jpeg') {
+          reader.onloadend = function (file) {
+            // console.log('Result', reader.result)
+            _this.form.image = reader.result;
+          };
+
+          reader.readAsDataURL(file);
+        } else {
+          Swal.fire({
+            type: 'error',
+            title: 'Ooops...',
+            text: 'Only images and pdfs are allowed'
+          });
+        }
+      } else {
+        Swal.fire({
+          type: 'error',
+          title: 'Ooops...',
+          text: 'You are uploading a large file'
+        });
+      }
+    },
+    getBlog: function getBlog() {
+      var _this2 = this;
 
       axios.get("/api/blog").then(function (_ref) {
         var data = _ref.data;
-        return [_this.blogs = data['parent']];
+        return [_this2.blogs = data['parent']];
       });
     },
     submit: function submit() {
-      var _this2 = this;
+      var _this3 = this;
 
-      for (var i = 0; i < this.attachments.length; i++) {
-        this.formf.append('image[]', this.attachments[i]);
-      }
-
-      this.formf.append('title', this.form.title);
-      this.formf.append('status', this.form.status);
-      this.formf.append('bcontent', this.form.bcontent);
-      this.formf.append('category', this.form.category); // this.formf.append('image[]', this.attachments);
-
-      var config = {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      };
-      axios.post('/api/blog', this.formf, config).then(function (response) {
+      this.form.post('/api/blog').then(function () {
         $('#addnew').modal('hide');
 
-        _this2.form.reset();
+        _this3.form.reset();
 
         Fire.$emit('entry');
         swal.fire({
@@ -1878,7 +1896,12 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Submited!!',
           text: 'Successfully'
         });
-      })["catch"](function (response) {//error
+      })["catch"](function (error) {
+        swal.fire({
+          type: 'error',
+          title: 'Error!!',
+          text: 'a problem occurred'
+        });
       });
     },
     fieldChange: function fieldChange(e) {
@@ -1893,11 +1916,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getCategories: function getCategories() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/category").then(function (_ref2) {
         var data = _ref2.data;
-        return [_this3.categories = data];
+        return [_this4.categories = data];
       });
     },
     newModal: function newModal() {
@@ -1906,12 +1929,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
     this.getCategories();
     this.getBlog();
     Fire.$on('entry', function () {
-      _this4.getBlog();
+      _this5.getBlog();
     });
   }
 });
@@ -99278,7 +99301,11 @@ var render = function() {
                                 to: { path: "/readmore/" + blog[0]["id"] }
                               }
                             },
-                            [_vm._v("Read More")]
+                            [
+                              _vm._v(
+                                "Read More\n                                        "
+                              )
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
@@ -99410,7 +99437,7 @@ var render = function() {
                                 ],
                                 staticClass: "form-control",
                                 class: {
-                                  "is-invalid": _vm.form.errors.has("level")
+                                  "is-invalid": _vm.form.errors.has("status")
                                 },
                                 attrs: { name: "status", id: "status" },
                                 on: {
@@ -99471,6 +99498,9 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("vue-editor", {
+                          class: {
+                            "is-invalid": _vm.form.errors.has("bcontent")
+                          },
                           attrs: { id: "content" },
                           model: {
                             value: _vm.form.bcontent,
@@ -99505,7 +99535,7 @@ var render = function() {
                             accept: "image/*",
                             name: "image"
                           },
-                          on: { change: _vm.fieldChange }
+                          on: { change: _vm.getImage }
                         }),
                         _vm._v(" "),
                         _c("has-error", {
@@ -99724,7 +99754,7 @@ var render = function() {
                     staticClass: "card-img-top",
                     staticStyle: { height: "250px" },
                     attrs: {
-                      src: "storage/" + blog[0]["image"],
+                      src: "/storage/" + blog[0]["image"],
                       alt: "Card image cap"
                     }
                   }),
