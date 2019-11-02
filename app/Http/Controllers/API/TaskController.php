@@ -10,6 +10,7 @@ use App\Task;
 use App\Files;
 use App\Subject;
 use App\Document;
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -145,9 +146,20 @@ class TaskController extends Controller
     public function downloadFile($id)
     {
         // echo $path;
-        $path = Files::where('id', $id)->value('path');
+//        $path = Files::where('id', $id)->value('path');
+//        $headers = array(
+//
+//            'Content-Type: application/pdf',
+//
+//        );
 
-        return response()->download(storage_path('app/' . $path));
+//        return response()->download(storage_path('app/' . $path));
+//        return Storage::download($path, $headers);
+
+        $file = Files::where('id', $id)->firstOrFail();
+        $pathToFile = storage_path('app/' . $file->path);
+
+        return response()->download($pathToFile);
     }
 
     /**

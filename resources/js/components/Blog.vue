@@ -13,14 +13,17 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-4" v-for="blog in blogs" :key="blog.id">
+                            <div class="col-sm-4" v-for="blog in blogs.data" :key="blog.id">
                                 <div class="card">
-                                    <img class="card-img-top" :src="'storage/' + blog[0]['image']" alt="Card image cap" style="height: 250px;">
+                                    <img class="card-img-top" :src="blog.image" alt="Card image cap"
+                                         style="height: 250px;">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="color: black">{{blog[0]['title']}}</h5>
-                                        <small>{{blog[0]['date']}}</small>
+                                        <h5 class="card-title" style="color: black">{{blog.title}}</h5>
+                                        <small>{{blog['date']|myDate}}</small>
                                         <p>
-                                            <router-link :to="{path:'/readmore/'+ blog[0]['id']}" class="btn btn-primary btn-sm">Read More</router-link>
+                                            <router-link :to="{path:'/readmore/'+ blog.id}"
+                                                         class="btn btn-primary btn-sm">Read More
+                                            </router-link>
                                             <a href="#" class="btn btn-primary btn-sm">Edit</a>
                                         </p>
                                     </div>
@@ -58,7 +61,7 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select v-model="form.status" class="form-control" name="status" id="status"
-                                                :class="{ 'is-invalid': form.errors.has('level') }">
+                                                :class="{ 'is-invalid': form.errors.has('status') }">
                                             <option selected value="">--Select Status--</option>
                                             <option value="published">Published</option>
                                             <option value="draft">Draft</option>
@@ -69,12 +72,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <vue-editor v-model="form.bcontent" id="content"></vue-editor>
+                                <vue-editor v-model="form.bcontent" id="content" :class="{ 'is-invalid': form.errors.has('bcontent') }"></vue-editor>
                                 <has-error :form="form" field="bcontent"></has-error>
                             </div>
                             <div class="form-group">
                                 <label for="image">Headline Image</label>
-                                <input type="file" @change="fieldChange" class="form-control-file" id="image"
+                                <input type="file" @change="getImage" class="form-control-file" id="image"
                                        accept="image/*"
                                        :class="{ 'is-invalid': form.errors.has('image') }" name="image">
                                 <has-error :form="form" field="image"></has-error>
@@ -122,29 +125,43 @@
                     status: '',
                     bcontent: '',
                     category: '',
-                    image: [],
+                    image: '',
                 })
             }
         },
         methods: {
+            getImage(e) {
+                let file = e.target.files[0];
+                var reader = new FileReader();
+                if (file['size'] < 2111775) {
+                    if (file['type'] == 'image/png' || file['type'] == 'image/jpg' || file['type'] == 'image/jpeg') {
+                        reader.onloadend = (file) => {
+                            // console.log('Result', reader.result)
+                            this.form.image = reader.result;
+                        }
+
+                        reader.readAsDataURL(file);
+                    } else {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Ooops...',
+                            text: 'Only images and pdfs are allowed',
+                        })
+                    }
+
+                } else {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Ooops...',
+                        text: 'You are uploading a large file',
+                    })
+                }
+            },
             getBlog() {
-                axios.get("/api/blog").then(({data}) => ([this.blogs = data['parent']]));
+                axios.get("/api/blog").then(({data}) => ([this.blogs = data]));
             },
             submit() {
-
-                for (let i = 0; i < this.attachments.length; i++) {
-                    this.formf.append('image[]', this.attachments[i]);
-                }
-                this.formf.append('title', this.form.title);
-                this.formf.append('status', this.form.status);
-                this.formf.append('bcontent', this.form.bcontent);
-                this.formf.append('category', this.form.category);
-                // this.formf.append('image[]', this.attachments);
-
-
-                const config = {headers: {'Content-Type': 'multipart/form-data'}};
-
-                axios.post('/api/blog', this.formf, config).then(response => {
+                this.form.post('/api/blog').then(() => {
                     $('#addnew').modal('hide');
                     this.form.reset();
                     Fire.$emit('entry');
@@ -152,13 +169,14 @@
                         type: 'success',
                         title: 'Submited!!',
                         text: 'Successfully',
-
                     })
-
+                }).catch(error => {
+                    swal.fire({
+                        type: 'error',
+                        title: 'Error!!',
+                        text: 'a problem occurred',
+                    })
                 })
-                    .catch(response => {
-                        //error
-                    });
             },
             fieldChange(e) {
                 let selectedFiles = e.target.files;
