@@ -3913,6 +3913,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3935,7 +3959,8 @@ __webpack_require__.r(__webpack_exports__);
         spacing: '',
         date: '',
         time: '',
-        task: ''
+        task: '',
+        papertype: ''
       })
     };
   },
@@ -4277,7 +4302,9 @@ __webpack_require__.r(__webpack_exports__);
       this.formf.append('date', moment(this.form.date).format('YYYY-MM-DD HH:mm:ss'));
       this.formf.append('time', this.form.time);
       this.formf.append('task', this.form.task);
-      this.formf.append('price', this.suggestion);
+      this.formf.append('price', this.suggestion); // added
+
+      this.formf.append('papertype', this.form.papertype);
       var config = {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -102698,6 +102725,82 @@ var render = function() {
                         ],
                         1
                       )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", { attrs: { for: "paperType" } }, [
+                        _vm._v("Paper Type")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.papertype,
+                                expression: "form.papertype"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "papertype" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "papertype",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", [_vm._v("-- select paper --")]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "APA" } }, [
+                              _vm._v("APA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Havard" } }, [
+                              _vm._v("Havard")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "MLA" } }, [
+                              _vm._v("MLA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Chicago" } }, [
+                              _vm._v("Chicago")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Vancouver" } }, [
+                              _vm._v("Vancouver")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "OSCOLA" } }, [
+                              _vm._v("OSCOLA")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "IEEE" } }, [
+                              _vm._v("IEEE")
+                            ])
+                          ]
+                        )
+                      ])
                     ])
                   ]),
                   _vm._v(" "),

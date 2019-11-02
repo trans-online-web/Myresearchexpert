@@ -47,6 +47,7 @@ class TaskController extends Controller
             'type' => 'required',
             'price' => 'required',
             'title' => 'required',
+            'papertype'=> 'required'
         ]);
 
         $task = new Task();
@@ -62,6 +63,8 @@ class TaskController extends Controller
         $task->task = $request->task;
         $task->pages = $request->pages;
         $task->spacing = $request->spacing;
+        // added 
+        task->papertype =$request->papertype;
         $task->save();
         $task_id = $task->id;
 
