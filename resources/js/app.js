@@ -37,6 +37,10 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '3px'
 })
+//vue-good-table
+import VueGoodTablePlugin from 'vue-good-table/src';
+import 'vue-good-table/dist/vue-good-table.css';
+Vue.use(VueGoodTablePlugin);
 
 import {Datetime} from 'vue-datetime';
 
@@ -71,15 +75,19 @@ let routes = [
     {path: '/subject', component: require('./components/Subjects.vue').default},
     {path: '/documents', component: require('./components/Documents.vue').default},
     {path: '/levels', component: require('./components/Levels.vue').default},
+    {path: '/AdminSample', component: require('./components/Samples.vue').default},
     {path: '/orders', component: require('./components/TaskOrders.vue').default},
+    {path: '/logs', component: require('./components/SystemLog.vue').default},
     {path: '/orderdetails/:orderId', component: require('./components/OrderDetails.vue').default},
     {path: '/MyOrderDetails/:orderId', component: require('./components/MyOrderDetails.vue').default},
+    {path: '/userDetails/:userId', component: require('./components/userDetails').default},
     {path: '/MyOrder', component: require('./components/Myoders.vue').default},
     {path: '/chat', component: require('./components/Chat.vue').default},
     {path: '/blog-admin', component: require('./components/Blog.vue').default},
     {path: '/blog-categories', component: require('./components/BlogCategories.vue').default},
-    {path: '/readmore/:blogId', component: require('./components/ReadMore.vue').default},
+    {path: '/readmore/:blogId', component: require('./components/Readmore.vue').default},
     {path: '/blogcontent/:blogId', component: require('./components/Blog/BlogContent').default},
+    {path: '/samplecontent/:sampleId', component: require('./components/SampleContent.vue').default},
 
 ]
 const router = new VueRouter({
@@ -112,9 +120,20 @@ Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('Order', require('./components/Order.vue').default);
 Vue.component('my-order', require('./components/Myoders.vue').default);
 Vue.component('myorderdetails', require('./components/MyOrderDetails.vue').default);
-Vue.component('newsletter', require('./components/Newsletter.vue').default);
 Vue.component('blog-user', require('./components/Blog/BlogUser.vue').default);
 Vue.component('blog-content', require('./components/Blog/BlogContent.vue').default);
+Vue.component('sample-client', require('./components/SampleClient.vue').default);
+Vue.component('profile', require('./components/profile.vue').default);
+Vue.component('sample-content', require('./components/SampleContent.vue').default);
+Vue.component('my-dashboard', require('./components/MyDashboard.vue').default);
+Vue.component('unpaid', require('./components/Pending.vue').default);
+Vue.component('completed', require('./components/Completed.vue').default);
+Vue.component('disputed', require('./components/Disputed.vue').default);
+Vue.component('revision', require('./components/Revision.vue').default);
+Vue.component('refaral', require('./components/Refaral.vue').default);
+Vue.component('payment', require('./components/Payment.vue').default);
+Vue.component('on-progress', require('./components/Onprogress.vue').default);
+Vue.component('profile', require('./components/Myprofile.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
