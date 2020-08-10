@@ -32,8 +32,60 @@ Route::get('/blogcontent/{blogId}', function () {
 });
 // Route::get('/task', function () {
 //     return view('order');
-// });
+// }
+Route::get('/sample', function () {
+    return view('sample');
+});
+Route::get('/terms', function () {
+    return view('terms');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
 
+Route::get('/faq', function () {
+    return view('faq');
+});
+
+Route::get('/privacy_policy', function () {
+    return view('privacy_policy');
+});
+Route::get('/mydashboard', function () {
+    return view('Dashboard');
+});
+Route::get('/refaral', function () {
+    return view('refaral');
+});
+Route::get('/myProfile', function () {
+    return view('profile');
+});
+Route::get('/revision', function () {
+    return view('revision');
+});
+Route::get('/unpaid', function () {
+    return view('UnPaid');
+});
+Route::get('/payment', function () {
+    return view('payment');
+});
+Route::get('/onprogress', function () {
+    return view('onprogress');
+});
+Route::get('/disputed', function () {
+    return view('disputed');
+});
+Route::get('/completed', function () {
+    return view('Completed');
+});
+Route::get('/samplecontent/{sampleId}', function () {
+    return view('sampleContent');
+});
+Route::get('/terms', function () {
+    return view('terms');
+});
+Route::get('/profile', function () {
+    return view('myprofile');
+});
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/newsletter', 'NewsletterController@store')->name('newsletter');
