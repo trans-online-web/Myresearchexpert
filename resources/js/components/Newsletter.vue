@@ -4,14 +4,12 @@
             <div class="col-md-4">
 
                 <div class="row">
-                    <form class="form-inline">
-                            <div class="form-group">
-                                <label for="exampleInputEmail">Email</label> :
-                                <input v-model="form.email" type="email" name="email" id="exampleInputEmail"
-                                       class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
-                                <has-error :form="form" field="email"></has-error>
-                            </div>
-                        <div class="col">
+                    <form class="form-inline d-flex">
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Email:</label>
+                            <input v-model="form.email" type="email" name="email" id="exampleInputEmail"
+                                   class="form-control m-2" :class="{ 'is-invalid': form.errors.has('email') }">
+                            <has-error :form="form" field="email"></has-error>
                             <button type="button" @click="send()" class="btn btn-primary">Submit</button>
                         </div>
                     </form>

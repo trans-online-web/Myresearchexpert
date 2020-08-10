@@ -88,6 +88,30 @@
                                     </div>
 
                                 </div>
+
+                                <div class="row">
+                                 <div class="col-md-6">
+                                     <label for="paperType">Paper Type</label>
+                                     <div class="form-group">
+                                         <select v-model="form.papertype" name="papertype" class="form-control">
+                                            <option>-- select paper --</option>
+                                            <option value="APA">APA</option>
+                                            <option value="Havard">Havard</option>
+                                            <option value="MLA">MLA</option>
+                                            <option value="Chicago">Chicago</option>
+                                            <option value="Vancouver">Vancouver</option>
+                                            <option value="OSCOLA">OSCOLA</option>
+                                            <option value="IEEE">IEEE</option>
+      
+ 
+                                             
+                                         </select>
+                                     </div>
+                                 </div>   
+                                </div>
+
+
+
                                 <div class="row">
                                     <div class="col">
                                         <label for="spacing">Spacing</label><br>
@@ -170,6 +194,7 @@
                     date: '',
                     time: '',
                     task: '',
+                    papertype: ''
                 })
             }
         },
@@ -496,6 +521,8 @@
                 this.formf.append('time', this.form.time);
                 this.formf.append('task', this.form.task);
                 this.formf.append('price', this.suggestion);
+                // added
+                this.formf.append('papertype',this.form.papertype);
 
                 const config = {headers: {'Content-Type': 'multipart/form-data'}};
 
