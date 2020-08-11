@@ -57,60 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-comments-o"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fa fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
+
 
                 <!-- Notifications Dropdown Menu -->
                 {{--<notification :userid="{{auth()->user()->id}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>--}}
@@ -234,14 +181,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </router-link>
                         </li>
-                        <li class="nav-item">
-                            <router-link to="/user" class="nav-link">
-                                <i class=" nav-icon fas fa-users-cog indigo"></i>
-                                <p>
-                                    User Management
-                                </p>
-                            </router-link>
-                        </li>
                         <li class="nav-item has-treeview menu ">
                             <a href="#" class="nav-link ">
                                 <i class="fa fa-calendar-week teal"></i>
@@ -268,6 +207,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </router-link>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/AdminSample" class="nav-link">
+                                <i class=" nav-icon fas fa-file-word orange"></i>
+                                <p>
+                                    Paper Samples
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/logs" class="nav-link ">
+                                <i class=" nav-icon fas fa-clipboard-check yellow"></i>
+                                <p>
+                                    System Logs
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/user" class="nav-link">
+                                <i class=" nav-icon fas fa-users-cog indigo"></i>
+                                <p>
+                                    User Management
+                                </p>
+                            </router-link>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="{{ route('logout') }}"

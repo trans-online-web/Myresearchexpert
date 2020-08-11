@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
+use App\Logs;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -34,6 +37,27 @@ class LoginController extends Controller
            } elseif (Auth::check() && Auth::user()->role == 'student') {
                return ('/');
            }
+    }
+
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            $user = User::where('email', $request->email)->firstOrFail();
+            $log = new Logs();
+            $log->user_id = $user->id;
+            $log->ip_address = $request->ip();
+            $log->save();
+            if (Auth::check() && Auth::user()->role == 'admin') {
+                return redirect()->intended('dashboard');
+            } elseif (Auth::check() && Auth::user()->role == 'student') {
+                return redirect()->intended('/');
+            }
+
+        }
     }
         /**
          * Create a new controller instance.

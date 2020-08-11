@@ -8,6 +8,9 @@ require('./bootstrap');
 
 
 window.Vue = require('vue');
+window.EventBus=new Vue();
+import store from "./store/store";
+
 
 // VueRouter
 import VueRouter from 'vue-router';
@@ -94,11 +97,16 @@ const router = new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
 })
-
+Vue.filter('myDatetime',function(created){
+    return moment(created).format('MMMM Do YYYY, h:mm a');
+});
 Vue.filter('upText', function (text) {
     return text.charAt(0).toUpperCase() + text.slice(1)
 });
 
+Vue.filter('truncate',function(string, value) {
+    return string.substring(20, value) + '...';
+});
 Vue.filter('myDate', function (created) {
     return moment(created).format('hh:mm MMMM Do YYYY');
 });
@@ -143,6 +151,7 @@ Vue.component('profile', require('./components/Myprofile.vue').default);
 const app = new Vue({
     el: '#app',
     router,
+    store,
     data: {
         search: ''
     },

@@ -3,46 +3,51 @@
         <div class="row mt-5">
 
             <div class="col-md-12">
-                <div class="card">
+                <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">User Table</h3>
-                        <div class="card-tools">
+                        <h3 class="card-title">Users</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-body table-responsive p-0">
+                            <vue-good-table
+                                :line-numbers="true"
+                                :columns="columns"
+                                :rows="users"
+                                :pagination-options="{
+                               enabled: true,
+                               mode: 'pages',
+                               perPage: 10
+                             }"
+                                :search-options="{
+                                enabled: true,
+                                placeholder: 'Search this table',
+                              }">
+                                <template slot="table-row" slot-scope="props">
+                                    <span v-if="props.column.field == 'registered'">
+                                        <small class="text-primary">{{props.row.created_at | myDatetime}}</small>
+                                    </span>
+                                    <span v-else-if="props.column.field == 'modify'">
+                                    <a  href="#" @click="deleteUser(props.row.id)">
+                                            <i class="fas fa-trash-alt red"></i>
+                                        </a>
+                                </span>
+                                    <span v-else-if="props.column.field == 'view'">
+                                    <router-link :to="{path:'/userDetails/'+ props.row.id}">
+                                    <button type="button" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-eye"></i>
+                                        More
+                                </button>
+                                    </router-link>
+                                </span>
+                                    <span v-else>
+                                        {{props.formattedRow[props.column.field]}}
+                                    </span>
+                                </template>
+                            </vue-good-table>
                         </div>
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
-                            <tbody><tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <!--<th>Type</th>-->
-                                <th>Registered At</th>
-                                <th>Modify</th>
-                            </tr>
-                            <tr v-for="user in users.data" :key="user.id">
-                                <td>{{user.id}}</td>
-                                <td>{{user.name}}</td>
-                                <td>{{user.email}}</td>
-                               <!-- <td>{{user.role | upText}}</td>-->
-                                <td>{{user.created_at | myDate}}</td>
-                                <td>
-                                    <a href="#" @click="deleteUser(user.id)">
-                                        <i class="fa fa-trash red"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
-
-
-                            </tbody></table>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="card-footer">
-                        <pagination :data="users" @pagination-change-page="getResults"></pagination>
-                    </div>
                 </div>
-                <!-- /.box -->
             </div>
         </div>
     </div>
@@ -52,22 +57,59 @@
     export default {
         data(){
             return{
+                columns: [
+                    {
+                        label: 'Name',
+                        field: 'name',
+                    },
+                    {
+                        label: 'Email',
+                        field: 'email',
+                    },
+                    {
+                        label: 'Role',
+                        field: 'role',
+                    },
+                    {
+                        label: 'Registered',
+                        field: 'registered',
+                    },
+                    {
+                        label: 'View',
+                        field: 'view',
+                    },
+                    {
+                        label: 'Modify',
+                        field: 'modify',
+                    },
+                ],
                 editMode: false,
                 users :{},
+                userInfo:{},
                 form: new Form({
                     id:'',
                     name:'',
                     email: '',
-
-
-
-
                 })
-
-
             }
         },
         methods:{
+
+            sendEmailId(value){
+
+                var that=this;
+                axios.get('api/user/'+value.id).then(response=>{
+                    that.userInfo=response.data.data
+
+                    that.userInfo.referredBy = value.referred_by;
+
+                    console.log(that.userInfo)
+
+                }).catch().finally();
+
+            },
+
+
             getResults(page = 1) {
                 axios.get('api/user?page=' + page)
                     .then(response => {
@@ -89,7 +131,6 @@
                     })
                     .catch(()=>{
                         this.$Progress.fail();
-
                     })
             },
             editModal(user){
@@ -115,14 +156,12 @@
                     // send the request to the controller
                     if (result.value) {
                         this.form.delete('api/user/'+ id).then(()=>{
-
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
                                 'success'
                             )
                             Fire.$emit('AfterCreate');
-
                         });
                     }
                 }).catch(()=>{
@@ -130,7 +169,7 @@
                 })
             },
             loadUsers(){
-                    axios.get("api/user").then(({ data }) => (this.users = data));
+                axios.get("api/user").then(({ data }) => (this.users = data));
             },
             createUser(){
                 this.$Progress.start();
@@ -148,8 +187,6 @@
                     })
             }
         },
-
-
         created() {
             Fire.$on('searching', ()=>{
                 let query = this.$parent.search;
@@ -158,7 +195,6 @@
                         this.users = data.data;
                     })
                     .catch(()=>{
-
                     })
             })
             this.loadUsers();
