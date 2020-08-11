@@ -46,6 +46,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="/blog">Blog</a>
                       </li>
+                      <li class="nav-item"><a class="nav-link" href="/sample">Samples</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+
                   </ul>
                   <div class="mt-2 mt-md-0">
                       @if (Route::has('login'))
@@ -72,7 +75,7 @@
 
                                         <div class="dropdown-menu dropdown-menu-right bg-transparent" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="/myorders">My Orders</a>
-                                            <a class="dropdown-item" href="">My Profile</a>
+                                            <a class="dropdown-item" href="/mydashboard">My Dashboard</a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
@@ -168,5 +171,18 @@
         @endauth
     </div>
 <script src="{{ asset('js/main.js') }} " defer></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5ddbc6a9d96992700fc91c1a/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
