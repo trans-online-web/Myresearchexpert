@@ -32,7 +32,7 @@
     "vue-good-table": "^2.19.3",
     "vue-nav-tabs": "^0.5.7",
     "luxon": "^1.17.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "pusher-js": "^5.0.0",
     "sweetalert2": "^8.16.2",
     "vform": "^1.0.1",
